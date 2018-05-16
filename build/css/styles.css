@@ -73,57 +73,62 @@ acronym {
   box-sizing: border-box;
 }
 @font-face {
-  font-family: 'MullerLight';
+  font-family: 'Muller';
   src: url('../fonts/Muller/MullerLight.eot');
   src: url('../fonts/Muller/MullerLight.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerLight.woff') format('woff'), url('../fonts/Muller/MullerLight.ttf') format('truetype'), url('../fonts/Muller/MullerLight.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'MullerRegular';
+  font-family: 'Muller';
   src: url('../fonts/Muller/MullerRegular.eot');
   src: url('../fonts/Muller/MullerRegular.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerRegular.woff') format('woff'), url('../fonts/Muller/MullerRegular.ttf') format('truetype'), url('../fonts/Muller/MullerRegular.svg#pf_din_text_comp_promedium') format('svg');
-  font-weight: 400;
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'MullerMedium';
+  font-family: 'Muller';
   src: url('../fonts/Muller/MullerMedium.eot');
   src: url('../fonts/Muller/MullerMedium.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerMedium.woff') format('woff'), url('../fonts/Muller/MullerMedium.ttf') format('truetype'), url('../fonts/Muller/MullerMedium.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'MullerBold';
+  font-family: 'Muller';
   src: url('../fonts/Muller/MullerBold.eot');
   src: url('../fonts/Muller/MullerBold.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerBold.woff') format('woff'), url('../fonts/Muller/MullerBold.ttf') format('truetype'), url('../fonts/Muller/MullerBold.svg#pf_din_text_comp_promedium') format('svg');
-  font-weight: 700;
+  font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: 'MullerBlack';
+  font-family: 'Muller';
   src: url('../fonts/Muller/MullerBlack.eot');
   src: url('../fonts/Muller/MullerBlack.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerBlack.woff') format('woff'), url('../fonts/Muller/MullerBlack.ttf') format('truetype'), url('../fonts/Muller/MullerBlack.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 900;
   font-style: normal;
 }
 .header_big {
-  font-family: "MullerBold", sans-serif;
+  font-family: "Muller", sans-serif;
+  font-weight: bold;
   font-size: 30px;
   text-transform: uppercase;
   color: #333333;
   margin: 0 0 40px 0;
 }
 .header_middle {
-  font-family: "MullerBold", sans-serif;
+  font-family: "Muller", sans-serif;
+  font-weight: bold;
   font-size: 22px;
   text-transform: uppercase;
   color: #333333;
 }
+.header_news {
+  margin-bottom: 30px;
+}
 .button__all-news {
   width: 250px;
   background-color: #92b700;
-  font-family: "MullerRegular", sans-serif;
+  font-family: "Muller", sans-serif;
   font-size: 18px;
   color: #fff;
   text-transform: uppercase;
@@ -142,6 +147,7 @@ acronym {
   display: flex;
   height: 60px;
   padding: 10px 15px;
+  background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
   clear: both;
 }
@@ -871,35 +877,44 @@ acronym {
 }
 .wrapper_block-white {
   background-color: #fff;
-  padding: 50px 0;
 }
 .wrapper_block-lightgrey {
   background-color: #fdfdfd;
+}
+.container__slider {
   padding: 50px 0;
 }
-.block__news {
+.container__news {
+  padding: 50px 0;
+}
+.container__media {
+  padding: 100px 0 0 0;
+}
+.container__doc {
+  padding: 100px 0 70px 0;
+}
+.block-news {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  width: 360px;
   height: 400px;
   padding: 0px 0px 30px 0px;
   position: relative;
 }
-.block__news-pic {
+.block-news__pic {
   position: relative;
-  width: 360px;
+  width: 100%;
   height: 200px;
   background-size: cover;
 }
-.block__news-date {
+.block-news__date {
   position: absolute;
   top: 10px;
   color: #fff;
   font-family: "MullerRegular", sans-serif;
   font-size: 14px;
-  padding: 4px 12px 3px 8px;
+  padding: 4px 4px 3px 8px;
   background-color: #333333;
 }
-.block__news-date:after {
+.block-news__date:after {
   content: ' ';
   width: 0;
   height: 0;
@@ -910,18 +925,18 @@ acronym {
   right: -8px;
   top: 0;
 }
-.block__news-title {
+.block-news__title {
   margin: 20px 20px 0 20px;
   font-family: "MullerBold", sans-serif;
   font-size: 18px;
 }
-.block__news-title a {
+.block-news__title a {
   color: #333333;
   text-decoration: none;
   display: inline-block;
   line-height: 1;
 }
-.block__news-title a:after {
+.block-news__title a:after {
   content: "";
   display: block;
   height: 2px;
@@ -929,14 +944,259 @@ acronym {
   background-color: #92b700;
   transition: width 0.2s ease-in-out;
 }
-.block__news-title a:hover:after,
-.block__news-title a:focus:after {
+.block-news__title a:hover:after,
+.block-news__title a:focus:after {
   width: 100%;
 }
-.block__news-text {
-  font-family: "MullerLight", sans-serif;
+.block-news__text {
+  font-family: "MullerRegular", sans-serif;
   font-size: 15px;
   line-height: 1.53;
   color: #333333;
   margin: 25px 20px 30px 20px;
+}
+.block-news__text_light {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.block-list {
+  border: solid 1px #e8e8e8;
+  padding: 20px;
+  height: 300px;
+}
+.block-list.mCustomScrollbar {
+  padding-right: 0px;
+}
+.block-list li {
+  border-bottom: solid 1px #f9f9f9;
+  padding: 10px 0px 10px 0;
+}
+.block-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+.block-list li:first-child {
+  padding-top: 0px;
+}
+.calendar-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-left: solid 2px #92b700;
+  padding: 12px 0 12px 15px;
+  color: #333333;
+  font-family: "Muller", sans-serif;
+}
+.calendar-block__date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 30px;
+          flex: 0 0 30px;
+}
+.calendar-block__date-day {
+  font-size: 18px;
+  line-height: 18px;
+}
+.calendar-block__date-month {
+  font-size: 12px;
+  line-height: 14px;
+}
+.calendar-block__date-year {
+  font-size: 11px;
+  line-height: 13px;
+}
+.calendar-block__text {
+  width: 100%;
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.calendar-block__text-title {
+  font-family: "Muller", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.calendar-block__text-geopos {
+  font-size: 13px;
+}
+.calendar-block__text-geopos fa {
+  font-size: 14px;
+  margin-left: 3px;
+}
+.doc-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.doc-block .fas {
+  font-size: 26px;
+  margin-right: 15px;
+}
+.doc-block .fa-file-pdf {
+  color: #cc4b4c;
+}
+.doc-block .fa-file-word {
+  color: #0096e6;
+}
+.doc-block .fa-file {
+  color: #fff;
+  background-color: #92b700;
+  padding: 5px;
+  border-radius: 15px;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  margin-right: 10px;
+}
+.doc-block__text-title {
+  font-family: "Muller", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.doc-block__text-link {
+  font-family: Muller;
+  font-size: 14px;
+  color: #92b700;
+}
+.birthday-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.birthday-block__date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Muller", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 45px;
+  line-height: 20px;
+}
+.birthday-block__text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.birthday-block__text-title {
+  font-family: "Muller", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+.birthday-block__text-post {
+  opacity: 0.5;
+  font-family: "Muller", sans-serif;
+  font-size: 13px;
+  color: #333333;
+}
+.birthday-block__geopos {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 150px;
+          flex: 0 0 150px;
+  font-family: "Muller", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.birthday-block__geopos .fas {
+  margin-right: 6px;
+}
+.smile {
+  position: fixed;
+  bottom: 40px;
+  right: 35px;
+  z-index: 2000;
+  background-color: #ede417;
+  border-radius: 150px;
+  width: 100px;
+  height: 100px;
+}
+.smile__eye {
+  background-color: #040405;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  position: absolute;
+  top: 35px;
+  z-index: 5;
+}
+.smile__eye_left {
+  left: 10px;
+}
+.smile__eye_right {
+  right: 10px;
+}
+.smile__flare {
+  background-color: #97a19b;
+  width: 7px;
+  height: 7px;
+  border-radius: 5px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+.smile__jowls {
+  background-color: #f19eb5;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  position: absolute;
+  top: 45px;
+  z-index: 4;
+}
+.smile__jowls_left {
+  left: 6px;
+}
+.smile__jowls_right {
+  right: 6px;
+}
+.smile__mouth {
+  border-radius: 0 0 100px 100px;
+  background-color: #1d1d1b;
+  position: absolute;
+  top: 53px;
+  width: 32px;
+  height: 16px;
+  z-index: 5;
+  left: 34px;
+}
+.smile__lang {
+  background-color: #f19eb5;
+  border-radius: 112% 0 104% 0;
+  -webkit-transform: rotate(43deg);
+      -ms-transform: rotate(43deg);
+          transform: rotate(43deg);
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 2px;
+  z-index: 6;
+  left: 7px;
 }

@@ -1,0 +1,42 @@
+.birthday {
+    &-block {
+        display: flex;
+        &__date {
+            display: flex;
+            flex-direction: column;
+            font-family: "Muller", sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: @middle-grey;
+            margin-right: 45px;
+            line-height: 20px;
+        }
+        &__text {
+            flex: 1;
+            &-title {
+                font-family: "Muller", sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                color: @middle-grey;
+            }
+            &-post {
+                opacity: 0.5;
+                font-family: "Muller", sans-serif;
+                font-size: 13px;
+                color: @middle-grey;
+            }
+        }
+        &__geopos {
+            flex: 0 0 150px;
+            font-family: "Muller", sans-serif;
+            font-size: 13px;
+            font-weight: normal;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            & .fas {
+                margin-right: 6px;
+            }
+        }
+    }
+}

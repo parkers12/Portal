@@ -1,0 +1,70 @@
+.smile {
+    position: fixed;
+    bottom: 40px;
+    right: 35px;
+    z-index: 2000;
+    background-color: #ede417;
+    border-radius: 150px;
+    width: 100px;
+    height: 100px;
+    &__eye {
+        background-color: #040405;
+        width: 16px;
+        height: 16px;
+        border-radius: 10px;
+        position: absolute;
+        top: 35px;
+        z-index: 5;
+        &_left {
+            left: 10px;
+        }
+        &_right {
+            right: 10px;
+        }
+    }
+    &__flare {
+        background-color: #97a19b;
+        width: 7px;
+        height: 7px;
+        border-radius: 5px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+    }
+    &__jowls {
+        background-color: #f19eb5;
+        width: 12px;
+        height: 12px;
+        border-radius: 10px;
+        position: absolute;
+        top: 45px;
+        z-index: 4;
+        &_left {
+            left: 6px;
+        }
+        &_right {
+            right: 6px;
+        }
+    }
+    &__mouth {
+        border-radius: 0 0 100px 100px;
+        background-color: #1d1d1b;
+        position: absolute;
+        top: 53px;
+        width: 32px;
+        height: 16px;
+        z-index: 5;
+        left: 34px;
+    }
+    &__lang {
+        background-color: #f19eb5;
+        border-radius: 112% 0 104% 0;
+        transform: rotate(43deg);
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 2px;
+        z-index: 6;
+        left: 7px;
+    }
+}
