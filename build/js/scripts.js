@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    
-    setTimeout ("$('.smile').show('drop');",5000);
-    
-    
+    setTimeout (
+        "$('.smile').show('drop');",
+        5000
+    );
 });

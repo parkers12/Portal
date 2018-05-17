@@ -1182,6 +1182,8 @@ acronym {
   height: 100px;
   cursor: pointer;
   display: none;
+  -webkit-animation: tossing  1.5s infinite;
+          animation: tossing  1.5s infinite;
 }
 .smile:hover .smile__bubble {
   display: block;
@@ -1287,7 +1289,7 @@ acronym {
   bottom: -8px;
   width: 0;
   height: 0;
-  border-top: 16px solid green;
+  border-top: 16px solid #fff;
   border-right: 16px solid transparent;
   -webkit-transform: rotate(226deg);
   -ms-transform: rotate(226deg);
@@ -1317,5 +1319,33 @@ acronym {
     opacity: 1;
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
+  }
+}
+@-webkit-keyframes tossing {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  50% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+}
+@keyframes tossing {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  50% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
   }
 }

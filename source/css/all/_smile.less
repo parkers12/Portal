@@ -9,6 +9,8 @@
     height: 100px;
     cursor: pointer;
     display: none;
+    //animation: jump 0.7s infinite;
+    animation: tossing  1.5s infinite;
     &:hover .smile__bubble {
         display: block;
     }
@@ -110,7 +112,7 @@
         bottom: -8px;
         width: 0;
         height: 0;
-        border-top: 16px solid green;
+        border-top: 16px solid #fff;
         border-right: 16px solid transparent;
         -webkit-transform: rotate(226deg);
         -ms-transform: rotate(226deg);
@@ -119,7 +121,6 @@
         box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.21);
     }
 }
-
 @keyframes vizible {
   from {
     opacity: 0;
@@ -129,4 +130,10 @@
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+@keyframes tossing {
+  0% {transform: rotate(-5deg);}
+  50% {transform: rotate(5deg);}
+  100% {transform: rotate(-5deg);}
 }
