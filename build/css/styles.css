@@ -909,7 +909,7 @@ acronym {
   position: absolute;
   top: 10px;
   color: #fff;
-  font-family: "MullerRegular", sans-serif;
+  font-family: "Muller", sans-serif;
   font-size: 14px;
   padding: 4px 4px 3px 8px;
   background-color: #333333;
@@ -927,14 +927,18 @@ acronym {
 }
 .block-news__title {
   margin: 20px 20px 0 20px;
-  font-family: "MullerBold", sans-serif;
+  font-family: "Muller", sans-serif;
   font-size: 18px;
+  white-space: nowrap;
+  font-weight: bold;
 }
 .block-news__title a {
   color: #333333;
   text-decoration: none;
   display: inline-block;
   line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .block-news__title a:after {
   content: "";
@@ -948,14 +952,22 @@ acronym {
 .block-news__title a:focus:after {
   width: 100%;
 }
-.block-news__text {
-  font-family: "MullerRegular", sans-serif;
+.block-news__desc {
+  font-family: "Muller", sans-serif;
   font-size: 15px;
   line-height: 1.53;
   color: #333333;
   margin: 25px 20px 30px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 70px;
 }
-.block-news__text_light {
+.block-news__desc-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 95px;
+}
+.block-news__desc_light {
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -1030,13 +1042,25 @@ acronym {
   font-family: "Muller", sans-serif;
   font-weight: bold;
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
 }
 .calendar-block__text-geopos {
   font-size: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.calendar-block__text-geopos fa {
-  font-size: 14px;
-  margin-left: 3px;
+.calendar-block__text-geopos .fas {
+  font-size: 13px;
+  margin-right: 5px;
+}
+.calendar-block__text-geopos-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 247px;
 }
 .doc-block {
   display: -webkit-box;
@@ -1092,23 +1116,37 @@ acronym {
   color: #333333;
   margin-right: 45px;
   line-height: 20px;
+  max-width: 35px;
+}
+.birthday-block__date-day {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.birthday-block__date-month {
+  overflow: hidden;
 }
 .birthday-block__text {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin-right: 20px;
+  max-width: 265px;
 }
 .birthday-block__text-title {
   font-family: "Muller", sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .birthday-block__text-post {
   opacity: 0.5;
   font-family: "Muller", sans-serif;
   font-size: 13px;
   color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .birthday-block__geopos {
   -webkit-box-flex: 0;
@@ -1124,6 +1162,11 @@ acronym {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 150px;
+}
+.birthday-block__geopos-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .birthday-block__geopos .fas {
   margin-right: 6px;
@@ -1137,6 +1180,11 @@ acronym {
   border-radius: 150px;
   width: 100px;
   height: 100px;
+  cursor: pointer;
+  display: none;
+}
+.smile:hover .smile__bubble {
+  display: block;
 }
 .smile__eye {
   background-color: #040405;
@@ -1199,4 +1247,75 @@ acronym {
   top: 2px;
   z-index: 6;
   left: 7px;
+}
+.smile__bubble {
+  width: 225px;
+  height: 80px;
+  background: #fff;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+  font-family: Muller;
+  font-size: 14px;
+  color: #333333;
+  padding: 20px;
+  top: -100px;
+  left: -125px;
+  z-index: 10;
+  cursor: default;
+  display: none;
+  -webkit-animation: vizible  .3s;
+          animation: vizible  .3s;
+}
+.smile__bubble:before {
+  content: "";
+  position: absolute;
+  right: 13px;
+  bottom: -5px;
+  width: 0;
+  height: 0;
+  border: 16px solid #fff;
+  -webkit-transform: rotate(226deg);
+  -ms-transform: rotate(226deg);
+  transform: rotate(226deg);
+  z-index: 12;
+}
+.smile__bubble:after {
+  content: "";
+  position: absolute;
+  right: 21px;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  border-top: 16px solid green;
+  border-right: 16px solid transparent;
+  -webkit-transform: rotate(226deg);
+  -ms-transform: rotate(226deg);
+  transform: rotate(226deg);
+  z-index: 11;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.21);
+}
+@-webkit-keyframes vizible {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@keyframes vizible {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
 }

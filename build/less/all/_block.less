@@ -14,9 +14,9 @@
             position: absolute;
             top: 10px;
             color: #fff;
-            font-family: "MullerRegular", sans-serif;
+            font-family: "Muller", sans-serif;
             font-size: 14px;
-            padding: 4px 12px 3px 8px;
+            padding: 4px 4px 3px 8px;
             background-color: @middle-grey;
             &:after {
                 content: ' ';
@@ -32,13 +32,17 @@
         }
         &__title {
             margin: 20px 20px 0 20px;
-            font-family: "MullerBold", sans-serif;
+            font-family: "Muller", sans-serif;
             font-size: 18px;
+            white-space: nowrap;
+            font-weight: bold;
             a {
                 color: @middle-grey;
                 text-decoration: none;
                 display: inline-block;
                 line-height: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 &:after {
                     content: "";
                     display: block;
@@ -53,30 +57,43 @@
                 }
             }
         }
-        &__text {
-            font-family: "MullerRegular", sans-serif;
+        &__desc {
+            font-family: "Muller", sans-serif;
             font-size: 15px;
             line-height: 1.53;
             color: @middle-grey;
             margin: 25px 20px 30px 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 70px;
+            &-text {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-height: 95px;
+                //hyphens: auto;
+            }
             &_light {
                 margin-left: 0px;
                 margin-right: 0px;
             }
         }
-        &_light {
-            
-        }
     }
     &-list {
         border: solid 1px @middle2-grey;
-        padding: 10px 0px 10px 20px;
+        padding: 20px;
         height: 300px;
+        &.mCustomScrollbar {
+            padding-right: 0px;
+        }
         & li {
             border-bottom: solid 1px @light3-grey;
             padding: 10px 0px 10px 0;
             &:last-child {
                 border-bottom: none;
+                padding-bottom: 0px;
+            }
+            &:first-child {
+                padding-top: 0px;
             }
         }
     }

@@ -33,12 +33,22 @@
                 font-family: "Muller", sans-serif;
                 font-weight: bold;
                 font-size: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 260px;
             }
             &-geopos {
                 font-size: 13px;
-                & fa {
-                    font-size: 14px;
-                    margin-left: 3px;
+                display: flex;
+                & .fas {
+                    font-size: 13px;
+                    margin-right: 5px;
+                }
+                &-desc {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 247px;
                 }
             }
         }
