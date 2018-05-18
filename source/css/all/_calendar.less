@@ -24,7 +24,7 @@
             }
         }
         &__text {
-            width: 100%;
+            width: calc(~"100% - 30px");
             padding-left: 15px;
             display: flex;
             flex-direction: column;
@@ -36,7 +36,6 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                max-width: 260px;
             }
             &-geopos {
                 font-size: 13px;
@@ -48,7 +47,6 @@
                 &-desc {
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    max-width: 247px;
                 }
             }
         }
