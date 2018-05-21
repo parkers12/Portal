@@ -84,8 +84,14 @@
         border: solid 1px @middle2-grey;
         padding: 20px;
         height: 300px;
-        &.mCustomScrollbar {
+        &_scroll {
             padding-right: 0px;
+            & > div {
+                height: 260px;
+            }
+            & li {
+                margin-right: 12px;
+            }
         }
         & li {
             border-bottom: solid 1px @light3-grey;

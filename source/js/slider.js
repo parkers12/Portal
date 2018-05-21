@@ -136,22 +136,22 @@ var CitiesSlider = function (_React$Component) {
 var slides = [{
   city: 'Paris',
   country: 'France',
-  img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/paris.jpg'
+  img: '/img/slider/paris.jpg'
 }, {
   city: 'Singapore',
-  img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/singapore.jpg'
+  img: '/img/slider/singapore.jpg'
 }, {
   city: 'Prague',
   country: 'Czech Republic',
-  img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/prague.jpg'
+  img: '/img/slider/prague.jpg'
 }, {
   city: 'Amsterdam',
   country: 'Netherlands',
-  img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/amsterdam.jpg'
+  img: '/img/slider/amsterdam.jpg'
 }, {
   city: 'Moscow',
   country: 'Russia',
-  img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/moscow.jpg'
+  img: '/img/slider/moscow.jpg'
 }];
 
 ReactDOM.render(React.createElement(CitiesSlider, { slides: slides }), document.querySelector('#app'));

@@ -8,10 +8,10 @@
 	<meta name="description" content="" />
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <link href="/css/fontawesome-all.css" rel="stylesheet" />
-	<link href="/css/bootstrap.css" rel="stylesheet" />
-	<link href="/css/mCustomScrollbar.css" rel="stylesheet" />
-	<link href="/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/fontawesome-all.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/animate.css" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="block-news">
-                                <div class="block-news__pic" style="background-image: url('http://photo-day.ru/wp-content/uploads/2013/05/bp196.jpg')"></div>
+                                <div class="block-news__pic" style="background-image: url('/img/news/bp196.jpg')"></div>
                                 <div class="block-news__date">01.05.2018</div>
                                 <div class="block-news__title">
                                     <a href="#">Покорение Эвереста</a>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="block-news">
-                                <div class="block-news__pic" style="background-image: url('https://sun9-1.userapi.com/c841637/v841637161/63ed4/F6c0wdPZDDg.jpg')"></div>
+                                <div class="block-news__pic" style="background-image: url('/img/news/F6c0wdPZDDg.jpg')"></div>
                                 <div class="block-news__date">01.05.2018</div>
                                 <div class="block-news__title">
                                     <a href="#">Usetalk в Ростов-на-Дону</a>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="block-news">
-                                <div class="block-news__pic" style="background-image: url('https://irs3.4sqi.net/img/general/width960/12538314_mtgghZ_HxhZ74FX8WAfU_X9CJKmQy3fbNZWF_ZD60ws.jpg')"></div>
+                                <div class="block-news__pic" style="background-image: url('/img/news/12538314_mtgghZ_HxhZ74FX8WAfU_X9CJKmQy3fbNZWF_ZD60ws.jpg')"></div>
                                 <div class="block-news__date">01.05.2018</div>
                                 <div class="block-news__title">
                                     <a href="#">Закрытие второго этапа Азбуки Закрытие второго этапа Азбуки</a>
@@ -88,7 +88,7 @@
                         <div class="col-md-4">
                             <div class="block-news_light">
                                 <h2 class="header_middle  header_news">Видео</h2>
-                                <div class="block-news__pic" style="background-image: url('https://sun9-1.userapi.com/c841637/v841637161/63ed4/F6c0wdPZDDg.jpg')"></div>
+                                <div class="block-news__pic" style="background-image: url('/img/news/F6c0wdPZDDg.jpg')"></div>
                                 <div class="block-news__desc block-news__desc_light">
                                     <div class="block-news__desc-text">
                                         Видео презентация Usetech Integration
@@ -99,7 +99,7 @@
                         <div class="col-md-4">
                             <div class="block-news_light">
                                 <h2 class="header_middle header_news">Фото дня</h2>
-                                <div class="block-news__pic" style="background-image: url('http://photo-day.ru/wp-content/uploads/2013/05/bp196.jpg')"></div>
+                                <div class="block-news__pic" style="background-image: url('/img/news/bp196.jpg')"></div>
                                 <div class="block-news__desc block-news__desc_light">
                                     <div class="block-news__desc-text">
                                         Наша HR-команда приняла участие в интеллектуальнойинтеллектуальнойинтеллектуальной игре SquizНаша HR-команда приняла участие в интеллектуальной игре Squiz
@@ -110,149 +110,151 @@
                         <div class="col-md-4">
                             <div class="block-news_light">
                                 <h2 class="header_middle header_news">Календарь событий</h2>
-                                <div class="block-list mCustomScrollbar">
-                                    <ul>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">окт</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                <div class="block-list block-list_scroll">
+                                    <div class="mCustomScrollbar">
+                                        <ul>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">окт</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">дек</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk РостовРостовРостовРостовРостовРостовРостовРостовРостов
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">дек</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучеву
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk РостовРостовРостовРостовРостовРостовРостовРостовРостов
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучевТекучеву
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">май</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">май</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">янв</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">янв</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">фев</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">фев</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">май</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">май</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="calendar-block">
-                                                <div class="calendar-block__date text-center">
-                                                    <span class="calendar-block__date-day">01</span>
-                                                    <span class="calendar-block__date-month">апр</span>
-                                                    <span class="calendar-block__date-year">2018</span>
-                                                </div>
-                                                <div class="calendar-block__text">
-                                                    <div class="calendar-block__text-title">
-                                                        Usetalk Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                <div class="calendar-block">
+                                                    <div class="calendar-block__date text-center">
+                                                        <span class="calendar-block__date-day">01</span>
+                                                        <span class="calendar-block__date-month">апр</span>
+                                                        <span class="calendar-block__date-year">2018</span>
                                                     </div>
-                                                    <div class="calendar-block__text-geopos">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                        <div class="calendar-block__text-geopos-desc">
-                                                            ул. Текучева 244Б, Ростов-на-Дону
+                                                    <div class="calendar-block__text">
+                                                        <div class="calendar-block__text-title">
+                                                            Usetalk Ростов-на-Дону
+                                                        </div>
+                                                        <div class="calendar-block__text-geopos">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div class="calendar-block__text-geopos-desc">
+                                                                ул. Текучева 244Б, Ростов-на-Дону
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -267,61 +269,63 @@
                         <div class="col-md-3">
                             <div class="block-news_light">
                                 <h2 class="header_middle header_news">Документы</h2>
-                                <div class="block-list  mCustomScrollbar">
-                                    <ul>
-                                        <li>
-                                            <div class="doc-block">
-                                                <i class="fas fa-file-word"></i>
-                                                <div class="doc-block__text">
-                                                    <div class="doc-block__text-title">
-                                                        Реквизиты компании
-                                                    </div>
-                                                    <div class="doc-block__text-link">
-                                                        Скачать
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="doc-block">
-                                                <i class="fas fa-file-pdf"></i>
-                                                <div class="doc-block__text">
-                                                    <div class="doc-block__text-title">
-                                                        Реквизиты компании
-                                                    </div>
-                                                    <div class="doc-block__text-link">
-                                                        Скачать
+                                <div class="block-list block-list_scroll">
+                                    <div class="mCustomScrollbar">
+                                        <ul>
+                                            <li>
+                                                <div class="doc-block">
+                                                    <i class="fas fa-file-word"></i>
+                                                    <div class="doc-block__text">
+                                                        <div class="doc-block__text-title">
+                                                            Реквизиты компании
+                                                        </div>
+                                                        <div class="doc-block__text-link">
+                                                            Скачать
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="doc-block">
-                                                <i class="fas fa-file-word"></i>
-                                                <div class="doc-block__text">
-                                                    <div class="doc-block__text-title">
-                                                        Реквизиты компании
-                                                    </div>
-                                                    <div class="doc-block__text-link">
-                                                        Скачать
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="doc-block">
-                                                <i class="fas fa-file-pdf"></i>
-                                                <div class="doc-block__text">
-                                                    <div class="doc-block__text-title">
-                                                        Реквизиты компании
-                                                    </div>
-                                                    <div class="doc-block__text-link">
-                                                        Скачать
+                                            </li>
+                                            <li>
+                                                <div class="doc-block">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                    <div class="doc-block__text">
+                                                        <div class="doc-block__text-title">
+                                                            Реквизиты компании
+                                                        </div>
+                                                        <div class="doc-block__text-link">
+                                                            Скачать
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                            <li>
+                                                <div class="doc-block">
+                                                    <i class="fas fa-file-word"></i>
+                                                    <div class="doc-block__text">
+                                                        <div class="doc-block__text-title">
+                                                            Реквизиты компании
+                                                        </div>
+                                                        <div class="doc-block__text-link">
+                                                            Скачать
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="doc-block">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                    <div class="doc-block__text">
+                                                        <div class="doc-block__text-title">
+                                                            Реквизиты компании
+                                                        </div>
+                                                        <div class="doc-block__text-link">
+                                                            Скачать
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -389,120 +393,122 @@
                         <div class="col-md-6">
                             <div class="block-news_light">
                                 <h2 class="header_middle header_news">Дни рождения</h2>
-                                <div class="block-list mCustomScrollbar">
-                                    <ul>
-                                        <li>
-                                            <div class="birthday-block">
-                                                <div class="birthday-block__date text-center">
-                                                    <span class="birthday-block__date-day">01</span>
-                                                    <span class="birthday-block__date-month">мая</span>
-                                                </div>
-                                                <div class="birthday-block__text">
-                                                    <div class="birthday-block__text-title">
-                                                        Агеева Екатерина
+                                <div class="block-list block-list_scroll">
+                                    <div class="mCustomScrollbar">
+                                        <ul>
+                                            <li>
+                                                <div class="birthday-block">
+                                                    <div class="birthday-block__date text-center">
+                                                        <span class="birthday-block__date-day">01</span>
+                                                        <span class="birthday-block__date-month">мая</span>
                                                     </div>
-                                                    <div class="birthday-block__text-post">
-                                                        Рекрутер
+                                                    <div class="birthday-block__text">
+                                                        <div class="birthday-block__text-title">
+                                                            Агеева Екатерина
+                                                        </div>
+                                                        <div class="birthday-block__text-post">
+                                                            Рекрутер
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="birthday-block__geopos">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <div class="birthday-block__geopos-text">
-                                                        Ростов
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="birthday-block">
-                                                <div class="birthday-block__date text-center">
-                                                    <span class="birthday-block__date-day">01</span>
-                                                    <span class="birthday-block__date-month">мая</span>
-                                                </div>
-                                                <div class="birthday-block__text">
-                                                    <div class="birthday-block__text-title">
-                                                        Агеева Екатерина
-                                                    </div>
-                                                    <div class="birthday-block__text-post">
-                                                        Рекрутер
+                                                    <div class="birthday-block__geopos">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <div class="birthday-block__geopos-text">
+                                                            Ростов
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="birthday-block__geopos">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <div class="birthday-block__geopos-text">
-                                                        Ростов
+                                            </li>
+                                            <li>
+                                                <div class="birthday-block">
+                                                    <div class="birthday-block__date text-center">
+                                                        <span class="birthday-block__date-day">01</span>
+                                                        <span class="birthday-block__date-month">мая</span>
+                                                    </div>
+                                                    <div class="birthday-block__text">
+                                                        <div class="birthday-block__text-title">
+                                                            Агеева Екатерина
+                                                        </div>
+                                                        <div class="birthday-block__text-post">
+                                                            Рекрутер
+                                                        </div>
+                                                    </div>
+                                                    <div class="birthday-block__geopos">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <div class="birthday-block__geopos-text">
+                                                            Ростов
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="birthday-block">
-                                                <div class="birthday-block__date text-center">
-                                                    <span class="birthday-block__date-day">01</span>
-                                                    <span class="birthday-block__date-month">мая</span>
-                                                </div>
-                                                <div class="birthday-block__text">
-                                                    <div class="birthday-block__text-title">
-                                                        Агеева ЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатерина
+                                            </li>
+                                            <li>
+                                                <div class="birthday-block">
+                                                    <div class="birthday-block__date text-center">
+                                                        <span class="birthday-block__date-day">01</span>
+                                                        <span class="birthday-block__date-month">мая</span>
                                                     </div>
-                                                    <div class="birthday-block__text-post">
-                                                        РекрутерРекрутерРекрутерРекрутерРекрутерРекрутерРекрутер
+                                                    <div class="birthday-block__text">
+                                                        <div class="birthday-block__text-title">
+                                                            Агеева ЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатеринаЕкатерина
+                                                        </div>
+                                                        <div class="birthday-block__text-post">
+                                                            РекрутерРекрутерРекрутерРекрутерРекрутерРекрутерРекрутер
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="birthday-block__geopos">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <div class="birthday-block__geopos-text">
-                                                        РостовРостовРостовРостовРостовРостовРостовРостовРостовРостов
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="birthday-block">
-                                                <div class="birthday-block__date text-center">
-                                                    <span class="birthday-block__date-day">01</span>
-                                                    <span class="birthday-block__date-month">мая</span>
-                                                </div>
-                                                <div class="birthday-block__text">
-                                                    <div class="birthday-block__text-title">
-                                                        Агеева Екатерина
-                                                    </div>
-                                                    <div class="birthday-block__text-post">
-                                                        Рекрутер
+                                                    <div class="birthday-block__geopos">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <div class="birthday-block__geopos-text">
+                                                            РостовРостовРостовРостовРостовРостовРостовРостовРостовРостов
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="birthday-block__geopos">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <div class="birthday-block__geopos-text">
-                                                        Ростов
+                                            </li>
+                                            <li>
+                                                <div class="birthday-block">
+                                                    <div class="birthday-block__date text-center">
+                                                        <span class="birthday-block__date-day">01</span>
+                                                        <span class="birthday-block__date-month">мая</span>
+                                                    </div>
+                                                    <div class="birthday-block__text">
+                                                        <div class="birthday-block__text-title">
+                                                            Агеева Екатерина
+                                                        </div>
+                                                        <div class="birthday-block__text-post">
+                                                            Рекрутер
+                                                        </div>
+                                                    </div>
+                                                    <div class="birthday-block__geopos">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <div class="birthday-block__geopos-text">
+                                                            Ростов
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="birthday-block">
-                                                <div class="birthday-block__date text-center">
-                                                    <span class="birthday-block__date-day">01</span>
-                                                    <span class="birthday-block__date-month">мая</span>
-                                                </div>
-                                                <div class="birthday-block__text">
-                                                    <div class="birthday-block__text-title">
-                                                        Агеева Екатерина
+                                            </li>
+
+                                            <li>
+                                                <div class="birthday-block">
+                                                    <div class="birthday-block__date text-center">
+                                                        <span class="birthday-block__date-day">01</span>
+                                                        <span class="birthday-block__date-month">мая</span>
                                                     </div>
-                                                    <div class="birthday-block__text-post">
-                                                        Рекрутер
+                                                    <div class="birthday-block__text">
+                                                        <div class="birthday-block__text-title">
+                                                            Агеева Екатерина
+                                                        </div>
+                                                        <div class="birthday-block__text-post">
+                                                            Рекрутер
+                                                        </div>
+                                                    </div>
+                                                    <div class="birthday-block__geopos">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <div class="birthday-block__geopos-text">
+                                                            Ростов
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="birthday-block__geopos">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <div class="birthday-block__geopos-text">
-                                                        Ростов
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -510,7 +516,7 @@
                 </div>
             </div>
         </div>
-        <div id="smile" class="smile">
+                <div id="smile" class="smile">
             <div class="smile__eye smile__eye_left">
                 <div class="smile__flare"></div>
             </div>
@@ -523,7 +529,7 @@
                 <div class="smile__lang"></div>
             </div>
             <div class="smile__bubble">
-                Привет! Теперь ты можешь прислать свою идею мне!
+                Привет! Теперь ты можешь прислать мне свою идею!
             </div>
         </div>
         <div class="wrapper__overlay"></div>
@@ -534,19 +540,26 @@
     <div class="idea-popup__title">
         <h1 class="header_big text-center">Ваша идея</h1>
     </div>
-    <div contenteditable="true" id="idea-popup__textarea" class="idea-popup__body-textarea mCustomScrollbar" maxlength="700" placeholder="Опиши свою идею"></div>
-    <div id="idea-popup__counter" class="idea-popup__counter"></div>
+    <div class="idea-popup__body">
+       <textarea class="idea-popup__body-textarea mCustomScrollbar" maxlength="700" placeholder="Опиши свою идею"></textarea>
+    </div>
+    <div class="idea-popup__counter"></div>
     <div class="idea-popup__footer text-center">
         <button class="button__all-news">Отправить идею</button>
     </div>
 </div>
     </div>
-    <script src="/js/jquery-3.3.1.min.js"></script>
+    <!-- jquery -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- slider -->
 <script src='/js/react.min.js'></script>
 <script src='/js/react-dom.min.js'></script>
 <script src='/js/index.min.js'></script>
 <script src="/js/slider.js"></script>
-<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- scroll -->
+<script src="/js/jquery.nicescroll.min.js"></script>
+<script src="/js/jquery.mousewheel.min.js"></script>
+<script src="/js/scrollreveal.js"></script>
 <script src="/js/scripts.js"></script>
 </body>
 </html>
