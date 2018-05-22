@@ -11,9 +11,10 @@
     display: none;
     //animation: jump 0.7s infinite;
     animation: tossing  1.5s infinite;
+    /*
     &:hover .smile__bubble {
         display: block;
-    }
+    }*/
     &__eye {
         background-color: #040405;
         width: 16px;
@@ -75,8 +76,8 @@
         left: 7px;
     }
     &__bubble {
-        width: 225px;
-        height: 80px;
+        width: 260px;
+        height: 100px;
         background: #fff;
         position: absolute;
         border-radius: 10px;
@@ -85,12 +86,19 @@
         font-size: 14px;
         color: #333333;
         padding: 20px;
-        top: -100px;
-        left: -125px;
+        top: -110px;
+        left: -145px;
         z-index: 10;
         cursor: default;
         display: none;
         animation: vizible  .3s;
+        &_first {
+        }
+        &-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
     &__bubble:before {
         content: "";

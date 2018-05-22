@@ -1,53 +1,88 @@
 $(document).ready(function() {
-    setTimeout (
-        "$('.smile').show('drop');",
-        2000
-    );
     
-    setTimeout (
-        "$('.smile__bubble').fadeIn('fast');",
-        5000
-    );
+    var cookie_smile = $.cookie('cookie_idea');
     
-    setTimeout (
-        "$('.smile__bubble').fadeOut('fast');",
-        10000
-    );
     
-    setTimeout (
-        "$('.smile').hide('drop');",
-        15000
-    );
-    
-    $('.smile').click(function(){
-        if($('.idea-popup').hasClass('active')) {
-             $('.idea-popup__close, .wrapper__overlay').click(function(){
-                $('.idea-popup').animate({
-                    top: [ "toggle", "swing" ],
-                    opacity: 0
-                }, 350, function() {
-                    $('.wrapper__overlay').fadeOut("slow");
-                }).removeClass('active').fadeOut("fast");
-            });
-        } else {
-            $('.wrapper__overlay').fadeIn("fast", function() {
-                //$('.idea-popup').fadeIn('fast');
-                $('.idea-popup').addClass("active").animate({
-                    opacity: 1,
-                    top: [ "toggle", "swing" ]
-                }, 350)
-            });
+    if(!cookie_smile){
+        var timersIds = [];
+        showSmile();
+        var timerIntIdIdea = setInterval(showSmile, 40000);
+
+        function showSmile(skipBeginingStepsFading) {        
+            if(!skipBeginingStepsFading)
+            {
+                timersIds.push(setTimeout ("$('.smile').show('drop');", 2000));
+                timersIds.push(setTimeout ("$('.smile__bubble_first').fadeIn('fast');", 5000));
+            }
+            timersIds.push(setTimeout ("$('.smile__bubble_first').fadeOut('fast');", 10000));
+            timersIds.push(setTimeout ("$('.smile__bubble_first').fadeIn('fast');", 25000));
+            timersIds.push(setTimeout ("$('.smile__bubble_first').fadeOut('fast');", 30000));
+            timersIds.push(setTimeout ("$('.smile').hide('drop');", 35000));
         }
-    });
+
+        $('.smile').click(function(){
+            if($('.idea-popup').hasClass('active')) {
+                closePopupIdea();
+            } else {
+                $('.wrapper__overlay').fadeIn('fast', function() {
+                    //$('.idea-popup').fadeIn('fast');
+                    $('.idea-popup').addClass("active").animate({
+                        opacity: 1,
+                        left: [ "toggle", "swing" ]
+                    }, 350);
+                    $('.smile__bubble_first').fadeOut('fast', function() {
+                        $('.smile__bubble_second').fadeIn('fast');
+                    });
+                    clearInterval(timerIntIdIdea);
+                    for(var i = 0; i < timersIds.length; i++)
+                        {
+                            clearTimeout(timersIds[i]);
+                        }
+                    timersIds = [];
+                });
+            }
+        });
+
+        $('.idea-popup__close, .wrapper__overlay').click(closePopupIdea);
+
+        function closePopupIdea(){
+            $('.idea-popup').animate({
+                left: [ "toggle", "swing" ],
+                opacity: 0
+            }, 350, function() {
+                $('.wrapper__overlay').fadeOut('slow');
+            }).removeClass('active').fadeOut('fast');
+            $('.smile__bubble_second').fadeOut('fast', function() {
+                $('.smile__bubble_first').fadeIn('fast');
+            });
+            showSmile(true);
+            var timerIntIdIdea = setInterval(showSmile, 40000);
+        }
+
+        $('.button__all-news').click(function(){
+            $('.idea-popup').animate({
+                right: [ "toggle", "swing" ],
+                opacity: 0
+            }, 350, function() {
+                $('.wrapper__overlay').fadeOut("slow");
+            }).removeClass('active').fadeOut("fast");
+            $('.smile__bubble_second').fadeOut('fast', function() {
+                $('.smile__bubble_first').fadeOut('fast');
+                $('.smile__bubble_third').fadeIn('fast');
+            });
+            
+            setTimeout("$('.smile__bubble_third').fadeOut('fast');", 3000);
+            //doBounce($('.smile'), 5, '40px', 200);
+            //$('.smile').animate({height:'60px'},{queue:false, duration:600, easing: 'easeOutBounce'})
+            setTimeout ("$('.smile').hide('drop');", 8000);
+            clearInterval(timerIntIdIdea);
+            
+            $.cookie('cookie_idea', true, {
+                expires: 1
+            });
+        });
+    }
     
-    $('.idea-popup__close, .wrapper__overlay').click(function(){
-        $('.idea-popup').animate({
-            top: [ "toggle", "swing" ],
-            opacity: 0
-        }, 350, function() {
-            $('.wrapper__overlay').fadeOut("slow");
-        }).removeClass('active').fadeOut("fast");
-    });
     
     
     $(".mCustomScrollbar").niceScroll({

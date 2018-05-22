@@ -1263,9 +1263,10 @@ textarea:-moz-placeholder {
   display: none;
   -webkit-animation: tossing  1.5s infinite;
           animation: tossing  1.5s infinite;
-}
-.smile:hover .smile__bubble {
-  display: block;
+  /*
+    &:hover .smile__bubble {
+        display: block;
+    }*/
 }
 .smile__eye {
   background-color: #040405;
@@ -1330,8 +1331,8 @@ textarea:-moz-placeholder {
   left: 7px;
 }
 .smile__bubble {
-  width: 225px;
-  height: 80px;
+  width: 260px;
+  height: 100px;
   background: #fff;
   position: absolute;
   border-radius: 10px;
@@ -1340,13 +1341,24 @@ textarea:-moz-placeholder {
   font-size: 14px;
   color: #333333;
   padding: 20px;
-  top: -100px;
-  left: -125px;
+  top: -110px;
+  left: -145px;
   z-index: 10;
   cursor: default;
   display: none;
   -webkit-animation: vizible  .3s;
           animation: vizible  .3s;
+}
+.smile__bubble-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .smile__bubble:before {
   content: "";
