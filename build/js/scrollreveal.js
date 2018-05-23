@@ -1,601 +1,862 @@
-/*
-                       _ _ _____                      _   _
-                      | | |  __ \                    | | (_)
-    ___  ___ _ __ ___ | | | |__) |_____   _____  __ _| |  _ ___
-   / __|/ __| '__/ _ \| | |  _  // _ \ \ / / _ \/ _` | | | / __|
-   \__ \ (__| | | (_) | | | | \ \  __/\ V /  __/ (_| | |_| \__ \
-   |___/\___|_|  \___/|_|_|_|  \_\___| \_/ \___|\__,_|_(_) |___/ v2.1.0
-                                                        _/ |
-                                                       |__/
-============================================================================*/
+/////    /////    /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
+/////             /////    /////
+/////             /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
+         /////    /////
+         /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
+/////    /////    /////    /////
 
 /**
- * scrollReveal.js (c) 2014 Julian Lloyd ( @julianlloyd )
- *
- * Licensed under the MIT license
- * http://www.opensource.org/licenses/mit-license.php
+ * ScrollReveal
+ * ------------
+ * Version : 3.4.0
+ * Website : scrollrevealjs.org
+ * Repo    : github.com/jlmakes/scrollreveal.js
+ * Author  : Julian Lloyd (@jlmakes)
  */
 
-window.scrollReveal = (function( window ) {
-
+;(function () {
   'use strict'
 
-  var _requestAnimFrame
-    , extend
-    , handler
-    , self
+  var sr
+  var _requestAnimationFrame
 
-  function scrollReveal( config ) {
-
-    self         = this
-    self.elems   = {}
-    self.serial  = 1
-    self.blocked = false
-    self.config  = extend( self.defaults, config )
-
-    if ( self.isMobile() && !self.config.mobile || !self.isSupported() ) {
-      self.destroy()
-      return
+  function ScrollReveal (config) {
+    // Support instantiation without the `new` keyword.
+    if (typeof this === 'undefined' || Object.getPrototypeOf(this) !== ScrollReveal.prototype) {
+      return new ScrollReveal(config)
     }
 
-    if ( self.config.viewport == window.document.documentElement ) {
+    sr = this // Save reference to instance.
+    sr.version = '3.4.0'
+    sr.tools = new Tools() // *required utilities
 
-      window.addEventListener( 'scroll', handler, false )
-      window.addEventListener( 'resize', handler, false )
+    if (sr.isSupported()) {
+      sr.tools.extend(sr.defaults, config || {})
 
-    } else self.config.viewport.addEventListener( 'scroll', handler, false )
+      sr.defaults.container = _resolveContainer(sr.defaults)
 
-    self.init( true )
-  }
-
-  scrollReveal.prototype = {
-
-    defaults: {
-
-      enter:    'bottom',
-      move:     '8px',
-      over:     '0.6s',
-      wait:     '0s',
-      easing:   'ease',
-
-      scale:    { direction: 'up', power: '5%' },
-
-      opacity:  0,
-      mobile:   false,
-      reset:    false,
-      viewport: window.document.documentElement, // <HTML> element by default.
-
-      /**
-       *        'always' — delay every time an animation resets
-       *        'once'   — delay only the first time an animation reveals
-       *        'onload' - delay only for animations triggered by self.init()
-       */
-      delay:    'once',
-
-      /**
-       *        vFactor changes when an element is considered in the viewport;
-       *        the default requires 60% of an element be visible.
-       */
-      vFactor:  0.60,
-
-      complete: function( el ) {} // Note: reset animations do not complete.
-    },
-
-    /**
-     * Queries the DOM, builds scrollReveal elements and triggers animation.
-     * @param {boolean} flag — a hook for controlling delay on first load.
-     */
-    init: function( flag ) {
-
-      var serial
-        , elem
-        , query
-
-      query = Array.prototype.slice.call( self.config.viewport.querySelectorAll( '[data-sr]' ) )
-      query.forEach(function ( el ) {
-
-        serial      = self.serial++
-        elem        = self.elems[ serial ] = { domEl: el }
-        elem.config = self.configFactory( elem )
-        elem.styles = self.styleFactory( elem )
-        elem.seen   = false
-
-        el.removeAttribute( 'data-sr' )
-        el.setAttribute( 'style',
-
-            elem.styles.inline
-          + elem.styles.initial
-        )
-      })
-
-      self.scrolled = self.scrollY()
-      self.animate( flag )
-    },
-
-    /**
-     * Applies and removes appropriate styles.
-     * @param {boolean} flag — a hook for controlling delay on first load.
-     */
-    animate: function( flag ) {
-
-      var key
-        , elem
-        , visible
-        , complete
-
-      /**
-       * Cleans the DOM and removes completed elements from self.elems.
-       * @param {integer} key — self.elems property key.
-       */
-      complete = function( key ) {
-
-        var elem = self.elems[ key ]
-
-        setTimeout(function() {
-
-          elem.domEl.setAttribute( 'style', elem.styles.inline )
-          elem.config.complete( elem.domEl )
-          delete self.elems[ key ]
-
-        }, elem.styles.duration )
+      sr.store = {
+        elements: {},
+        containers: []
       }
 
-      /**
-       * Begin loop.
-       */
-      for ( key in self.elems ) {
-        if ( self.elems.hasOwnProperty( key ) ) {
-
-          elem    = self.elems[ key ]
-          visible = self.isElemInViewport( elem )
-
-          if ( visible ) {
-
-            if ( self.config.delay === 'always'
-            || ( self.config.delay === 'onload' && flag )
-            || ( self.config.delay === 'once'   && !elem.seen ) ) {
-
-              /**
-               * Use delay.
-               */
-              elem.domEl.setAttribute( 'style',
-
-                  elem.styles.inline
-                + elem.styles.target
-                + elem.styles.transition
-              )
-
-            } else {
-
-              /**
-               * Don’t use delay.
-               */
-              elem.domEl.setAttribute( 'style',
-
-                  elem.styles.inline
-                + elem.styles.target
-                + elem.styles.reset
-              )
-            }
-
-            elem.seen = true
-
-            if ( !elem.config.reset && !elem.animating ) {
-
-              /**
-               * Reset is DISABLED for this element,
-               * so let’s count down to animation complete.
-               */
-              elem.animating = true
-              complete( key )
-            }
-          }
-
-          if ( !visible && elem.config.reset ) {
-
-            /**
-             * Reset is ENABLED for this element,
-             * so let’s apply its reset styles.
-             */
-            elem.domEl.setAttribute( 'style',
-
-                elem.styles.inline
-              + elem.styles.initial
-              + elem.styles.reset
-            )
-          }
-        }
-      }
-
-      self.blocked = false
-    },
-
-    /**
-     * Parses an elements data-sr attribute, and returns a configuration object.
-     * @param {object} elem — An object from self.elems.
-     * @return {object}
-     */
-    configFactory: function( elem ) {
-
-      var parsed = {}
-        , config = {}
-        , words  = elem.domEl.getAttribute( 'data-sr' ).split( /[, ]+/ )
-
-      /**
-       * Find and remove any syntax sugar.
-       */
-      words = self.filter( words )
-      words.forEach(function( keyword, i ) {
-
-        /**
-         * Find keywords.
-         */
-        switch ( keyword ) {
-
-          case 'enter':
-
-            parsed.enter = words[ i + 1 ]
-            return
-
-          case 'wait':
-
-            parsed.wait = words[ i + 1 ]
-            return
-
-          case 'move':
-
-            parsed.move = words[ i + 1 ]
-            return
-
-          case 'ease':
-
-            parsed.move = words[ i + 1 ]
-            parsed.ease = 'ease'
-            return
-
-          case 'ease-in':
-
-            if ( words[ i + 1 ] == 'up' || words[ i + 1 ] == 'down' ) {
-
-              parsed.scale.direction = words[ i + 1 ]
-              parsed.scale.power     = words[ i + 2 ]
-              parsed.easing          = 'ease-in'
-              return
-            }
-
-            parsed.move   = words[ i + 1 ]
-            parsed.easing = 'ease-in'
-            return
-
-          case 'ease-in-out':
-
-            if ( words[ i + 1 ] == 'up' || words[ i + 1 ] == 'down' ) {
-
-              parsed.scale.direction = words[ i + 1 ]
-              parsed.scale.power     = words[ i + 2 ]
-              parsed.easing          = 'ease-in-out'
-              return
-            }
-
-            parsed.move   = words[ i + 1 ]
-            parsed.easing = 'ease-in-out'
-            return
-
-          case 'ease-out':
-
-            if ( words[ i + 1 ] == 'up' || words[ i + 1 ] == 'down' ) {
-
-              parsed.scale.direction = words[ i + 1 ]
-              parsed.scale.power     = words[ i + 2 ]
-              parsed.easing          = 'ease-out'
-              return
-            }
-
-            parsed.move   = words[ i + 1 ]
-            parsed.easing = 'ease-out'
-            return
-
-          case 'hustle':
-
-            if ( words[ i + 1 ] == 'up' || words[ i + 1 ] == 'down' ) {
-
-              parsed.scale.direction = words[ i + 1 ]
-              parsed.scale.power     = words[ i + 2 ]
-              parsed.easing          = 'cubic-bezier( 0.6, 0.2, 0.1, 1 )'
-              return
-            }
-
-            parsed.move   = words[ i + 1 ]
-            parsed.easing = 'cubic-bezier( 0.6, 0.2, 0.1, 1 )'
-            return
-
-          case 'over':
-
-            parsed.over = words[ i + 1 ]
-            return
-
-          case 'reset':
-
-            if ( words[ i - 1 ] == 'no' ) parsed.reset = false
-            else                          parsed.reset = true
-
-            return
-
-          case 'scale':
-
-            parsed.scale = {}
-
-            if ( words[ i + 1 ] == 'up' || words[ i + 1 ] == 'down' ) {
-
-              parsed.scale.direction = words[ i + 1 ]
-              parsed.scale.power     = words[ i + 2 ]
-              return
-            }
-
-            parsed.scale.power = words[ i + 1 ]
-            return
-
-          default:
-            return
-        }
-      })
-
-      /**
-       * Build default config object, then apply any
-       * overrides parsed from the data-sr attribute.
-       */
-      config = extend( config, self.config )
-      config = extend( config, parsed )
-
-      if ( config.enter  == 'top'  || config.enter == 'bottom' ) config.axis = 'Y'
-      if ( config.enter  == 'left' || config.enter == 'right'  ) config.axis = 'X'
-
-      /**
-       * Check for hustle easing.
-       */
-      if ( config.easing == 'hustle' ) config.easing = 'cubic-bezier( 0.6, 0.2, 0.1, 1 )'
-
-      /**
-       * Let’s make sure our our pixel distances are negative for top and left.
-       * e.g. "enter top and move 25px" starts at 'top: -25px' in CSS.
-       */
-      if ( config.enter == 'top' || config.enter == 'left' ) config.move = '-' + config.move
-
-      return config
-
-    },
-
-    /**
-     * Generates styles based on an elements configuration property.
-     * @param {object} elem — An object from self.elems.
-     * @return {object}
-     */
-    styleFactory: function( elem ) {
-
-      var transition
-        , initial
-        , target
-        , reset
-        , inline
-        , build
-
-      inline = ( elem.domEl.getAttribute( 'style' ) ) ? elem.domEl.getAttribute( 'style' ) + '; visibility: visible; ' : 'visibility: visible; '
-
-      /**
-       * Want to disable delay on mobile devices? Uncomment the line below.
-       */
-      //if ( self.isMobile() && self.config.mobile ) elem.config.wait = 0
-
-      transition = '-webkit-transition: -webkit-transform ' + elem.config.over + ' ' + elem.config.easing + ' ' + elem.config.wait + ', opacity ' + elem.config.over + ' ' + elem.config.easing + ' ' + elem.config.wait + '; ' +
-                           'transition: transform '         + elem.config.over + ' ' + elem.config.easing + ' ' + elem.config.wait + ', opacity ' + elem.config.over + ' ' + elem.config.easing + ' ' + elem.config.wait + '; ' +
-                  '-webkit-perspective: 1000;' +
-          '-webkit-backface-visibility: hidden;'
-
-      reset      = '-webkit-transition: -webkit-transform ' + elem.config.over + ' ' + elem.config.easing + ' 0s, opacity ' + elem.config.over + ' ' + elem.config.easing + ' 0s; ' +
-                           'transition: transform '         + elem.config.over + ' ' + elem.config.easing + ' 0s, opacity ' + elem.config.over + ' ' + elem.config.easing + ' 0s; ' +
-                  '-webkit-perspective: 1000; ' +
-          '-webkit-backface-visibility: hidden; '
-
-      /**
-       * Constructs initial and target styles.
-       */
-      build = function() {
-
-        if ( parseInt( elem.config.move ) != 0 ) {
-
-          initial += ' translate' + elem.config.axis + '(' + elem.config.move + ')'
-          target  += ' translate' + elem.config.axis + '(0)'
-        }
-
-        if ( parseInt( elem.config.scale.power ) != 0 ) {
-
-          if ( elem.config.scale.direction == 'up'   ) elem.config.scale.value = 1 - ( parseFloat( elem.config.scale.power ) * 0.01 )
-          if ( elem.config.scale.direction == 'down' ) elem.config.scale.value = 1 + ( parseFloat( elem.config.scale.power ) * 0.01 )
-
-          initial += ' scale(' + elem.config.scale.value + ')'
-          target  += ' scale(1)'
-        }
-
-        initial += '; opacity: ' + elem.config.opacity + '; '
-        target  += '; opacity: 1; ';
-      }
-
-      initial = 'transform:'
-      target  = 'transform:'
-
-      build()
-
-      /**
-       * Build again for webkit.
-       */
-      initial += '-webkit-transform:'
-      target  += '-webkit-transform:'
-
-      build()
-
-      return {
-
-        transition: transition,
-        initial:    initial,
-        target:     target,
-        reset:      reset,
-        inline:     inline,
-        duration:   ( ( parseFloat( elem.config.over ) + parseFloat( elem.config.wait ) ) * 1000 )
-      }
-    },
-
-    filter: function( words ) {
-
-      var filtered  = []
-
-      var sugar = [
-
-        'from',
-        'the',
-        'and',
-        'then',
-        'but',
-        'with',
-        'please',
-      ]
-
-      words.forEach(function( word ) {
-
-        if ( sugar.indexOf( word ) > -1 ) return
-
-        filtered.push( word )
-        return
-      })
-
-      return filtered
-    },
-
-    getViewportH: function() {
-
-      var client = self.config.viewport[ 'clientHeight' ]
-        , inner  = window[ 'innerHeight' ]
-
-      if ( self.config.viewport == window.document.documentElement ) {
-
-        return ( client < inner ) ? inner : client
-      }
-
-      return client
-    },
-
-    scrollY: function() {
-
-      if ( self.config.viewport == window.document.documentElement ) return window.pageYOffset
-
-      return self.config.viewport.scrollTop + self.config.viewport.offsetTop
-    },
-
-    getOffset: function( el ) {
-
-      var offsetTop  = 0
-        , offsetLeft = 0
-
-      do {
-
-        if ( !isNaN( el.offsetTop  )) offsetTop  += el.offsetTop
-        if ( !isNaN( el.offsetLeft )) offsetLeft += el.offsetLeft
-
-      } while ( el = el.offsetParent )
-
-      return {
-
-        top: offsetTop,
-        left: offsetLeft
-      }
-    },
-
-    isElemInViewport: function( elem ) {
-
-      var elHeight = elem.domEl.offsetHeight
-        , elTop    = self.getOffset( elem.domEl ).top
-        , elBottom = elTop + elHeight
-        , vFactor  = elem.config.vFactor || 0
-
-      return ( elTop + elHeight * vFactor < self.scrolled + self.getViewportH() )
-          && ( elBottom - elHeight * vFactor > self.scrolled )
-          || ( elem.domEl.currentStyle ? elem.domEl.currentStyle : window.getComputedStyle( elem.domEl, null ) ).position == 'fixed'
-    },
-
-    isMobile: function() {
-
-      var agent = navigator.userAgent || navigator.vendor || window.opera
-
-      return (/(ipad|playbook|silk|android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test( agent )||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test( agent.substr( 0, 4 ))) ? true : false
-    },
-
-    isSupported: function() {
-
-      var sensor    = document.createElement( 'sensor' )
-        , cssPrefix = 'Webkit,Moz,O,'.split( ',' )
-        , tests     = ( 'transition ' + cssPrefix.join( 'transition,' ) ).split( ',' )
-
-      for ( var i = 0; i < tests.length; i++ ) {
-
-        if ( !sensor.style[tests[i]] === '' ) return false
-      }
-
-      return true
-    },
-
-    destroy: function() {
-
-      var query
-
-      query = Array.prototype.slice.call( self.config.viewport.querySelectorAll( '[data-sr]' ) )
-      query.forEach(function ( el ) {
-        el.removeAttribute( 'data-sr' )
-      })
+      sr.sequences = {}
+      sr.history = []
+      sr.uid = 0
+      sr.initialized = false
+    } else if (typeof console !== 'undefined' && console !== null) {
+      // Note: IE9 only supports console if devtools are open.
+      console.log('ScrollReveal is not supported in this browser.')
     }
 
-  }
-
-  handler = function( e ) {
-
-    if ( !self.blocked ) {
-
-      self.blocked  = true
-      self.scrolled = self.scrollY()
-
-      _requestAnimFrame( function() {
-
-        self.animate()
-      })
-    }
-  }
-
-  extend = function( target, src ) {
-
-    for ( var prop in src ) {
-
-      if ( src.hasOwnProperty( prop ) ) {
-
-        target[ prop ] = src[ prop ]
-      }
-    }
-
-    return target
+    return sr
   }
 
   /**
-   * RequestAnimationFrame polyfill.
+   * Configuration
+   * -------------
+   * This object signature can be passed directly to the ScrollReveal constructor,
+   * or as the second argument of the `reveal()` method.
    */
-  _requestAnimFrame = (function() {
 
-    return window.requestAnimationFrame        ||
-           window.webkitRequestAnimationFrame  ||
-           window.mozRequestAnimationFrame     ||
+  ScrollReveal.prototype.defaults = {
+    // 'bottom', 'left', 'top', 'right'
+    origin: 'bottom',
 
-          function( callback ) {
+    // Can be any valid CSS distance, e.g. '5rem', '10%', '20vw', etc.
+    distance: '20px',
 
-            window.setTimeout( callback, 1000 / 60 )
-          }
-  }())
+    // Time in milliseconds.
+    duration: 500,
+    delay: 0,
 
-  return scrollReveal
+    // Starting angles in degrees, will transition from these values to 0 in all axes.
+    rotate: { x: 0, y: 0, z: 0 },
 
-})( window )
+    // Starting opacity value, before transitioning to the computed opacity.
+    opacity: 0,
+
+    // Starting scale value, will transition from this value to 1
+    scale: 0.9,
+
+    // Accepts any valid CSS easing, e.g. 'ease', 'ease-in-out', 'linear', etc.
+    easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)',
+
+    // `<html>` is the default reveal container. You can pass either:
+    // DOM Node, e.g. document.querySelector('.fooContainer')
+    // Selector, e.g. '.fooContainer'
+    container: window.document.documentElement,
+
+    // true/false to control reveal animations on mobile.
+    mobile: true,
+
+    // true:  reveals occur every time elements become visible
+    // false: reveals occur once as elements become visible
+    reset: false,
+
+    // 'always' — delay for all reveal animations
+    // 'once'   — delay only the first time reveals occur
+    // 'onload' - delay only for animations triggered by first load
+    useDelay: 'always',
+
+    // Change when an element is considered in the viewport. The default value
+    // of 0.20 means 20% of an element must be visible for its reveal to occur.
+    viewFactor: 0.2,
+
+    // Pixel values that alter the container boundaries.
+    // e.g. Set `{ top: 48 }`, if you have a 48px tall fixed toolbar.
+    // --
+    // Visual Aid: https://scrollrevealjs.org/assets/viewoffset.png
+    viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
+
+    // Callbacks that fire for each triggered element reveal, and reset.
+    beforeReveal: function (domEl) {},
+    beforeReset: function (domEl) {},
+
+    // Callbacks that fire for each completed element reveal, and reset.
+    afterReveal: function (domEl) {},
+    afterReset: function (domEl) {}
+  }
+
+  /**
+   * Check if client supports CSS Transform and CSS Transition.
+   * @return {boolean}
+   */
+  ScrollReveal.prototype.isSupported = function () {
+    var style = document.documentElement.style
+    return 'WebkitTransition' in style && 'WebkitTransform' in style ||
+      'transition' in style && 'transform' in style
+  }
+
+  /**
+   * Creates a reveal set, a group of elements that will animate when they
+   * become visible. If [interval] is provided, a new sequence is created
+   * that will ensure elements reveal in the order they appear in the DOM.
+   *
+   * @param {Node|NodeList|string} [target]   The node, node list or selector to use for animation.
+   * @param {Object}               [config]   Override the defaults for this reveal set.
+   * @param {number}               [interval] Time between sequenced element animations (milliseconds).
+   * @param {boolean}              [sync]     Used internally when updating reveals for async content.
+   *
+   * @return {Object} The current ScrollReveal instance.
+   */
+  ScrollReveal.prototype.reveal = function (target, config, interval, sync) {
+    var container
+    var elements
+    var elem
+    var elemId
+    var sequence
+    var sequenceId
+
+    // No custom configuration was passed, but a sequence interval instead.
+    // let’s shuffle things around to make sure everything works.
+    if (config !== undefined && typeof config === 'number') {
+      interval = config
+      config = {}
+    } else if (config === undefined || config === null) {
+      config = {}
+    }
+
+    container = _resolveContainer(config)
+    elements = _getRevealElements(target, container)
+
+    if (!elements.length) {
+      console.log('ScrollReveal: reveal on "' + target + '" failed, no elements found.')
+      return sr
+    }
+
+    // Prepare a new sequence if an interval is passed.
+    if (interval && typeof interval === 'number') {
+      sequenceId = _nextUid()
+
+      sequence = sr.sequences[sequenceId] = {
+        id: sequenceId,
+        interval: interval,
+        elemIds: [],
+        active: false
+      }
+    }
+
+    // Begin main loop to configure ScrollReveal elements.
+    for (var i = 0; i < elements.length; i++) {
+      // Check if the element has already been configured and grab it from the store.
+      elemId = elements[i].getAttribute('data-sr-id')
+      if (elemId) {
+        elem = sr.store.elements[elemId]
+      } else {
+        // Otherwise, let’s do some basic setup.
+        elem = {
+          id: _nextUid(),
+          domEl: elements[i],
+          seen: false,
+          revealing: false
+        }
+        elem.domEl.setAttribute('data-sr-id', elem.id)
+      }
+
+      // Sequence only setup
+      if (sequence) {
+        elem.sequence = {
+          id: sequence.id,
+          index: sequence.elemIds.length
+        }
+
+        sequence.elemIds.push(elem.id)
+      }
+
+      // New or existing element, it’s time to update its configuration, styles,
+      // and send the updates to our store.
+      _configure(elem, config, container)
+      _style(elem)
+      _updateStore(elem)
+
+      // We need to make sure elements are set to visibility: visible, even when
+      // on mobile and `config.mobile === false`, or if unsupported.
+      if (sr.tools.isMobile() && !elem.config.mobile || !sr.isSupported()) {
+        elem.domEl.setAttribute('style', elem.styles.inline)
+        elem.disabled = true
+      } else if (!elem.revealing) {
+        // Otherwise, proceed normally.
+        elem.domEl.setAttribute('style',
+          elem.styles.inline +
+          elem.styles.transform.initial
+        )
+      }
+    }
+
+    // Each `reveal()` is recorded so that when calling `sync()` while working
+    // with asynchronously loaded content, it can re-trace your steps but with
+    // all your new elements now in the DOM.
+
+    // Since `reveal()` is called internally by `sync()`, we don’t want to
+    // record or intiialize each reveal during syncing.
+    if (!sync && sr.isSupported()) {
+      _record(target, config, interval)
+
+      // We push initialization to the event queue using setTimeout, so that we can
+      // give ScrollReveal room to process all reveal calls before putting things into motion.
+      // --
+      // Philip Roberts - What the heck is the event loop anyway? (JSConf EU 2014)
+      // https://www.youtube.com/watch?v=8aGhZQkoFbQ
+      if (sr.initTimeout) {
+        window.clearTimeout(sr.initTimeout)
+      }
+      sr.initTimeout = window.setTimeout(_init, 0)
+    }
+
+    return sr
+  }
+
+  /**
+   * Re-runs `reveal()` for each record stored in history, effectively capturing
+   * any content loaded asynchronously that matches existing reveal set targets.
+   * @return {Object} The current ScrollReveal instance.
+   */
+  ScrollReveal.prototype.sync = function () {
+    if (sr.history.length && sr.isSupported()) {
+      for (var i = 0; i < sr.history.length; i++) {
+        var record = sr.history[i]
+        sr.reveal(record.target, record.config, record.interval, true)
+      }
+      _init()
+    } else {
+      console.log('ScrollReveal: sync failed, no reveals found.')
+    }
+    return sr
+  }
+
+  /**
+   * Private Methods
+   * ---------------
+   */
+
+  function _resolveContainer (config) {
+    if (config && config.container) {
+      if (typeof config.container === 'string') {
+        return window.document.documentElement.querySelector(config.container)
+      } else if (sr.tools.isNode(config.container)) {
+        return config.container
+      } else {
+        console.log('ScrollReveal: invalid container "' + config.container + '" provided.')
+        console.log('ScrollReveal: falling back to default container.')
+      }
+    }
+    return sr.defaults.container
+  }
+
+  /**
+   * check to see if a node or node list was passed in as the target,
+   * otherwise query the container using target as a selector.
+   *
+   * @param {Node|NodeList|string} [target]    client input for reveal target.
+   * @param {Node}                 [container] parent element for selector queries.
+   *
+   * @return {array} elements to be revealed.
+   */
+  function _getRevealElements (target, container) {
+    if (typeof target === 'string') {
+      return Array.prototype.slice.call(container.querySelectorAll(target))
+    } else if (sr.tools.isNode(target)) {
+      return [target]
+    } else if (sr.tools.isNodeList(target)) {
+      return Array.prototype.slice.call(target)
+    } else if (Array.isArray(target)) {
+      return target.filter(sr.tools.isNode)
+    }
+    return []
+  }
+
+  /**
+   * A consistent way of creating unique IDs.
+   * @returns {number}
+   */
+  function _nextUid () {
+    return ++sr.uid
+  }
+
+  function _configure (elem, config, container) {
+    // If a container was passed as a part of the config object,
+    // let’s overwrite it with the resolved container passed in.
+    if (config.container) config.container = container
+    // If the element hasn’t already been configured, let’s use a clone of the
+    // defaults extended by the configuration passed as the second argument.
+    if (!elem.config) {
+      elem.config = sr.tools.extendClone(sr.defaults, config)
+    } else {
+      // Otherwise, let’s use a clone of the existing element configuration extended
+      // by the configuration passed as the second argument.
+      elem.config = sr.tools.extendClone(elem.config, config)
+    }
+
+    // Infer CSS Transform axis from origin string.
+    if (elem.config.origin === 'top' || elem.config.origin === 'bottom') {
+      elem.config.axis = 'Y'
+    } else {
+      elem.config.axis = 'X'
+    }
+  }
+
+  function _style (elem) {
+    var computed = window.getComputedStyle(elem.domEl)
+
+    if (!elem.styles) {
+      elem.styles = {
+        transition: {},
+        transform: {},
+        computed: {}
+      }
+
+      // Capture any existing inline styles, and add our visibility override.
+      // --
+      // See section 4.2. in the Documentation:
+      // https://github.com/jlmakes/scrollreveal.js#42-improve-user-experience
+      elem.styles.inline = elem.domEl.getAttribute('style') || ''
+      elem.styles.inline += '; visibility: visible; '
+
+      // grab the elements existing opacity.
+      elem.styles.computed.opacity = computed.opacity
+
+      // grab the elements existing transitions.
+      if (!computed.transition || computed.transition === 'all 0s ease 0s') {
+        elem.styles.computed.transition = ''
+      } else {
+        elem.styles.computed.transition = computed.transition + ', '
+      }
+    }
+
+    // Create transition styles
+    elem.styles.transition.instant = _generateTransition(elem, 0)
+    elem.styles.transition.delayed = _generateTransition(elem, elem.config.delay)
+
+    // Generate transform styles, first with the webkit prefix.
+    elem.styles.transform.initial = ' -webkit-transform:'
+    elem.styles.transform.target = ' -webkit-transform:'
+    _generateTransform(elem)
+
+    // And again without any prefix.
+    elem.styles.transform.initial += 'transform:'
+    elem.styles.transform.target += 'transform:'
+    _generateTransform(elem)
+  }
+
+  function _generateTransition (elem, delay) {
+    var config = elem.config
+
+    return '-webkit-transition: ' + elem.styles.computed.transition +
+      '-webkit-transform ' + config.duration / 1000 + 's ' +
+      config.easing + ' ' +
+      delay / 1000 + 's, opacity ' +
+      config.duration / 1000 + 's ' +
+      config.easing + ' ' +
+      delay / 1000 + 's; ' +
+
+      'transition: ' + elem.styles.computed.transition +
+      'transform ' + config.duration / 1000 + 's ' +
+      config.easing + ' ' +
+      delay / 1000 + 's, opacity ' +
+      config.duration / 1000 + 's ' +
+      config.easing + ' ' +
+      delay / 1000 + 's; '
+  }
+
+  function _generateTransform (elem) {
+    var config = elem.config
+    var cssDistance
+    var transform = elem.styles.transform
+
+    // Let’s make sure our our pixel distances are negative for top and left.
+    // e.g. origin = 'top' and distance = '25px' starts at `top: -25px` in CSS.
+    if (config.origin === 'top' || config.origin === 'left') {
+      cssDistance = /^-/.test(config.distance)
+        ? config.distance.substr(1)
+        : '-' + config.distance
+    } else {
+      cssDistance = config.distance
+    }
+
+    if (parseInt(config.distance)) {
+      transform.initial += ' translate' + config.axis + '(' + cssDistance + ')'
+      transform.target += ' translate' + config.axis + '(0)'
+    }
+    if (config.scale) {
+      transform.initial += ' scale(' + config.scale + ')'
+      transform.target += ' scale(1)'
+    }
+    if (config.rotate.x) {
+      transform.initial += ' rotateX(' + config.rotate.x + 'deg)'
+      transform.target += ' rotateX(0)'
+    }
+    if (config.rotate.y) {
+      transform.initial += ' rotateY(' + config.rotate.y + 'deg)'
+      transform.target += ' rotateY(0)'
+    }
+    if (config.rotate.z) {
+      transform.initial += ' rotateZ(' + config.rotate.z + 'deg)'
+      transform.target += ' rotateZ(0)'
+    }
+    transform.initial += '; opacity: ' + config.opacity + ';'
+    transform.target += '; opacity: ' + elem.styles.computed.opacity + ';'
+  }
+
+  function _updateStore (elem) {
+    var container = elem.config.container
+
+    // If this element’s container isn’t already in the store, let’s add it.
+    if (container && sr.store.containers.indexOf(container) === -1) {
+      sr.store.containers.push(elem.config.container)
+    }
+
+    // Update the element stored with our new element.
+    sr.store.elements[elem.id] = elem
+  }
+
+  function _record (target, config, interval) {
+    // Save the `reveal()` arguments that triggered this `_record()` call, so we
+    // can re-trace our steps when calling the `sync()` method.
+    var record = {
+      target: target,
+      config: config,
+      interval: interval
+    }
+    sr.history.push(record)
+  }
+
+  function _init () {
+    if (sr.isSupported()) {
+      // Initial animate call triggers valid reveal animations on first load.
+      // Subsequent animate calls are made inside the event handler.
+      _animate()
+
+      // Then we loop through all container nodes in the store and bind event
+      // listeners to each.
+      for (var i = 0; i < sr.store.containers.length; i++) {
+        sr.store.containers[i].addEventListener('scroll', _handler)
+        sr.store.containers[i].addEventListener('resize', _handler)
+      }
+
+      // Let’s also do a one-time binding of window event listeners.
+      if (!sr.initialized) {
+        window.addEventListener('scroll', _handler)
+        window.addEventListener('resize', _handler)
+        sr.initialized = true
+      }
+    }
+    return sr
+  }
+
+  function _handler () {
+    _requestAnimationFrame(_animate)
+  }
+
+  function _setActiveSequences () {
+    var active
+    var elem
+    var elemId
+    var sequence
+
+    // Loop through all sequences
+    sr.tools.forOwn(sr.sequences, function (sequenceId) {
+      sequence = sr.sequences[sequenceId]
+      active = false
+
+      // For each sequenced elemenet, let’s check visibility and if
+      // any are visible, set it’s sequence to active.
+      for (var i = 0; i < sequence.elemIds.length; i++) {
+        elemId = sequence.elemIds[i]
+        elem = sr.store.elements[elemId]
+        if (_isElemVisible(elem) && !active) {
+          active = true
+        }
+      }
+
+      sequence.active = active
+    })
+  }
+
+  function _animate () {
+    var delayed
+    var elem
+
+    _setActiveSequences()
+
+    // Loop through all elements in the store
+    sr.tools.forOwn(sr.store.elements, function (elemId) {
+      elem = sr.store.elements[elemId]
+      delayed = _shouldUseDelay(elem)
+
+      // Let’s see if we should revealand if so,
+      // trigger the `beforeReveal` callback and
+      // determine whether or not to use delay.
+      if (_shouldReveal(elem)) {
+        elem.config.beforeReveal(elem.domEl)
+        if (delayed) {
+          elem.domEl.setAttribute('style',
+            elem.styles.inline +
+            elem.styles.transform.target +
+            elem.styles.transition.delayed
+          )
+        } else {
+          elem.domEl.setAttribute('style',
+            elem.styles.inline +
+            elem.styles.transform.target +
+            elem.styles.transition.instant
+          )
+        }
+
+        // Let’s queue the `afterReveal` callback
+        // and mark the element as seen and revealing.
+        _queueCallback('reveal', elem, delayed)
+        elem.revealing = true
+        elem.seen = true
+
+        if (elem.sequence) {
+          _queueNextInSequence(elem, delayed)
+        }
+      } else if (_shouldReset(elem)) {
+        //Otherwise reset our element and
+        // trigger the `beforeReset` callback.
+        elem.config.beforeReset(elem.domEl)
+        elem.domEl.setAttribute('style',
+          elem.styles.inline +
+          elem.styles.transform.initial +
+          elem.styles.transition.instant
+        )
+        // And queue the `afterReset` callback.
+        _queueCallback('reset', elem)
+        elem.revealing = false
+      }
+    })
+  }
+
+  function _queueNextInSequence (elem, delayed) {
+    var elapsed = 0
+    var delay = 0
+    var sequence = sr.sequences[elem.sequence.id]
+
+    // We’re processing a sequenced element, so let's block other elements in this sequence.
+    sequence.blocked = true
+
+    // Since we’re triggering animations a part of a sequence after animations on first load,
+    // we need to check for that condition and explicitly add the delay to our timer.
+    if (delayed && elem.config.useDelay === 'onload') {
+      delay = elem.config.delay
+    }
+
+    // If a sequence timer is already running, capture the elapsed time and clear it.
+    if (elem.sequence.timer) {
+      elapsed = Math.abs(elem.sequence.timer.started - new Date())
+      window.clearTimeout(elem.sequence.timer)
+    }
+
+    // Start a new timer.
+    elem.sequence.timer = { started: new Date() }
+    elem.sequence.timer.clock = window.setTimeout(function () {
+      // Sequence interval has passed, so unblock the sequence and re-run the handler.
+      sequence.blocked = false
+      elem.sequence.timer = null
+      _handler()
+    }, Math.abs(sequence.interval) + delay - elapsed)
+  }
+
+  function _queueCallback (type, elem, delayed) {
+    var elapsed = 0
+    var duration = 0
+    var callback = 'after'
+
+    // Check which callback we’re working with.
+    switch (type) {
+      case 'reveal':
+        duration = elem.config.duration
+        if (delayed) {
+          duration += elem.config.delay
+        }
+        callback += 'Reveal'
+        break
+
+      case 'reset':
+        duration = elem.config.duration
+        callback += 'Reset'
+        break
+    }
+
+    // If a timer is already running, capture the elapsed time and clear it.
+    if (elem.timer) {
+      elapsed = Math.abs(elem.timer.started - new Date())
+      window.clearTimeout(elem.timer.clock)
+    }
+
+    // Start a new timer.
+    elem.timer = { started: new Date() }
+    elem.timer.clock = window.setTimeout(function () {
+      // The timer completed, so let’s fire the callback and null the timer.
+      elem.config[callback](elem.domEl)
+      elem.timer = null
+    }, duration - elapsed)
+  }
+
+  function _shouldReveal (elem) {
+    if (elem.sequence) {
+      var sequence = sr.sequences[elem.sequence.id]
+      return sequence.active &&
+        !sequence.blocked &&
+        !elem.revealing &&
+        !elem.disabled
+    }
+    return _isElemVisible(elem) &&
+      !elem.revealing &&
+      !elem.disabled
+  }
+
+  function _shouldUseDelay (elem) {
+    var config = elem.config.useDelay
+    return config === 'always' ||
+      (config === 'onload' && !sr.initialized) ||
+      (config === 'once' && !elem.seen)
+  }
+
+  function _shouldReset (elem) {
+    if (elem.sequence) {
+      var sequence = sr.sequences[elem.sequence.id]
+      return !sequence.active &&
+        elem.config.reset &&
+        elem.revealing &&
+        !elem.disabled
+    }
+    return !_isElemVisible(elem) &&
+      elem.config.reset &&
+      elem.revealing &&
+      !elem.disabled
+  }
+
+  function _getContainer (container) {
+    return {
+      width: container.clientWidth,
+      height: container.clientHeight
+    }
+  }
+
+  function _getScrolled (container) {
+    // Return the container scroll values, plus the its offset.
+    if (container && container !== window.document.documentElement) {
+      var offset = _getOffset(container)
+      return {
+        x: container.scrollLeft + offset.left,
+        y: container.scrollTop + offset.top
+      }
+    } else {
+      // Otherwise, default to the window object’s scroll values.
+      return {
+        x: window.pageXOffset,
+        y: window.pageYOffset
+      }
+    }
+  }
+
+  function _getOffset (domEl) {
+    var offsetTop = 0
+    var offsetLeft = 0
+
+      // Grab the element’s dimensions.
+    var offsetHeight = domEl.offsetHeight
+    var offsetWidth = domEl.offsetWidth
+
+    // Now calculate the distance between the element and its parent, then
+    // again for the parent to its parent, and again etc... until we have the
+    // total distance of the element to the document’s top and left origin.
+    do {
+      if (!isNaN(domEl.offsetTop)) {
+        offsetTop += domEl.offsetTop
+      }
+      if (!isNaN(domEl.offsetLeft)) {
+        offsetLeft += domEl.offsetLeft
+      }
+      domEl = domEl.offsetParent
+    } while (domEl)
+
+    return {
+      top: offsetTop,
+      left: offsetLeft,
+      height: offsetHeight,
+      width: offsetWidth
+    }
+  }
+
+  function _isElemVisible (elem) {
+    var offset = _getOffset(elem.domEl)
+    var container = _getContainer(elem.config.container)
+    var scrolled = _getScrolled(elem.config.container)
+    var vF = elem.config.viewFactor
+
+      // Define the element geometry.
+    var elemHeight = offset.height
+    var elemWidth = offset.width
+    var elemTop = offset.top
+    var elemLeft = offset.left
+    var elemBottom = elemTop + elemHeight
+    var elemRight = elemLeft + elemWidth
+
+    return confirmBounds() || isPositionFixed()
+
+    function confirmBounds () {
+      // Define the element’s functional boundaries using its view factor.
+      var top = elemTop + elemHeight * vF
+      var left = elemLeft + elemWidth * vF
+      var bottom = elemBottom - elemHeight * vF
+      var right = elemRight - elemWidth * vF
+
+      // Define the container functional boundaries using its view offset.
+      var viewTop = scrolled.y + elem.config.viewOffset.top
+      var viewLeft = scrolled.x + elem.config.viewOffset.left
+      var viewBottom = scrolled.y - elem.config.viewOffset.bottom + container.height
+      var viewRight = scrolled.x - elem.config.viewOffset.right + container.width
+
+      return top < viewBottom &&
+        bottom > viewTop &&
+        left < viewRight &&
+        right > viewLeft
+    }
+
+    function isPositionFixed () {
+      return (window.getComputedStyle(elem.domEl).position === 'fixed')
+    }
+  }
+
+  /**
+   * Utilities
+   * ---------
+   */
+
+  function Tools () {}
+
+  Tools.prototype.isObject = function (object) {
+    return object !== null && typeof object === 'object' && object.constructor === Object
+  }
+
+  Tools.prototype.isNode = function (object) {
+    return typeof window.Node === 'object'
+      ? object instanceof window.Node
+      : object && typeof object === 'object' &&
+        typeof object.nodeType === 'number' &&
+        typeof object.nodeName === 'string'
+  }
+
+  Tools.prototype.isNodeList = function (object) {
+    var prototypeToString = Object.prototype.toString.call(object)
+    var regex = /^\[object (HTMLCollection|NodeList|Object)\]$/
+
+    return typeof window.NodeList === 'object'
+      ? object instanceof window.NodeList
+      : object && typeof object === 'object' &&
+        regex.test(prototypeToString) &&
+        typeof object.length === 'number' &&
+        (object.length === 0 || this.isNode(object[0]))
+  }
+
+  Tools.prototype.forOwn = function (object, callback) {
+    if (!this.isObject(object)) {
+      throw new TypeError('Expected "object", but received "' + typeof object + '".')
+    } else {
+      for (var property in object) {
+        if (object.hasOwnProperty(property)) {
+          callback(property)
+        }
+      }
+    }
+  }
+
+  Tools.prototype.extend = function (target, source) {
+    this.forOwn(source, function (property) {
+      if (this.isObject(source[property])) {
+        if (!target[property] || !this.isObject(target[property])) {
+          target[property] = {}
+        }
+        this.extend(target[property], source[property])
+      } else {
+        target[property] = source[property]
+      }
+    }.bind(this))
+    return target
+  }
+
+  Tools.prototype.extendClone = function (target, source) {
+    return this.extend(this.extend({}, target), source)
+  }
+
+  Tools.prototype.isMobile = function () {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  }
+
+  /**
+   * Polyfills
+   * --------
+   */
+
+  _requestAnimationFrame = window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    function (callback) {
+      window.setTimeout(callback, 1000 / 60)
+    }
+
+  /**
+   * Module Wrapper
+   * --------------
+   */
+  if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+    define(function () {
+      return ScrollReveal
+    })
+  } else if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ScrollReveal
+  } else {
+    window.ScrollReveal = ScrollReveal
+  }
+})();

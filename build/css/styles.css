@@ -987,7 +987,7 @@ textarea:-moz-placeholder {
   height: 260px;
 }
 .block-list_scroll li {
-  margin-right: 12px;
+  margin-right: 20px;
 }
 .block-list li {
   border-bottom: solid 1px #f9f9f9;
@@ -1495,4 +1495,12 @@ textarea:-moz-placeholder {
   font-weight: 300;
   font-size: 12px;
   color: #333333;
+}
+.links > a > img {
+  margin: 10px 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s linear;
+}
+.links > a > img:hover {
+  opacity: 1;
 }

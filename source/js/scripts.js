@@ -93,7 +93,8 @@ $(document).ready(function() {
         cursorwidth: 2,
         cursorborder: 0,
         autohidemode: false,
-        railpadding:{top:0,right:2,left:0,bottom:0}
+        railoffset: {left:-6},
+        railpadding:{top:0,right:0,left:0,bottom:0}
     });
     
     var max_characters=700;
