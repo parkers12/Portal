@@ -118,7 +118,7 @@ $(document).ready(function() {
     
 //-- scroll -------------------------------------------------
     
-    if($(".wrapper").hasClass("reveal")) {
+    if($(".reveal")) {
         window.sr = ScrollReveal( {
             origin: 'bottom',
             distance: '8px',
@@ -209,7 +209,7 @@ $(document).ready(function() {
     });
 
     if($('#slider')) {
-        $('.slider').tilesSlider( $.extend( {}, defaults, effects['switchud'] ) );
+        $('.slider').tilesSlider( $.extend( {}, defaults, effects['default'] ) );
     }
     
 //-- slider -------------------------------------------------
