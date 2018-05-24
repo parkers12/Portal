@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/blueimp-gallery.css" />
     <link rel="stylesheet" type="text/css" href="/css/blueimp-gallery-indicator.css" />
     <link rel="stylesheet" type="text/css" href="/css/blueimp-gallery-video.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.tiles.css" />
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 </head>
 <body>
@@ -26,7 +27,16 @@
         <div class="wrapper_block-white">
             <div class="container">
                 <div class="container__slider">
-                    <div id="app"></div>
+                    <!--<div id="app"></div>-->
+                    <div id="slider" class="slider-wrap">
+    <div class="slider">
+        <img src="/img/slider/amsterdam.jpg" /><p><strong>Sausage:</strong> ground round sirloin ball tip beef ribs.</p>
+        <img src="/img/slider/moscow.jpg" /><p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+        <img src="/img/slider/paris.jpg" /><p><strong>Pork turkey:</strong> shoulder, filet mignon chuck t-bone bacon.</p>
+        <img src="/img/slider/prague.jpg" /><p><strong>Short loin:</strong> pig jowl fatback, pork loin pork chop.</p>
+        <img src="/img/slider/singapore.jpg" /><p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+    </div>
+</div>
                 </div>
             </div>
         </div>
@@ -569,15 +579,14 @@
 </div>
     </div>
     <!-- jquery -->
-<script src="/js/jquery-3.3.1.min.js"></script>
+<!--<script src="/js/jquery-3.3.1.min.js"></script>-->
+<script src="/js/jquery-1.8.2.min.js"></script>
 <!-- slider -->
-<script src='/js/react.min.js'></script>
-<script src='/js/react-dom.min.js'></script>
-<script src='/js/index.min.js'></script>
-<script src="/js/slider.js"></script>
+<script src='/js/jquery.tiles.js'></script>
 <!-- scroll -->
 <script src="/js/jquery.nicescroll.min.js"></script>
 <script src="/js/jquery.mousewheel.min.js"></script>
+<!-- scroll animations -->
 <script src="/js/scrollreveal.js"></script>
 <!-- cookie -->
 <script src="/js/jquery.cookie.js"></script>
