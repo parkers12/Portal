@@ -1,0 +1,61 @@
+.news {
+    font-family: "Muller", sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: @middle-grey;
+    &__pic {
+        max-width: 1140px;
+        margin-bottom: 20px;
+    }
+    &__date {
+        font-style: italic;
+        margin-top: 30px;
+        font-size: 12px;
+    }
+    & p {
+        text-align: justify;
+        & strong {
+            font-weight: bold;
+        }
+        & i {
+            font-style: italic;
+        }
+        & a {
+            text-decoration: none;
+            color: @light-green;
+            transition: color 0.2s ease;
+            &:hover {
+                color: @dark-green;
+            }
+        }
+    }
+    & ul {
+        list-style-type: none;
+        padding-left: 20px;
+        margin: 0 0 10px;
+        & li {
+            color: @dark-green;
+            & span {
+                color: @middle-grey;
+            }
+            &:before {
+                content: "\2013";
+                padding-right: 10px;
+            }
+        }
+    }
+    & ol {
+        list-style-type: decimal;
+        list-style-position: outside;
+        padding-left: 35px;
+        margin: 0 0 10px;
+        & li {
+            color: @dark-green;
+            padding-left: 5px;
+            & span {
+                color: @middle-grey;
+            }
+        }
+    }
+    
+}
