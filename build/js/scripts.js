@@ -214,5 +214,21 @@ $(document).ready(function() {
     
 //-- slider -------------------------------------------------
     
+//-- calendar -------------------------------------------------
+    
+    $(function () {
+      $('#datetimepicker1').datetimepicker({
+	    locale: 'ru',
+		stepping:10,
+		format: 'DD.MM.YYYY',
+		defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
+		daysOfWeekDisabled:[0,6]
+	  });
+      $('#datetimepicker2').datetimepicker({
+	    locale: 'ru'
+	  });
+    });
+    
+//-- calendar -------------------------------------------------
 
 });

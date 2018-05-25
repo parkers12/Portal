@@ -6,6 +6,24 @@
     &__pic {
         max-width: 1140px;
         margin-bottom: 20px;
+        background-size: cover;
+        height: 400px;
+        position: relative;
+        &-text {
+            background-color: rgba(0,0,0,0.65);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            & .header_middle {
+                margin-top: 0px;
+            }
+        }
+    }
+    &__preview {
+        color: #fff;
     }
     &__date {
         font-style: italic;
@@ -14,6 +32,7 @@
     }
     & p {
         text-align: justify;
+        line-height: 1.4;
         & strong {
             font-weight: bold;
         }
@@ -22,10 +41,10 @@
         }
         & a {
             text-decoration: none;
-            color: @light-green;
+            color: @dark-green;
             transition: color 0.2s ease;
             &:hover {
-                color: @dark-green;
+                color: @light-green;
             }
         }
     }

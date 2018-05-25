@@ -11,10 +11,39 @@
     }
     &__logo {
         flex: 0 0 163px;
+        position: relative;        
+        &-pic {
+            background-image: url("../img/usetech-portal.svg");
+            width: 163px;
+            height: 40px;
+            display: block;
+        }
+    }
+    &__search {
+        border-right: 2px solid @light4-grey;
+        display: flex;
+        align-items: center;
+        padding-right: 25px;
         position: relative;
-        background-image: url("../img/usetech-portal.svg");
-        width: 163px;
-        height: 40px;
+        &-form {
+            border: 1px solid @middle2-grey;
+            border-radius: 30px;
+            height: 24px;
+            width: 260px;
+        }
+        &-button {
+            position: absolute;
+            border-radius: 20px;
+            color: #e8e8e8;
+            border: 1px solid #e8e8e8;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 28px;
+            font-size: 10px;
+        }
     }
     &__social {
         height: 40px;
@@ -28,6 +57,9 @@
             transition: color 0.15s ease;
             &:last-child {
                 margin-right: 25px;
+            }
+            &:first-child {
+                margin-left: 25px;
             }
             &:hover {
                 color: @dark-green;
@@ -56,13 +88,16 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            justify-content: center;
             &-name {
                 font-size: 18px;
                 font-weight: 500;
+                line-height: 18px
             }
             &-post {
                 font-size: 14px;
                 font-weight: 300;
+                line-height: 14px
             }
         }
     }
