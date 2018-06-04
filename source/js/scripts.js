@@ -6,7 +6,7 @@ $(document).ready(function() {
     
     //if($(".wrapper").hasClass('slider')) {
         var cookie_smile = $.cookie('cookie_idea');
-        if(!cookie_smile) {
+        //if(!cookie_smile) {
             var timersIds = [];
             showSmile();
             var timerIntIdIdea = setInterval(showSmile, 40000);
@@ -84,7 +84,7 @@ $(document).ready(function() {
                     expires: 1
                 });
             });
-        }
+        //}
     //}
 
 //-- smile animation ----------------------------------------
@@ -139,77 +139,8 @@ $(document).ready(function() {
 //-- scroll -------------------------------------------------
 
 //-- slider -------------------------------------------------
-    
-    var $slider = $('.slider-wrap');
-    var html = $slider.html();
-
-    // Options
-
-    var defaults = {
-        fade: true,
-        random: false,
-        reverse: false,
-        auto: true,
-        loop: true,
-        nav: true,
-        navWrap: null,
-        bullets: true,
-        thumbs: true,
-        thumbSize: 25,
-        timer: true,
-        onSlideshowEnd: function(){ $('.stop, .start').toggle() }
-    };
-
-    var effects = {
-        'default': { x:6, y:4, random: true },
-        simple: { x:6, y:4, effect: 'simple', random: true },
-        left: { x:1, y:8, effect: 'left' },
-        up: { x:20, y:1, effect: 'up', rewind: 60, backReverse: true },
-        leftright: { x:1, y:8, effect: 'leftright' },
-        updown: { x:20, y:1, effect: 'updown', cssSpeed: 500, backReverse: true },
-        switchlr: { x:20, y:1, effect: 'switchlr', backReverse: true },
-        switchud: { x:1, y:8, effect: 'switchud' },
-        fliplr: { x:20, y:1, effect: 'fliplr', backReverse: true },
-        flipud: { x:20, y:3, effect: 'flipud', reverse: true, rewind: 75 },
-        reduce: { x:6, y:4, effect: 'reduce' },
-        360: { x:1, y:1, effect: '360', fade: true, cssSpeed: 600 }
-    };
-
-    $('#effects-select').change(function() {
-        var effect = $(this).val();
-        $slider.fadeTo( 0,0 ).html( html );
-        $('.stop').hide();
-        $('.start').show();
-        setTimeout(function() {
-          $('.slider').tilesSlider( $.extend( {}, defaults, effects[ effect ] ) );
-          $slider.fadeTo( 0,1 );
-          $('body').removeClass('tiles-preload');
-        }, 100 );
-        $('.code').empty().html(function() {
-          var e = effects[ effect ], c = [];
-          for ( var i in e ) {
-            if ( i !== 'effect' ) {
-              c.push('<code>'+ i +': '+ e[i] +'</code>');
-            }
-          }
-          return c.join('');
-        });
-    });
-
-    $('.start').click(function() {
-        $(this).hide();
-        $('.stop').show();
-        $('.slider').tilesSlider('start')
-    });
-
-    $('.stop').click(function() {
-        $(this).hide();
-        $('.start').show()
-        $('.slider').tilesSlider('stop')
-    });
 
     if($('#slider')) {
-        $('.slider').tilesSlider( $.extend( {}, defaults, effects['default'] ) );
     }
     
 //-- slider -------------------------------------------------
@@ -217,18 +148,242 @@ $(document).ready(function() {
 //-- calendar -------------------------------------------------
     
     $(function () {
-      $('#datetimepicker1').datetimepicker({
-	    locale: 'ru',
-		stepping:10,
-		format: 'DD.MM.YYYY',
-		defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
-		daysOfWeekDisabled:[0,6]
-	  });
-      $('#datetimepicker2').datetimepicker({
-	    locale: 'ru'
-	  });
+        $('#datetimepicker1').datetimepicker({
+            locale: 'ru',
+            stepping:10,
+            format: 'DD.MM.YYYY',
+            defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
+            daysOfWeekDisabled:[0,6]
+        });
+        $('#datetimepicker2').datetimepicker({
+            locale: 'ru',
+            stepping:10,
+            format: 'DD.MM.YYYY',
+            daysOfWeekDisabled:[0,6]
+        });
+        $('#datetimepicker3').datetimepicker({
+            locale: 'ru',
+            stepping:10,
+            format: 'DD.MM.YYYY',
+            daysOfWeekDisabled:[0,6],
+            useCurrent: false
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker3').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker3").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").maxDate(e.date);
+        });
     });
     
 //-- calendar -------------------------------------------------
+    
+    
+    /*
+    $('.block-news').hover(function() {
+        $(this).find('.block-news__desc').stop().animate({
+            height: "toggle",
+            opacity: "toggle"
+        }, 300);
+    });*/
+    
+//-- calendar -------------------------------------------------
+    
+//-- DataTable ------------------------------------------------
+    
+    var table = $('#contacts').DataTable({
+        "dom":  "<'row'<'col-sm-6'i><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-5'l><'col-sm-7'p>>",
+        "language": {
+            //"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+            "processing": "Подождите...",
+            search: "_INPUT_",
+            searchPlaceholder: "Поиск сотрудника",
+            "lengthMenu": "показывать по _MENU_ записей",
+            "info": "записи с _START_ по _END_ из _TOTAL_ записей",
+            "infoEmpty": "записи с 0 по 0 из 0 записей",
+            "infoFiltered": "(отфильтровано из _MAX_ записей)",
+            "infoPostFix": "",
+            "loadingRecords": "загрузка записей...",
+            "zeroRecords": "записи отсутствуют",
+            "emptyTable": "в таблице отсутствуют данные",
+            "paginate": {
+            "first": "первая",
+            "previous": "предыдущая",
+            "next": "следующая",
+            "last": "последняя",
+            "searchPlaceholder": "Поиск сотрудника"
+            },
+            "aria": {
+                "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                "sortDescending": ": активировать для сортировки столбца по убыванию"
+            }
+        }
+    });
 
+    
+//-- DataTable ------------------------------------------------
+    
+    
+    
+    
+    // селект
+	function initCustomSelectControls() {
+		$('.ml-select__item.active').each(function() {
+			var $container = $(this).closest(".ml-select");
+			$container.find('.ml-select__input').val($(this).text());
+		});
+
+		$('.ml-select .mdi-chevron-down, .ml-select__input').click(function() {
+			var $container = $(this).closest('.ml-select');
+
+			if(!$container.hasClass("active"))
+			{
+				$('.ml-select.active, .ml-select__dropbox.active').removeClass('active');
+			}
+
+			$container.find('.ml-select__dropbox').toggleClass('active');
+			$container.toggleClass('active');
+		});
+		
+		$('.ml-select__item').click(function() {
+			var $container = $(this).closest(".ml-select");
+			if ($(this).hasClass('active')) {
+				$container.find('.ml-select__item').removeClass('active');
+			}
+			else {
+				$container.find('.ml-select__item').removeClass('active');
+				$(this).addClass('active');
+			}
+			
+			var secletedText = $container.find('.ml-select__item.active').text();
+			$container.find('.ml-select__input').val(secletedText);
+
+			$container.find('.ml-select__dropbox').removeClass('active');
+			$container.removeClass('active');
+		});
+	}
+	
+
+	initCustomSelectControls();
+    
+    
+    
+    // мультиселект
+	function bindSelectedItemsToInput() {
+		var selectedItemsAsString = "";
+		var selectedItems = $('.ml-mselect__item.active');
+		var selectedItemsCount = selectedItems.length;
+
+		selectedItems.each(function(index) {
+			selectedItemsAsString += $(this).text();
+			if(index != selectedItemsCount - 1)
+				selectedItemsAsString += ', ';
+		});
+		$('.ml-mselect__input').val(selectedItemsAsString);
+	}
+
+	bindSelectedItemsToInput();
+
+	$('.ml-mselect__input, .ml-mselect .mdi-chevron-down').click(function() {
+		var $mlDropbox = $(this).siblings('.ml-mselect__dropbox');
+		var $mlContainer = $(this).closest('.ml-mselect');
+		if(!$mlDropbox.hasClass("active"))
+		{
+			$('.ml-mselect__dropbox, .ml-mselect').removeClass("active");
+		}
+
+		$mlDropbox.toggleClass('active');
+		$mlContainer.toggleClass('active');
+	});
+
+	$( '.ml-mselect__item').click(function() {
+		$(this).toggleClass('active');
+		bindSelectedItemsToInput();
+	});
+
+
+
+
+	//мультиселек с поиском
+	function bindSelectedItemsToInputSearch() {
+
+		$('.ml-mselect-search__result').last().empty();
+		var selectedItems = $('.ml-mselect-search__item.active');
+
+		selectedItems.each(function(index) {
+			$('.ml-mselect-search__result').last().append('<div class="ml-mselect-search__result-item">' + $(this).text()  +  '<i class="mdi mdi-close"></i></div>');
+		});
+
+
+		if($('.ml-mselect-search__item.active').length > 0) {
+			$('.ml-mselect-search__box').removeClass('empty');
+		}
+		else {
+			$('.ml-mselect-search__box').addClass('empty');
+			
+		}
+		
+	}
+
+	bindSelectedItemsToInputSearch();
+
+	$('.ml-mselect-search__box,  .mdi-chevron-down').click(function(e) {
+		if($(e.target).is('.ml-mselect-search__box,  .mdi-chevron-down'))
+		{
+			var $mlDropbox = $(this).siblings('.ml-mselect-search__dropbox');
+			var $mlContainer = $(this).closest('.ml-mselect-search');
+			if(!$mlDropbox.hasClass("active"))
+			{
+				$('.ml-mselect-search__dropbox, .ml-mselect-search').removeClass("active");
+			}
+
+			$mlDropbox.toggleClass('active');
+			$mlContainer.toggleClass('active');
+		}
+	});
+
+	$( '.ml-mselect-search__item').click(function() {
+		$(this).toggleClass('active');
+		bindSelectedItemsToInputSearch();
+	});
+
+	$(document).on("click", ".ml-mselect-search__result-item  .mdi-close", function(e) {
+		SelectBlock = $(this).parent().text();
+		console.log(SelectBlock);
+
+
+		$('.ml-mselect-search__item').each(function(index) {
+			if ( $(this).text() == SelectBlock) {
+				$(this).removeClass('active');
+				bindSelectedItemsToInputSearch();
+			}
+		});
+
+	});
+	
+	$(".input.ml-mselect-search__input").keyup(function(e){
+		var items = $('.ml-mselect-search__item');
+		var changedValue = $(e.currentTarget).val().toLowerCase();
+		if(changedValue.length >= 3)
+		{
+			console.log(changedValue);
+
+			items.each(function(index) {
+				if( $(this).text().toLowerCase().indexOf(changedValue) == 0) {
+					$(this).show();
+				}
+				else
+				{
+					$(this).hide();
+				}
+			});
+		}
+		else
+		{
+			items.show();
+		}
+	});
+    
 });

@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="ru">
+@@include('./file-include/head.html')
+<body>
+    @@include('./file-include/navbar.html')
+    <div class="wrapper">
+        <div class="wrapper_block-white">
+            <div class="container">
+                <div class="container__news">
+                    <div class="row">
+                        <div class="col-md-12 vacation">
+                            <div class="vacation-popup__title">
+                                <h1 class="header_big text-center">Заявка на отпуск</h1>
+                            </div>
+                            <div class="vacation-popup__body">
+                               <div class="form-group">
+                                    <div class="ml-select" id="ms1">
+                                        <!--<div class="ml-select__title">Тип отпуска</div>-->
+                                        <i class="fas fa-angle-down"></i>
+                                        <input class="input ml-select__input form-control" type="text" value="" placeholder="тип отпуска">
+                                        <div class="ml-select__dropbox mCustomScrollbar">
+                                            <div class="ml-mselect__list">
+                                                <div class="ml-select__item active">Заявление на ежегодный оплачиваемый отпуск</div>
+                                                <div class="ml-select__item">Заявление на отпуск без сохранения заработной платы</div>
+                                                <div class="ml-select__item">Заявление на оплачиваемый отпуск с последующим увольнением</div>
+                                                <div class="ml-select__item">Заявление на академический отпуск</div>
+                                                <div class="ml-select__item">Заявление на учебный отпуск</div>
+                                                <div class="ml-select__item">Заявление на декретный отпуск</div>
+                                                <div class="ml-select__item">Заявление на отпуск по уходу за ребёнком</div>
+                                                <div class="ml-select__item">Заявление о переносе отпуска</div>
+                                                <div class="ml-select__item">Заявление на компенсацию отпуска</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker2">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker3">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div class="ml-mselect">
+                                        <!--<div class="ml-mselect__title">Согласующие</div>-->
+                                        <i class="fas fa-angle-down"></i>
+                                        <input class="input ml-mselect__input form-control" type="text" value="" placeholder="добавить согласующего">
+                                        <div class="ml-mselect__dropbox mCustomScrollbar">
+                                            <div class="ml-mselect__list">
+                                                <div class="ml-mselect__item active">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                                <div class="ml-mselect__item active">Васечкин</div>
+                                                <div class="ml-mselect__item">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                                <div class="ml-mselect__item">Васечкин</div>
+                                                <div class="ml-mselect__item">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                                <div class="ml-mselect__item active">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                                <div class="ml-mselect__item active">Васечкин</div>
+                                                <div class="ml-mselect__item">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                                <div class="ml-mselect__item">Васечкин</div>
+                                                <div class="ml-mselect__item">Иванов</div>
+                                                <div class="ml-mselect__item">Петров</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vacation-popup__counter"></div>
+                            <div class="vacation-popup__footer text-center">
+                                <button class="button__all-news">Отправить заявку</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper__overlay"></div>
+    </div>
+    @@include('./file-include/scripts.html')
+</body>
+</html>
