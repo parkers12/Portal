@@ -1,0 +1,43 @@
+.likes {
+    &_new {
+        display: flex;
+        align-items: center;
+        height: 26px;
+        margin-left: 50px;
+    }
+    &-looked {
+        height: 26px;
+        display: flex;
+        align-items: center;
+        color: lighten(@middle-grey, 50%);
+        &:before {
+            content: " ";
+            color: lighten(@middle-grey, 50%);
+            background-image: url("/img/eye.svg");
+            background-repeat: no-repeat;
+            position: absolute;
+            margin: 0 0 0 -20px;
+            width: 17px;
+            background-size: auto;
+            height: 12px;
+        }
+    }
+    &-comments {
+        height: 26px;
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+        color: lighten(@middle-grey, 50%);
+        &:before {
+            content: " ";
+            color: lighten(@middle-grey, 50%);
+            background-image: url("/img/comment.svg");
+            background-repeat: no-repeat;
+            position: absolute;
+            margin: 0 0 0 -16px;
+            width: 12px;
+            background-size: auto;
+            height: 12px;
+        }
+    }
+}

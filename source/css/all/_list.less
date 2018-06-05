@@ -1,0 +1,75 @@
+.list {
+    font-family: "Muller", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    &_category {
+        & li {
+            padding: 10px 0;
+            border-bottom: 2px dotted lighten(@middle2-grey, 5%);
+            &:last-child {
+                border-bottom: none;
+            }
+            & a {
+                color: @middle-grey;
+                font-size: 16px;
+                transition: color 0.2s ease;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                &:hover {
+                    color: @dark-green;
+                    text-decoration: none;
+                }
+                &.activ {
+                    position: relative;
+                    padding-left: 15px;
+                    &:before {
+                        content: "";
+                        width: 5px;
+                        height: 5px;
+                        background-color: @dark-green;
+                        position: absolute;
+                        top: 8px;
+                        left: 0px;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+    &_top-news,
+    &_other-news {
+        & li {
+            padding: 10px 0 10px 0px;
+            border-bottom: 2px dotted lighten(@middle2-grey, 5%);
+            &:last-child {
+                border-bottom: none;
+            }
+            & a {
+                color: lighten(@middle-grey, 30%);
+                font-size: 15px;
+                transition: color 0.2s ease;
+                position: relative;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                padding-left: 15px;
+                &:hover {
+                    color: @dark-green;
+                    text-decoration: none;
+                }
+                &:before {
+                    content: "";
+                    width: 3px;
+                    height: 3px;
+                    border-radius: 2px;
+                    background-color: lighten(@middle-grey, 30%);
+                    position: absolute;
+                    top: 8px;
+                    left: 0px;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

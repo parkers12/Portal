@@ -1,11 +1,16 @@
 // Заголовки
 .header {
+    font-family: "Muller", sans-serif;
+    text-transform: uppercase;
+    color: @middle-grey;
+    font-weight: normal;
+    font-size: 18px;
     &_big {
         font-family: "Muller", sans-serif;
         font-weight: bold;
         font-size: 30px;
         text-transform: uppercase;
-        color: #333333;
+        color: @middle-grey;
         margin: 0 0 40px 0;
     }
     &_middle {
@@ -13,12 +18,31 @@
         font-weight: bold;
         font-size: 22px;
         text-transform: uppercase;
-        color: #333333;
+        color: @middle-grey;
         &_white {
             color: #fff;
         }
     }
     &_news {
         margin-bottom: 30px;
+    }
+    &_new {
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: none;
+    }
+    &_comment {
+        margin: 0 0 20px 0;
+    }
+    &_posts {
+        margin: 20px 0 10px 0;
+    }
+    &_category,
+    &_top-news,
+    &_other-news {
+        margin-top: 0px;
+    }
+    &_contacts {
+        margin-top: 0px;
     }
 }

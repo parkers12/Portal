@@ -369,6 +369,13 @@ input::placeholder:focus,
 textarea::placeholder:focus {
   opacity: 0;
 }
+.header {
+  font-family: "Muller", sans-serif;
+  text-transform: uppercase;
+  color: #333333;
+  font-weight: normal;
+  font-size: 18px;
+}
 .header_big {
   font-family: "Muller", sans-serif;
   font-weight: bold;
@@ -390,6 +397,25 @@ textarea::placeholder:focus {
 .header_news {
   margin-bottom: 30px;
 }
+.header_new {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: none;
+}
+.header_comment {
+  margin: 0 0 20px 0;
+}
+.header_posts {
+  margin: 20px 0 10px 0;
+}
+.header_category,
+.header_top-news,
+.header_other-news {
+  margin-top: 0px;
+}
+.header_contacts {
+  margin-top: 0px;
+}
 .button__all-news {
   background-color: #92b700;
   font-family: "Muller", sans-serif;
@@ -409,6 +435,23 @@ textarea::placeholder:focus {
 }
 .button__all-news span {
   line-height: 17px;
+}
+.button_comment {
+  width: 135px;
+  height: 35px;
+  border-radius: 3px;
+  background-color: #92b700;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  padding: 9px 20px;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.button_comment:hover {
+  background-color: #a4c815;
 }
 .ml-mselect {
   position: relative;
@@ -926,31 +969,6 @@ textarea::placeholder:focus {
   right: 28px;
   font-size: 10px;
 }
-.navbar__social {
-  height: 40px;
-  border-right: 2px solid #f1f1f1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.navbar__social a {
-  color: #515151;
-  margin-right: 20px;
-  font-size: 20px;
-  transition: color 0.15s ease;
-}
-.navbar__social a:last-child {
-  margin-right: 25px;
-}
-.navbar__social a:first-child {
-  margin-left: 25px;
-}
-.navbar__social a:hover {
-  color: #92b700;
-}
 .navbar__user {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1002,6 +1020,36 @@ textarea::placeholder:focus {
 .navbar:after {
   content: none;
   display: block;
+}
+.social {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.social_navbar {
+  border-right: 2px solid #f1f1f1;
+}
+.social a {
+  color: #515151;
+  margin-right: 20px;
+  font-size: 20px;
+  transition: color 0.15s ease;
+}
+.social a:last-child {
+  margin-right: 25px;
+}
+.social a:first-child {
+  margin-left: 25px;
+}
+.social a:hover {
+  color: #92b700;
+}
+.social_footer a:last-child {
+  margin-right: 0px;
 }
 /* -------------------------------- 
 
@@ -1609,6 +1657,17 @@ Hero Slider - by CodyHouse.co
 .no-js .cd-hero__nav {
   display: none;
 }
+.block {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+  border: 1px solid #d4d4d4;
+}
+.block_pg-20 {
+  padding: 20px;
+}
+.block_pg-30 {
+  padding: 30px;
+}
 .block-news {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   height: 440px;
@@ -1713,27 +1772,6 @@ Hero Slider - by CodyHouse.co
             }
             */
 }
-.block-news__tags {
-  margin-top: 20px;
-  position: relative;
-  z-index: 10;
-}
-.block-news__tags-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 12px;
-  line-height: 12px;
-}
-.block-news__tags-text a {
-  color: #cccccc;
-  font-size: 12px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  margin-right: 10px;
-}
-.block-news__tags-text a:hover {
-  color: #4d4d4d;
-}
 .block-list_scroll {
   padding-right: 0px;
 }
@@ -1834,19 +1872,6 @@ Hero Slider - by CodyHouse.co
   transition: all 0.3s ease-in-out;
   width: 100%;
 }
-.block-card-body-header-category {
-  text-transform: uppercase;
-  background-color: #92b700;
-  color: #FFF;
-  font-weight: bold;
-  text-align: center;
-  position: absolute;
-  font-size: 13px;
-  top: -31px;
-  left: 0;
-  padding: 8px 14px;
-  line-height: 15px;
-}
 .block-card-body-header-sentence {
   color: #b3b3b3;
   margin: 0 0 0px 0;
@@ -1861,9 +1886,6 @@ Hero Slider - by CodyHouse.co
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.block-card-body-header-sentence span {
-  font-style: italic;
-}
 .block-card-body-header-sentence__author {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1871,20 +1893,6 @@ Hero Slider - by CodyHouse.co
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.block-card-body-header-sentence__author-pic {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background-size: cover;
-  min-width: 26px;
-}
-.block-card-body-header-sentence__author-name {
-  font-size: 14px;
-  margin-left: 10px;
-  line-height: 13px;
-  margin-right: 25px;
-  color: #b3b3b3;
 }
 .block-card-body-header-sentence__indicators {
   display: -webkit-box;
@@ -1907,11 +1915,22 @@ Hero Slider - by CodyHouse.co
 .block-card-body-header-sentence__indicators-looked:before {
   content: "";
   background-image: url(/img/eye.svg);
+  background-repeat: no-repeat;
   position: absolute;
   margin: 0 0 0 -20px;
   width: 14px;
   background-size: auto;
   height: 10px;
+}
+.block-card-body-header-sentence__indicators-looked_new {
+  font-size: 15px;
+  line-height: 1;
+  color: #b3b3b3;
+}
+.block-card-body-header-sentence__indicators-looked_new:before {
+  width: 17px;
+  height: 12px;
+  color: #b3b3b3;
 }
 .block-card-body-header-sentence__indicators-comments {
   height: 26px;
@@ -1926,11 +1945,22 @@ Hero Slider - by CodyHouse.co
 .block-card-body-header-sentence__indicators-comments:before {
   content: "";
   background-image: url("/img/comment.svg");
+  background-repeat: no-repeat;
   position: absolute;
   margin: 0 0 0 -14px;
   width: 10px;
   background-size: auto;
   height: 10px;
+}
+.block-card-body-header-sentence__indicators-comments_new {
+  font-size: 15px;
+  line-height: 1;
+  color: #b3b3b3;
+}
+.block-card-body-header-sentence__indicators-comments_new:before {
+  width: 12px;
+  height: 12px;
+  color: #b3b3b3;
 }
 .block-card-body-description {
   opacity: 0;
@@ -1992,7 +2022,6 @@ Hero Slider - by CodyHouse.co
 .wrapper {
   margin-top: 60px;
   background-color: #f7f7f7;
-  padding-bottom: 100px;
 }
 .wrapper_block-white {
   background-color: #fff;
@@ -2502,6 +2531,120 @@ Hero Slider - by CodyHouse.co
   font-weight: normal;
   font-size: 14px;
   color: #333333;
+  margin-top: 30px;
+}
+.news-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 15px;
+}
+.news-info__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.news-info__pic {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  margin-bottom: 15px;
+}
+.news-info__text p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.news-info__text p:last-child {
+  margin-bottom: 30px;
+}
+.news-info__text p strong {
+  font-weight: bold;
+}
+.news-info__text p i {
+  font-style: italic;
+}
+.news-info__text p a {
+  text-decoration: none;
+  color: #92b700;
+  transition: color 0.2s ease;
+}
+.news-info__text p a:hover {
+  color: #a4c815;
+}
+.news-info__text ul {
+  font-size: 18px;
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0 0 20px;
+}
+.news-info__text ul li {
+  color: #92b700;
+  margin-bottom: 4px;
+}
+.news-info__text ul li span {
+  color: #333333;
+}
+.news-info__text ul li:before {
+  content: "\2013";
+  padding-right: 10px;
+}
+.news-info__text ol {
+  font-size: 18px;
+  list-style-type: decimal;
+  list-style-position: outside;
+  padding-left: 35px;
+  margin: 0 0 20px;
+}
+.news-info__text ol li {
+  color: #92b700;
+  padding-left: 5px;
+  margin-bottom: 4px;
+}
+.news-info__text ol li span {
+  color: #333333;
+}
+.news-info__comment {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f8f8f8;
+}
+.news-info__comment-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.news-info__posts-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px 0 0 0;
+}
+.news-info__posts-right-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 30px;
+}
+.news-info__posts-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333333;
+  margin-bottom: 5px;
+}
+.news-info__posts-answer {
+  font-size: 14px;
+  color: #cccccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.news-info__posts-answer:hover {
+  color: #333333;
 }
 .news__pic {
   max-width: 1140px;
@@ -2530,64 +2673,288 @@ Hero Slider - by CodyHouse.co
   margin-top: 30px;
   font-size: 12px;
 }
-.news p {
-  text-align: justify;
-  line-height: 1.4;
-}
-.news p strong {
-  font-weight: bold;
-}
-.news p i {
-  font-style: italic;
-}
-.news p a {
-  text-decoration: none;
-  color: #92b700;
-  transition: color 0.2s ease;
-}
-.news p a:hover {
-  color: #a4c815;
-}
-.news ul {
-  list-style-type: none;
-  padding-left: 20px;
-  margin: 0 0 10px;
-}
-.news ul li {
-  color: #92b700;
-}
-.news ul li span {
-  color: #333333;
-}
-.news ul li:before {
-  content: "\2013";
-  padding-right: 10px;
-}
-.news ol {
-  list-style-type: decimal;
-  list-style-position: outside;
-  padding-left: 35px;
-  margin: 0 0 10px;
-}
-.news ol li {
-  color: #92b700;
-  padding-left: 5px;
-}
-.news ol li span {
-  color: #333333;
-}
 .news #datetimepicker1 {
   margin-bottom: 60px;
+}
+.section {
+  color: #fff;
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 10px 25px 6px 25px;
+}
+.section_new {
+  background-color: #b5b5b5;
+}
+.section_index {
+  background-color: #92b700;
+  position: absolute;
+  font-size: 13px;
+  top: -31px;
+  left: 0;
+  line-height: 15px;
+}
+.comment {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 30px;
+}
+.avatar {
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.avatar_new {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  margin-right: 8px;
+}
+.avatar_contacts {
+  height: 40px;
+  width: 40px;
+}
+.avatar_comment {
+  height: 40px;
+  width: 40px;
+  margin-right: 15px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+}
+.hashtags {
+  margin-top: 20px;
+  position: relative;
+  z-index: 10;
+}
+.hashtags-block {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 12px;
+  line-height: 12px;
+}
+.hashtags-block a {
+  color: #cccccc;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-right: 10px;
+}
+.hashtags-block a:hover {
+  color: #4d4d4d;
+}
+.textarea {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  color: #333333;
+}
+.textarea_comment {
+  width: 100%;
+  height: 80px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+  padding: 15px;
+  margin-bottom: 15px;
+  resize: none;
+  outline: none;
+}
+.date_new {
+  font-size: 15px;
+  color: #b3b3b3;
+  margin-right: 30px;
+}
+.date_posts {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+.user-name {
+  font-size: 15px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+}
+.user-name_new {
+  color: #b3b3b3;
+}
+.user-name_posts {
+  color: #333333;
+  margin-right: 15px;
+}
+.user-name_contacts {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration: none;
+  color: #333333;
+  transition: color 0.15s ease;
+}
+.user-name_contacts:hover {
+  color: #92b700;
+  text-decoration: none;
+}
+.likes_new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 26px;
+  margin-left: 50px;
+}
+.likes-looked {
+  height: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #b3b3b3;
+}
+.likes-looked:before {
+  content: " ";
+  color: #b3b3b3;
+  background-image: url("/img/eye.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  margin: 0 0 0 -20px;
+  width: 17px;
+  background-size: auto;
+  height: 12px;
+}
+.likes-comments {
+  height: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 25px;
+  color: #b3b3b3;
+}
+.likes-comments:before {
+  content: " ";
+  color: #b3b3b3;
+  background-image: url("/img/comment.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  margin: 0 0 0 -16px;
+  width: 12px;
+  background-size: auto;
+  height: 12px;
+}
+.list {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+}
+.list_category li {
+  padding: 10px 0;
+  border-bottom: 2px dotted #f5f5f5;
+}
+.list_category li:last-child {
+  border-bottom: none;
+}
+.list_category li a {
+  color: #333333;
+  font-size: 16px;
+  transition: color 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.list_category li a:hover {
+  color: #92b700;
+  text-decoration: none;
+}
+.list_category li a.activ {
+  position: relative;
+  padding-left: 15px;
+}
+.list_category li a.activ:before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #92b700;
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  z-index: 1;
+}
+.list_top-news li,
+.list_other-news li {
+  padding: 10px 0 10px 0px;
+  border-bottom: 2px dotted #f5f5f5;
+}
+.list_top-news li:last-child,
+.list_other-news li:last-child {
+  border-bottom: none;
+}
+.list_top-news li a,
+.list_other-news li a {
+  color: #808080;
+  font-size: 15px;
+  transition: color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding-left: 15px;
+}
+.list_top-news li a:hover,
+.list_other-news li a:hover {
+  color: #92b700;
+  text-decoration: none;
+}
+.list_top-news li a:before,
+.list_other-news li a:before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #808080;
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  z-index: 1;
+}
+.category {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 30px;
+}
+.other-news {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 30px;
+}
+.top-news {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 30px;
+}
+.top-news .fa-fire {
+  color: #ff5454;
+  margin-right: 10px;
 }
 .search-block {
   margin-bottom: 50px;
 }
 .contacts {
-  padding: 20px 20px 30px 20px;
-  background-color: #fff;
   margin-top: 30px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
-  border: solid 1px #d4d4d4;
   font-family: "Muller", sans-serif;
 }
 .contacts__title {
@@ -2610,11 +2977,6 @@ Hero Slider - by CodyHouse.co
   border-radius: 50%;
   margin: 12px 15px 12px 5px;
 }
-.contacts__user-pic {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
 .contacts__user-text {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2627,18 +2989,6 @@ Hero Slider - by CodyHouse.co
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-.contacts__user-name {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  text-decoration: none;
-  color: #333333;
-  transition: color 0.15s ease;
-}
-.contacts__user-name:hover {
-  color: #92b700;
-  text-decoration: none;
 }
 .contacts__user-post {
   font-size: 12px;
@@ -2845,4 +3195,19 @@ Hero Slider - by CodyHouse.co
 }
 .contacts #contacts thead .sorting:after {
   content: none;
+}
+.footer {
+  font-family: "Muller", sans-serif;
+  margin: 100px 0 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+  font-weight: 300;
+}
+.footer__copyright a {
+  color: #92b700;
 }

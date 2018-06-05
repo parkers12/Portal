@@ -1,4 +1,13 @@
 .block {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+    border: 1px solid @light5-grey;
+    &_pg-20 {
+        padding: 20px;
+    }
+    &_pg-30 {
+        padding: 30px;
+    }
     &-news {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
         height: 440px;
@@ -101,27 +110,6 @@
                 }
             }
             */
-        }
-        &__tags {
-            margin-top: 20px;
-            position: relative;
-            z-index: 10;
-            &-text {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                height: 12px;
-                line-height: 12px;
-                & a {
-                    color: lighten(@middle-grey, 60%);
-                    font-size: 12px;
-                    text-decoration: none;
-                    transition: color 0.3s ease;
-                    margin-right: 10px;
-                    &:hover {
-                        color: lighten(#000, 30%);
-                    }
-                }
-            }
         }
     }
     &-list {
@@ -233,19 +221,6 @@
                 background-color: #FFF;
                 transition: all .3s ease-in-out;
                 width: 100%;
-                &-category {
-                    text-transform: uppercase;
-                    background-color: @dark-green;
-                    color: #FFF;
-                    font-weight: bold;
-                    text-align: center;
-                    position: absolute;
-                    font-size: 13px;
-                    top: -31px;
-                    left: 0;
-                    padding: 8px 14px;
-                    line-height: 15px;
-                }
                 &-sentence {
                     color: #b3b3b3;
                     margin: 0 0 0px 0;
@@ -253,26 +228,9 @@
                     display: flex;
                     flex: 1;
                     justify-content: space-between;
-                    & span {
-                        font-style: italic;
-                    }
                     &__author {
                         display: flex;
                         align-items: center;
-                        &-pic {
-                            width: 26px;
-                            height: 26px;
-                            border-radius: 50%;
-                            background-size: cover;
-                            min-width: 26px;
-                        }
-                        &-name {
-                            font-size: 14px;
-                            margin-left: 10px;
-                            line-height: 13px;
-                            margin-right: 25px;
-                            color: lighten(@middle-grey, 50%);
-                        }
                     }
                     &__indicators {
                         display: flex;
@@ -285,11 +243,22 @@
                             &:before {
                                 content: "";
                                 background-image: url(/img/eye.svg);
+                                background-repeat: no-repeat;
                                 position: absolute;
                                 margin: 0 0 0 -20px;
                                 width: 14px;
                                 background-size: auto;
                                 height: 10px;
+                            }
+                            &_new {
+                                font-size: 15px;
+                                line-height: 1;
+                                color: lighten(@middle-grey, 50%);
+                                &:before {
+                                    width: 17px;
+                                    height: 12px;
+                                    color: lighten(@middle-grey, 50%);
+                                }
                             }
                         }
                         &-comments {
@@ -300,11 +269,22 @@
                             &:before {
                                 content: "";
                                 background-image: url("/img/comment.svg");
+                                background-repeat: no-repeat;
                                 position: absolute;
                                 margin: 0 0 0 -14px;
                                 width: 10px;
                                 background-size: auto;
                                 height: 10px;
+                            }
+                            &_new {
+                                font-size: 15px;
+                                line-height: 1;
+                                color: lighten(@middle-grey, 50%);
+                                &:before {
+                                    width: 12px;
+                                    height: 12px;
+                                    color: lighten(@middle-grey, 50%);
+                                }
                             }
                         }
                     }

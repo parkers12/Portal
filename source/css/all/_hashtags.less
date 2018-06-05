@@ -1,0 +1,21 @@
+.hashtags {
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+    &-block {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 12px;
+        line-height: 12px;
+        & a {
+            color: lighten(@middle-grey, 60%);
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-right: 10px;
+            &:hover {
+                color: lighten(#000, 30%);
+            }
+        }
+    }
+}

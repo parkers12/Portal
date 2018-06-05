@@ -1,0 +1,25 @@
+.user-name {
+    font-size: 15px;
+    line-height: 1;
+    font-style: normal;
+    font-weight: normal;
+    &_new {
+        color: lighten(@middle-grey, 50%);
+    }
+    &_posts {
+        color: @middle-grey;
+        margin-right: 15px;
+    }
+    &_contacts {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        text-decoration: none;
+        color: @middle-grey;
+        transition: color 0.15s ease;
+        &:hover {
+            color: @dark-green;
+            text-decoration: none;
+        }
+    }
+}
