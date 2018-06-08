@@ -4,28 +4,27 @@
 <body>
     @@include('./file-include/navbar.html')
     <div class="wrapper">
-        <div class="wrapper_block-white">
-            <div class="container">
-                <div class="container__news">
-                    <h1 class="header_big text-center">Название галереи</h1>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                           <!-- The container for the list of example images -->
-                            <div id="links" class="links"></div>
-                            <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
-                            <div id="blueimp-gallery" class="blueimp-gallery">
-                                <div class="slides"></div>
-                                <h3 class="title"></h3>
-                                <a class="prev">‹</a>
-                                <a class="next">›</a>
-                                <a class="close">×</a>
-                                <a class="play-pause"></a>
-                                <ol class="indicator"></ol>
-                            </div>
+        <div class="container">
+            <div class="container__news">
+                <h1 class="header_big text-center">Название галереи</h1>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                       <!-- The container for the list of example images -->
+                        <div id="links" class="links"></div>
+                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                        <div id="blueimp-gallery" class="blueimp-gallery">
+                            <div class="slides"></div>
+                            <h3 class="title"></h3>
+                            <a class="prev">‹</a>
+                            <a class="next">›</a>
+                            <a class="close">×</a>
+                            <a class="play-pause"></a>
+                            <ol class="indicator"></ol>
                         </div>
                     </div>
                 </div>
             </div>
+            @@include('./file-include/footer.html')
         </div>
         <div class="wrapper__overlay"></div>
         @@include('./file-include/popup-idea.html')

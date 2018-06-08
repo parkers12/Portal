@@ -3,7 +3,17 @@
     font-weight: normal;
     font-size: 14px;
     color: @middle-grey;
-    margin-top: 30px;
+    & .row {
+        & .col-md-4.reveal {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        &:last-child {
+            & .col-md-4.reveal {
+                padding-bottom: 0px;
+            }
+        }
+    }
     &-info {
         display: flex;
         justify-content: space-between;
@@ -20,9 +30,12 @@
         }
         &__text {
             & p {
-                font-size: 18px;
-                line-height: 1.5;
+                font-size: 16px;
+                line-height: 1.4;
                 margin-bottom: 20px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
                 &:last-child {
                     margin-bottom: 30px;
                 }
@@ -89,10 +102,11 @@
             &-right-block {
                 display: flex;
                 line-height: 30px;
+                align-items: center;
             }
             &-text {
                 font-size: 15px;
-                line-height: 1.5;
+                line-height: 1.4;
                 color: @middle-grey;
                 margin-bottom: 5px;
             }
@@ -135,7 +149,64 @@
         margin-top: 30px;
         font-size: 12px;
     }
+    &__desc {
+        font-size: 14px;
+        font-weight: 300;
+        color: @middle-grey;
+        margin-bottom: 20px;
+    }
+    &-search {
+        &__block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__right{
+            display: flex;
+            white-space: nowrap;
+            align-items: center;
+            line-height: 15px;
+        }
+        &__date {
+            margin-left: 10px;
+            max-width: 140px;
+            &-input {
+                border-radius: 4px !important;
+                border: 1px solid @middle2-grey;
+                box-shadow: none;
+                outline: none;
+            }
+            & i {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                color: lighten(@middle-grey, 50%);
+                font-size: 13px
+            }
+            & > input {
+                width: 170px;
+            }
+        }
+        &__text {
+            margin-left: 30px;
+            max-width: 250px;
+            &-input {
+                border-radius: 4px !important;
+                border: 1px solid @middle2-grey;
+                min-width: 250px;
+                box-shadow: none;
+                outline: none;
+                &:focus {
+                }
+            }
+            & i {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                color: lighten(@middle-grey, 50%);
+            }
+        }
+    }
     & #datetimepicker1 {
-        margin-bottom: 60px;
     }
 }

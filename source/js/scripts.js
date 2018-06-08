@@ -221,9 +221,36 @@ $(document).ready(function() {
             }
         }
     });
-
+    
     
 //-- DataTable ------------------------------------------------
+
+//-- Instagram ------------------------------------------------
+
+/*
+    $("#instagram").instagramGet({
+        "user_id": "1146026203",
+        "access_token": "1146026203.ba4c844.13f465f1fea340ac83637d6504720798",
+        "count": 1
+    });
+*/
+
+    if($('#instagram')) {
+        var feed = new Instafeed({
+            get: 'user',
+            userId: '6165538624',
+            accessToken: '6165538624.4072523.782e855c6bf24172af34d932ade08a9e',
+            limit: 1,
+            resolution: 'standard_resolution',
+            template: '<a href="{{link}}" class="instagram__link"><img src="{{image}}" class="instagram__pic" /><div class="instagram__likes">{{likes}}</div><div class="instagram__comments">{{comments}}</div><div class="instagram__caption">{{caption}}</div></a>'
+        });
+        feed.run();
+    }
+    
+//-- Instagram ------------------------------------------------
+
+    
+
     
     
     

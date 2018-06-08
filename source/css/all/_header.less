@@ -23,13 +23,18 @@
             color: #fff;
         }
     }
-    &_news {
-        margin-bottom: 30px;
+    &_news,
+    &_contacts,
+    &_documents {
+        margin: 0 0 5px 0;
+        font-weight: 500;
+        color: @middle-grey;
     }
     &_new {
-        font-size: 30px;
+        font-size: 26px;
         font-weight: bold;
         text-transform: none;
+        margin: 20px 0 15px 0;
     }
     &_comment {
         margin: 0 0 20px 0;
@@ -42,7 +47,19 @@
     &_other-news {
         margin-top: 0px;
     }
-    &_contacts {
-        margin-top: 0px;
+    &-desc {
+        font-family: "Muller", sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: @middle-grey;
+        &_documents {
+            margin-bottom: 20px;
+        }
+        &_news {
+            margin-bottom: 20px;
+        }
+        &_contacts {
+            margin-bottom: 20px;
+        }
     }
 }

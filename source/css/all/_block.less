@@ -8,6 +8,20 @@
     &_pg-30 {
         padding: 30px;
     }
+    &_insta {
+        width: 100%;
+        & img {
+            width: 100%;
+        }
+    }
+    &_doc {
+        height: 400px;
+        padding-right: 0px;
+    }
+    &_brand {
+        height: 400px;
+        padding-right: 0px;
+    }
     &-news {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
         height: 440px;
@@ -86,7 +100,10 @@
             font-weight: bold;
             color: @middle-grey;
             //width: calc(~"100% - 40px");
+            overflow: hidden;
             margin: 0 0 10px 0;
+            text-overflow: ellipsis;
+            line-height: 20px;
             /*
             & a {
                 color: @middle-grey;
@@ -116,7 +133,7 @@
         &_scroll {
             padding-right: 0px;
             & > div {
-                height: 260px;
+                height: 318px;
             }
             & li {
                 margin-right: 20px;
@@ -140,15 +157,12 @@
     &-card {
         cursor: default;
         position: relative;
-        width: 360px;
+        width: 100%;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
         transition: all 0.3s linear 0s;
         font-family: "Muller", sans-serif;
         border: solid 1px @light5-grey;
         background-color: #fff;
-        &:hover {
-            box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-        }
         &_info {
             padding: 20px 0px 20px 20px;
             & .block-card__desc {
@@ -162,7 +176,7 @@
             width: 100%;
             height: 300px;
             background: url(../img/news/000002.jpg) no-repeat;
-            background-size: 360px 300px;
+            background-size: 100% 100%;
             border-radius: 1px 1px 0 0;
             transition: all .3s ease-in-out;
             &-mask {
@@ -190,17 +204,18 @@
             }
         }
         &:hover {
+            box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
             & .block-card {
                 &-header {
                     background-size: 105% 105%;
                     background-position: -8px -8px;
                     &-mask {
-                        background-color: rgba(0, 0, 0, .6);
+                        background-color: rgba(255, 255, 255, 0.2);
                     }
                 }
                 &-body {
                     &-header {
-                        margin-top: -90px;
+                        margin-top: -100px;
                     }
                     &-description {
                         opacity: 1;
@@ -293,8 +308,11 @@
             &-description {
                 opacity: 0;
                 color: lighten(#000, 40%);
+                height: 100px;
                 /*line-height: 30px;*/
                 transition: all .2s ease-in-out;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             &-footer {
                 position: relative;

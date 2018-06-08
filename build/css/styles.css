@@ -303,6 +303,23 @@ template {
 [hidden] {
   display: none;
 }
+.form-control:focus {
+  border-color: #92b700;
+  box-shadow: none;
+}
+.form-control:focus:-moz-placeholder {
+  color: #e8e8e8;
+}
+.form-control:focus::-moz-placeholder {
+  color: #e8e8e8;
+  opacity: 1;
+}
+.form-control:focus:-ms-input-placeholder {
+  color: #e8e8e8;
+}
+.form-control:focus::-webkit-input-placeholder {
+  color: #e8e8e8;
+}
 @font-face {
   font-family: 'Muller';
   src: url('../fonts/Muller/MullerLight.eot');
@@ -343,30 +360,50 @@ textarea::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #e8e8e8;
   font-family: "Muller", sans-serif;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e8e8e8;
+  font-family: "Muller", sans-serif;
+  opacity: 1;
+  transition: opacity 0.15s ease;
 }
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   /* IE 10+ */
   color: #e8e8e8;
   font-family: "Muller", sans-serif;
+  opacity: 1;
+  transition: opacity 0.15s ease;
 }
-input::placeholder,
-textarea::placeholder {
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  /* Firefox 18- */
   color: #e8e8e8;
   font-family: "Muller", sans-serif;
-  transition: all 0.3s ease;
   opacity: 1;
+  transition: opacity 0.15s ease;
 }
-input::-webkit-input-placeholder:focus,
-textarea::-webkit-input-placeholder:focus {
-  opacity: 0;
+input:placeholder,
+textarea:placeholder {
+  color: #e8e8e8;
+  font-family: "Muller", sans-serif;
+  opacity: 1;
+  transition: opacity 0.15s ease;
 }
-input:-ms-input-placeholder:focus,
-textarea:-ms-input-placeholder:focus {
-  opacity: 0;
-}
-input::placeholder:focus,
-textarea::placeholder:focus {
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder,
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder,
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder,
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder,
+input:focus:placeholder,
+textarea:focus:placeholder {
   opacity: 0;
 }
 .header {
@@ -394,13 +431,18 @@ textarea::placeholder:focus {
 .header_middle_white {
   color: #fff;
 }
-.header_news {
-  margin-bottom: 30px;
+.header_news,
+.header_contacts,
+.header_documents {
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  color: #333333;
 }
 .header_new {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
   text-transform: none;
+  margin: 20px 0 15px 0;
 }
 .header_comment {
   margin: 0 0 20px 0;
@@ -413,45 +455,67 @@ textarea::placeholder:focus {
 .header_other-news {
   margin-top: 0px;
 }
-.header_contacts {
-  margin-top: 0px;
-}
-.button__all-news {
-  background-color: #92b700;
+.header-desc {
   font-family: "Muller", sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333333;
+}
+.header-desc_documents {
+  margin-bottom: 20px;
+}
+.header-desc_news {
+  margin-bottom: 20px;
+}
+.header-desc_contacts {
+  margin-bottom: 20px;
+}
+.button {
+  font-family: "Muller", sans-serif;
   color: #fff;
-  text-transform: uppercase;
+  background-color: #92b700;
+  font-weight: normal;
+  font-size: 14px;
+  border-radius: 3px;
+  font-style: normal;
+  padding: 9px 30px 7px;
   border: none;
-  padding: 17px 35px 14px 35px;
-  margin-top: 35px;
   transition: all 0.2s ease;
   outline: none;
-  border-radius: 3px;
 }
-.button__all-news:hover {
-  background-color: #a4c815;
-}
-.button__all-news span {
+.button span {
   line-height: 17px;
 }
-.button_comment {
-  width: 135px;
-  height: 35px;
-  border-radius: 3px;
-  background-color: #92b700;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: normal;
-  padding: 9px 20px;
-  color: #fff;
-  border: none;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-.button_comment:hover {
+.button:hover {
   background-color: #a4c815;
+}
+.button_all-news,
+.button_idea {
+  /*padding: 17px 35px 14px 35px;*/
+  margin-top: 30px;
+}
+.input {
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  height: 34px;
+  padding: 6px 12px;
+  line-height: 1.428571429;
+  color: #b3b3b3;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px !important;
+  border: 1px solid #e8e8e8;
+  min-width: 250px;
+  box-shadow: none;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+.input:focus {
+  border: 1px solid #92b700;
+  outline: 0px;
+  box-shadow: none;
 }
 .ml-mselect {
   position: relative;
@@ -921,10 +985,18 @@ textarea::placeholder:focus {
   text-transform: uppercase;
   color: #333333;
   transition: color 0.15s ease;
+  text-decoration: none;
 }
 .navbar__menu-list li a:hover {
   color: #92b700;
   text-decoration: none;
+}
+.navbar__menu-list li a i {
+  margin-right: 5px;
+  color: #333333;
+}
+.navbar__menu-list li a span {
+  display: inline;
 }
 .navbar__menu-list li:last-child {
   margin-right: 0px;
@@ -1045,8 +1117,17 @@ textarea::placeholder:focus {
 .social a:first-child {
   margin-left: 25px;
 }
-.social a:hover {
-  color: #92b700;
+.social a:hover .fa-instagram {
+  color: #bc2a8d;
+}
+.social a:hover .fa-facebook-square {
+  color: #3b5998;
+}
+.social a:hover .fa-vk {
+  color: #45668e;
+}
+.social a:hover .fa-youtube {
+  color: #bb0000;
 }
 .social_footer a:last-child {
   margin-right: 0px;
@@ -1668,6 +1749,20 @@ Hero Slider - by CodyHouse.co
 .block_pg-30 {
   padding: 30px;
 }
+.block_insta {
+  width: 100%;
+}
+.block_insta img {
+  width: 100%;
+}
+.block_doc {
+  height: 400px;
+  padding-right: 0px;
+}
+.block_brand {
+  height: 400px;
+  padding-right: 0px;
+}
 .block-news {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   height: 440px;
@@ -1747,7 +1842,10 @@ Hero Slider - by CodyHouse.co
   white-space: nowrap;
   font-weight: bold;
   color: #333333;
+  overflow: hidden;
   margin: 0 0 10px 0;
+  text-overflow: ellipsis;
+  line-height: 20px;
   /*
             & a {
                 color: @middle-grey;
@@ -1776,7 +1874,7 @@ Hero Slider - by CodyHouse.co
   padding-right: 0px;
 }
 .block-list_scroll > div {
-  height: 260px;
+  height: 318px;
 }
 .block-list_scroll li {
   margin-right: 20px;
@@ -1795,15 +1893,12 @@ Hero Slider - by CodyHouse.co
 .block-card {
   cursor: default;
   position: relative;
-  width: 360px;
+  width: 100%;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   transition: all 0.3s linear 0s;
   font-family: "Muller", sans-serif;
   border: solid 1px #d4d4d4;
   background-color: #fff;
-}
-.block-card:hover {
-  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
 }
 .block-card_info {
   padding: 20px 0px 20px 20px;
@@ -1818,7 +1913,7 @@ Hero Slider - by CodyHouse.co
   width: 100%;
   height: 300px;
   background: url(../img/news/000002.jpg) no-repeat;
-  background-size: 360px 300px;
+  background-size: 100% 100%;
   border-radius: 1px 1px 0 0;
   transition: all 0.3s ease-in-out;
 }
@@ -1844,15 +1939,18 @@ Hero Slider - by CodyHouse.co
 .block-card-header-date-month {
   font-size: 11px;
 }
+.block-card:hover {
+  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+}
 .block-card:hover .block-card-header {
   background-size: 105% 105%;
   background-position: -8px -8px;
 }
 .block-card:hover .block-card-header-mask {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .block-card:hover .block-card-body-header {
-  margin-top: -90px;
+  margin-top: -100px;
 }
 .block-card:hover .block-card-body-description {
   opacity: 1;
@@ -1965,8 +2063,11 @@ Hero Slider - by CodyHouse.co
 .block-card-body-description {
   opacity: 0;
   color: #666666;
+  height: 100px;
   /*line-height: 30px;*/
   transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .block-card-body-footer {
   position: relative;
@@ -2019,9 +2120,23 @@ Hero Slider - by CodyHouse.co
   font-weight: 500;
   margin: 0 0 20px 0;
 }
-.wrapper {
-  margin-top: 60px;
+html,
+body {
+  height: 100%;
+}
+body {
   background-color: #f7f7f7;
+}
+.wrapper {
+  /*margin-top: 60px;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
 }
 .wrapper_block-white {
   background-color: #fff;
@@ -2042,6 +2157,11 @@ Hero Slider - by CodyHouse.co
 .wrapper__overlay.active {
   display: block;
 }
+.container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
 .container__slider {
   padding: 50px 0;
 }
@@ -2054,45 +2174,8 @@ Hero Slider - by CodyHouse.co
 .container__doc {
   padding: 100px 0 70px 0;
 }
-@media (max-width: 767px) {
-  .block-news,
-  .block-news_light {
-    margin-bottom: 50px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-  .block-news,
-  .block-news_light {
-    margin-bottom: 50px;
-  }
-  .block-news__title a {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-  .block-news__title a {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-  .block-news__title a {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-  }
+.wrap {
+  margin-top: 90px;
 }
 .calendar-block {
   display: -webkit-box;
@@ -2163,43 +2246,6 @@ Hero Slider - by CodyHouse.co
 .calendar-block__text-geopos-desc {
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.doc-elem:hover .fa-file-pdf {
-  color: #cc4b4c;
-}
-.doc-elem:hover .fa-file-word {
-  color: #0096e6;
-}
-.doc-block {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.doc-block .fas {
-  font-size: 20px;
-  margin-right: 15px;
-  color: #e8e8e8;
-  transition: color 0.3s ease;
-}
-.doc-block .fa-file {
-  color: #fff;
-  background-color: #92b700;
-  padding: 5px;
-  border-radius: 15px;
-  width: 26px;
-  height: 26px;
-  text-align: center;
-  margin-right: 10px;
-}
-.doc-block__text-title {
-  font-family: "Muller", sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-}
-.doc-block__text-link {
-  font-family: Muller;
-  font-size: 12px;
-  color: #92b700;
 }
 .birthday-block {
   display: -webkit-box;
@@ -2531,7 +2577,13 @@ Hero Slider - by CodyHouse.co
   font-weight: normal;
   font-size: 14px;
   color: #333333;
-  margin-top: 30px;
+}
+.news .row .col-md-4.reveal {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.news .row:last-child .col-md-4.reveal {
+  padding-bottom: 0px;
 }
 .news-info {
   display: -webkit-box;
@@ -2557,9 +2609,12 @@ Hero Slider - by CodyHouse.co
   margin-bottom: 15px;
 }
 .news-info__text p {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.4;
   margin-bottom: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
 }
 .news-info__text p:last-child {
   margin-bottom: 30px;
@@ -2630,10 +2685,13 @@ Hero Slider - by CodyHouse.co
   display: -ms-flexbox;
   display: flex;
   line-height: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .news-info__posts-text {
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.4;
   color: #333333;
   margin-bottom: 5px;
 }
@@ -2673,8 +2731,83 @@ Hero Slider - by CodyHouse.co
   margin-top: 30px;
   font-size: 12px;
 }
-.news #datetimepicker1 {
-  margin-bottom: 60px;
+.news__desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: #333333;
+  margin-bottom: 20px;
+}
+.news-search__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.news-search__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 15px;
+}
+.news-search__date {
+  margin-left: 10px;
+  max-width: 140px;
+}
+.news-search__date-input {
+  border-radius: 4px !important;
+  border: 1px solid #e8e8e8;
+  box-shadow: none;
+  outline: none;
+}
+.news-search__date i {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: #b3b3b3;
+  font-size: 13px;
+}
+.news-search__date > input {
+  width: 170px;
+}
+.news-search__text {
+  margin-left: 30px;
+  max-width: 250px;
+}
+.news-search__text-input {
+  border-radius: 4px !important;
+  border: 1px solid #e8e8e8;
+  min-width: 250px;
+  box-shadow: none;
+  outline: none;
+}
+.news-search__text i {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: #b3b3b3;
+}
+.documents-search__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.documents-search__text i {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: #b3b3b3;
 }
 .section {
   color: #fff;
@@ -2726,6 +2859,15 @@ Hero Slider - by CodyHouse.co
       -ms-flex: 0 0 40px;
           flex: 0 0 40px;
 }
+.avatar_posts {
+  height: 40px;
+  width: 40px;
+  margin-right: 15px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+  margin-top: 5px;
+}
 .hashtags {
   margin-top: 20px;
   position: relative;
@@ -2763,10 +2905,51 @@ Hero Slider - by CodyHouse.co
   resize: none;
   outline: none;
 }
-.date_new {
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.tabs li a {
+  font-family: "Muller", sans-serif;
+  padding: 9px 20px 7px;
+  display: block;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 18px;
+  transition: color 0.2s ease;
+}
+.tabs li a:hover {
+  color: #92b700;
+}
+.tabs li a.activ {
+  background-color: #92b700;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  border-radius: 4px;
+  line-height: 18px;
+}
+.tabs li:first-child a:not(.activ) {
+  padding: 9px 20px 7px 0;
+}
+.tabs li:last-child a:not(.activ) {
+  padding: 9px 0 7px 20px;
+}
+.tabs_documents {
+  margin-bottom: 20px;
+}
+.date {
   font-size: 15px;
   color: #b3b3b3;
+}
+.date_new {
   margin-right: 30px;
+  line-height: 30px;
 }
 .date_posts {
   font-size: 12px;
@@ -2780,10 +2963,13 @@ Hero Slider - by CodyHouse.co
 }
 .user-name_new {
   color: #b3b3b3;
+  line-height: 30px;
 }
 .user-name_posts {
   color: #333333;
   margin-right: 15px;
+  font-weight: 500;
+  line-height: 30px;
 }
 .user-name_contacts {
   font-size: 14px;
@@ -2797,6 +2983,31 @@ Hero Slider - by CodyHouse.co
   color: #92b700;
   text-decoration: none;
 }
+.user-name_navbar {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #333333;
+}
+.user-post {
+  font-size: 14px;
+}
+.user-post_navbar {
+  font-weight: 300;
+  line-height: 18px;
+}
+.user-post_contacts {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.user-post_contacts:hover {
+  color: #92b700;
+  text-decoration: none;
+}
 .likes_new {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2804,11 +3015,10 @@ Hero Slider - by CodyHouse.co
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 26px;
   margin-left: 50px;
 }
 .likes-looked {
-  height: 26px;
+  line-height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2829,7 +3039,7 @@ Hero Slider - by CodyHouse.co
   height: 12px;
 }
 .likes-comments {
-  height: 26px;
+  line-height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2853,7 +3063,95 @@ Hero Slider - by CodyHouse.co
 .list {
   font-family: "Muller", sans-serif;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 16px;
+}
+.list-elem {
+  border-bottom: 2px dotted #f1f1f1;
+  padding: 12px 0px 10px 0;
+}
+.list-elem:hover .fa-download {
+  color: #92b700;
+  cursor: pointer;
+}
+.list-elem:hover .fas {
+  opacity: 1;
+}
+.list-elem:last-child {
+  border-bottom: none;
+}
+.list-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.list-block .fas {
+  font-size: 20px;
+  margin-right: 15px;
+  color: #e8e8e8;
+  transition: color 0.2s ease;
+}
+.list-block .fa-file {
+  color: #fff;
+  background-color: #92b700;
+  padding: 5px;
+  border-radius: 15px;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  margin-right: 10px;
+}
+.list-block__text {
+  margin-right: 10px;
+}
+.list-block__text-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+.list-block__download {
+  color: #e8e8e8;
+  transition: color 0.3s ease;
+}
+.list-block__download:hover {
+  color: #92b700;
+}
+.list-block__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.list-block__left .fa-file-pdf {
+  color: #f54336;
+}
+.list-block__left .fa-file-word {
+  color: #1665c0;
+}
+.list-block__left .fa-file-excel {
+  color: #2f7d32;
+}
+.list-block__left .fa-file-video {
+  color: #42c0fb;
+}
+.list-block__left .fa-file-powerpoint {
+  color: #ef6c02;
+}
+.list-block__left .fa-file-image {
+  color: #4fbfe8;
+}
+.list-block__left .fa-file-archive {
+  color: #b1df41;
+}
+.list-block__left .fas {
+  opacity: .4;
 }
 .list_category li {
   padding: 10px 0;
@@ -2865,18 +3163,42 @@ Hero Slider - by CodyHouse.co
 .list_category li a {
   color: #333333;
   font-size: 16px;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  position: relative;
+}
+.list_category li a:before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #808080;
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 .list_category li a:hover {
   color: #92b700;
   text-decoration: none;
+  padding-left: 15px;
+}
+.list_category li a:hover:before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #808080;
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  opacity: 1;
 }
 .list_category li a.activ {
   position: relative;
   padding-left: 15px;
+  opacity: 1;
 }
 .list_category li a.activ:before {
   content: "";
@@ -2886,7 +3208,7 @@ Hero Slider - by CodyHouse.co
   position: absolute;
   top: 8px;
   left: 0px;
-  z-index: 1;
+  opacity: 1;
 }
 .list_top-news li,
 .list_other-news li {
@@ -2925,12 +3247,18 @@ Hero Slider - by CodyHouse.co
   left: 0px;
   z-index: 1;
 }
+.list_font-14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+.list_font-14 .list-block .fas {
+  font-size: 18px;
+}
 .category {
   font-family: "Muller", sans-serif;
   font-weight: normal;
   font-size: 14px;
   color: #333333;
-  margin-top: 30px;
 }
 .other-news {
   font-family: "Muller", sans-serif;
@@ -2950,8 +3278,126 @@ Hero Slider - by CodyHouse.co
   color: #ff5454;
   margin-right: 10px;
 }
-.search-block {
-  margin-bottom: 50px;
+.instagram {
+  width: 100%;
+  height: 319px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.instagram:hover .instagram__link:after {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.instagram:hover .instagram__likes {
+  opacity: 1;
+}
+.instagram:hover .instagram__likes:after {
+  opacity: 1;
+}
+.instagram:hover .instagram__caption {
+  opacity: 1;
+}
+.instagram:hover .instagram__comments {
+  opacity: 1;
+}
+.instagram:hover .instagram__comments:after {
+  opacity: 1;
+}
+.instagram__pic {
+  width: 100%;
+  height: auto;
+}
+.instagram__link {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+.instagram__link:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease 0.1s;
+}
+.instagram__likes {
+  position: absolute;
+  top: 20%;
+  left: 0px;
+  color: #fff;
+  z-index: 2;
+  opacity: 0;
+  margin-left: 30%;
+  transition: opacity 0.2s ease 0.1s;
+}
+.instagram__likes:after {
+  content: "\f004";
+  font-size: 14px;
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  color: #ff5454;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+.instagram__caption {
+  width: 100%;
+  height: auto;
+  padding: 0 20px;
+  position: absolute;
+  top: 32%;
+  left: 0px;
+  color: #fff;
+  z-index: 2;
+  opacity: 0;
+  height: 100px;
+  overflow: hidden;
+  transition: opacity 0.2s ease 0.1s;
+}
+.instagram__comments {
+  margin-right: 30%;
+  position: absolute;
+  top: 20%;
+  right: 0px;
+  color: #fff;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+.instagram__comments:after {
+  content: "\f27a";
+  font-size: 12px;
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  top: 5px;
+  left: -20px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
 }
 .contacts {
   margin-top: 30px;
@@ -3089,6 +3535,35 @@ Hero Slider - by CodyHouse.co
 .contacts .dataTables_empty {
   padding: 30px 0;
 }
+.contacts .dataTables_filter {
+  /*
+            & label {
+                &:after {
+                    content: "\f002";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 16px;
+                    color: lighten(@middle-grey, 50%);
+                    position: absolute;
+                    z-index: 200;
+                    top: 12px;
+                    right: 30px;
+                    opacity: 1;
+                    transition: all 0.3s ease;
+                }
+            }
+            & label:focus {
+                &:after {
+                    opacity: 0;
+                }
+            }
+            */
+}
 .contacts .dataTables_filter input {
   min-width: 350px;
   height: 40px;
@@ -3100,39 +3575,12 @@ Hero Slider - by CodyHouse.co
   padding: 12px 30px 12px 20px;
   margin-bottom: 20px;
   position: relative;
-}
-.contacts .dataTables_filter input::-webkit-input-placeholder {
-  color: #e8e8e8;
-  font-family: "Muller", sans-serif;
-}
-.contacts .dataTables_filter input:-ms-input-placeholder {
-  color: #e8e8e8;
-  font-family: "Muller", sans-serif;
-}
-.contacts .dataTables_filter input::placeholder {
-  color: #e8e8e8;
-  font-family: "Muller", sans-serif;
-}
-.contacts .dataTables_filter label:after {
-  content: "\f002";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  font-size: 16px;
-  color: #b3b3b3;
-  position: absolute;
-  z-index: 200;
-  top: 12px;
-  right: 30px;
-  opacity: 1;
-  transition: all 0.3s ease;
-}
-.contacts .dataTables_filter label:focus:after {
-  opacity: 0;
+  /*
+                &::placeholder {
+                    color: @middle2-grey;
+                    font-family: "Muller", sans-serif;
+                }
+                */
 }
 .contacts .dataTables_length {
   margin-top: 30px;
@@ -3197,17 +3645,102 @@ Hero Slider - by CodyHouse.co
   content: none;
 }
 .footer {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   font-family: "Muller", sans-serif;
-  margin: 100px 0 20px 0;
+  font-size: 14px;
+  font-weight: 300;
+  width: 100%;
+  height: 50px;
+  margin-top: 80px;
+}
+.footer__copyright a {
+  color: #92b700;
+}
+.footer__block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 14px;
-  font-weight: 300;
 }
-.footer__copyright a {
-  color: #92b700;
+@media (max-width: 767px) {
+  .block-news,
+  .block-news_light {
+    margin-bottom: 50px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+  .block-news,
+  .block-news_light {
+    margin-bottom: 50px;
+  }
+  .block-news__title a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+  .block-news__title a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+}
+@media (max-width: 992px) {
+  .navbar__menu {
+    margin-left: 40px;
+  }
+  .navbar__menu-list li {
+    margin-right: 20px;
+  }
+  .block-card-body-description {
+    /*height: 40px;*/
+  }
+  .block-card {
+    margin-bottom: 30px;
+  }
+  .block_instagram,
+  .block_doc,
+  .block_brand {
+    margin-bottom: 30px;
+  }
+  .container__news .row .col-md-4:last-child .block-card {
+    margin-bottom: 0px;
+  }
+  .instagram {
+    height: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+  .block-news__title a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+}
+@media (max-width: 1350px) {
+  .navbar__menu-list li a span {
+    display: none;
+  }
+  .navbar__menu-list li a i {
+    color: #515151;
+    font-size: 20px;
+    transition: color 0.2s ease;
+  }
+  .navbar__menu-list li a:hover i {
+    color: #92b700;
+  }
 }

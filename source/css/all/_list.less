@@ -1,7 +1,95 @@
 .list {
     font-family: "Muller", sans-serif;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 16px;
+    &-elem {
+        border-bottom: 2px dotted @light4-grey;
+        padding: 12px 0px 10px 0;
+        &:hover {
+            & .fa-download {
+                color: @dark-green;
+                cursor: pointer;
+            }
+            & .list-block__text-title {
+                //color: @dark-green;
+            }
+            & .fas {
+                opacity: 1;
+            }
+        }
+        
+        &:last-child {
+            border-bottom: none;
+        }
+    } 
+    &-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & .fas {
+            font-size: 20px;
+            margin-right: 15px;
+            color: @middle2-grey;
+            transition: color 0.2s ease;
+        }
+        & .fa-file {
+            color: #fff;
+            background-color: @dark-green;
+            padding: 5px;
+            border-radius: 15px;
+            width: 26px;
+            height: 26px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        &__text {
+            margin-right: 10px;
+            &-title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                transition: color 0.2s ease;
+            }
+        }
+        &__download {
+            color: @middle2-grey;
+            transition: color 0.3s ease;
+            &:hover {
+                color: @dark-green;
+            }
+        }
+        &__link {
+            &:hover {
+            }
+        }
+        &__left {
+            display: flex;
+            align-items: center;
+            & .fa-file-pdf {
+                color: #f54336;
+            }
+            & .fa-file-word {
+                color: #1665c0;
+            }
+            & .fa-file-excel {
+                color: #2f7d32;
+            }
+            & .fa-file-video {
+                color: #42c0fb;
+            }
+            & .fa-file-powerpoint {
+                color: #ef6c02;
+            }
+            & .fa-file-image {
+                color: #4fbfe8;
+            }
+            & .fa-file-archive {
+                color: #b1df41;
+            }
+            & .fas {
+                opacity: .4;
+            }
+        }
+    }
     &_category {
         & li {
             padding: 10px 0;
@@ -12,17 +100,41 @@
             & a {
                 color: @middle-grey;
                 font-size: 16px;
-                transition: color 0.2s ease;
+                transition: all 0.2s ease;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: block;
+                position: relative;
+                &:before {
+                    content: "";
+                    width: 5px;
+                    height: 5px;
+                    background-color: lighten(@middle-grey, 30%);
+                    position: absolute;
+                    top: 8px;
+                    left: 0px;
+                    opacity: 0;
+                    transition: opacity 0.15s ease;
+                }
                 &:hover {
                     color: @dark-green;
                     text-decoration: none;
+                    padding-left: 15px;
+                    &:before {
+                        content: "";
+                        width: 5px;
+                        height: 5px;
+                        background-color: lighten(@middle-grey, 30%);
+                        position: absolute;
+                        top: 8px;
+                        left: 0px;
+                        opacity: 1;
+                    }
                 }
                 &.activ {
                     position: relative;
                     padding-left: 15px;
+                    opacity: 1;
                     &:before {
                         content: "";
                         width: 5px;
@@ -31,7 +143,7 @@
                         position: absolute;
                         top: 8px;
                         left: 0px;
-                        z-index: 1;
+                        opacity: 1;
                     }
                 }
             }
@@ -69,6 +181,15 @@
                     left: 0px;
                     z-index: 1;
                 }
+            }
+        }
+    }
+    &_font-14 {
+        font-size: 14px;
+        line-height: 18px;
+        & .list-block {
+            & .fas {
+                font-size: 18px;
             }
         }
     }

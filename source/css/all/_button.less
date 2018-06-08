@@ -1,39 +1,26 @@
 .button {
-    &__all-news {
-        background-color: @dark-green;
-        font-family: "Muller", sans-serif;
-        font-weight: bold;
-        font-size: 16px;
-        color: #fff;
-        text-transform: uppercase;
-        border: none;
-        padding: 17px 35px 14px 35px;
-        margin-top: 35px;
-        transition: all 0.2s ease;
-        outline: none;
-        border-radius: 3px;
-        &:hover {
-            background-color: @light-green;
-        }
-        span {
-            line-height: 17px;
-        }
+    font-family: "Muller", sans-serif;
+    color: #fff;
+    background-color: @dark-green;
+    font-weight: normal;
+    font-size: 14px;
+    border-radius: 3px;
+    font-style: normal;
+    padding: 9px 30px 7px;
+    border: none;
+    transition: all 0.2s ease;
+    outline: none;
+    & span {
+        line-height: 17px;
+    }
+    &:hover {
+        background-color: @light-green;
+    }
+    &_all-news,
+    &_idea {
+        /*padding: 17px 35px 14px 35px;*/
+        margin-top: 30px;
     }
     &_comment {
-        width: 135px;
-        height: 35px;
-        border-radius: 3px;
-        background-color: @dark-green;
-        font-size: 14px;
-        font-weight: bold;
-        font-style: normal;
-        padding: 9px 20px;
-        color: #fff;
-        border: none;
-        text-transform: uppercase;
-        transition: all 0.2s ease;
-        &:hover {
-            background-color: @light-green;
-        }
     }
 }
