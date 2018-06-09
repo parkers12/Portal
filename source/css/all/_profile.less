@@ -1,0 +1,71 @@
+.profile {
+    font-family: "Muller", sans-serif;
+    &__pic {
+        background-size: cover;
+        width: 100%;
+        height: 260px;
+    }
+    &__info {
+        &-block,
+        &-col,
+        &-contact,
+        &-main,
+        &-right,
+        &-left,
+        &-location,
+        &-department {
+            display: flex;
+        }
+        &-main {
+            justify-content: space-between;
+            padding-bottom: 20px;
+        }
+        &-main,
+        &-department {
+            border-bottom: 2px solid lighten(@middle-grey, 75%);
+        }
+        &-birthday,
+        &-desc {
+            font-size: 14px;
+            font-weight: 300;
+        }
+        &-left,
+        &-location,
+        &-col {
+            flex-direction: column;
+        }
+        &-left {
+            flex: 1;
+        }
+        &-department {
+            padding: 20px 0;
+        }
+        &-contact {
+            padding-top: 20px;
+        }
+        &-data {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+    & .fas-circle {
+        border: 1px solid @light-green;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        color: @light-green;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    & .mg-rght-15 {
+        margin-right: 15px;
+    }
+    & .mg-lft-15 {
+        margin-left: 15px;
+    }
+    & .mg-rght-40 {
+        margin-right: 40px;
+    }
+}

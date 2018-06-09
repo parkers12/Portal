@@ -345,3 +345,21 @@ template {
 [hidden] {
   display: none;
 }
+
+.form-control:focus {
+    border-color: @dark-green;
+    box-shadow: none;
+    &:-moz-placeholder {
+        color: @middle2-grey;
+    }
+    &::-moz-placeholder {
+        color: @middle2-grey;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color: @middle2-grey;
+    }
+    &::-webkit-input-placeholder {
+        color: @middle2-grey;
+    }
+}

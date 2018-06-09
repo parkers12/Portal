@@ -21,7 +21,7 @@
 			// Получение изображений
 			$.getJSON(url, function(data){
 				$.each(data.data, function (i, val) {
-					var li = $("<div/>").appendTo(elem),
+					var li = $("<li/>").appendTo(elem),
 						a = $("<a/>", {"href": val.link, "target": "_blank"}).appendTo(li).addClass('fancybox').attr('rel','gallery1'),
 						img = $("<img/>", {"src": val.images.thumbnail.url}).appendTo(a);
 
@@ -32,7 +32,7 @@
 			});
 
 			if(o.user_id == null || o.access_token == null){
-				elem.append("<p>Мы забыли идентификатор и токен пользователя Инстаграм.<p>");
+				elem.append("<li>Мы забыли идентификатор и токен пользователя Инстаграм.</li>");
 			}
 
 		});

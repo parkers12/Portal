@@ -1,0 +1,45 @@
+.social {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    &_navbar {
+        border-right: 2px solid @light4-grey;
+    }
+    & a {
+        color: @middle3-grey;
+        margin-right: 20px;
+        font-size: 20px;
+        transition: color 0.15s ease;
+        &:last-child {
+            margin-right: 25px;
+        }
+        &:first-child {
+            margin-left: 25px;
+        }
+        &:hover {
+            //color: @dark-green;
+            & .fa-instagram {
+                color: #bc2a8d;
+            }
+            & .fa-facebook-square {
+                color: #3b5998;
+            }
+            & .fa-vk {
+                color: #45668e;
+            }
+            & .fa-youtube {
+                color: #bb0000;
+            }
+        }
+    }
+    & .fab {
+
+    }
+    &_footer {
+        & a {
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+}

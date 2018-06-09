@@ -123,6 +123,7 @@
             padding: 30px 0;
         }
         &_filter {
+            
             & input {
                 min-width: 350px;
                 height: 40px;
@@ -134,8 +135,40 @@
                 padding: 12px 30px 12px 20px;
                 margin-bottom: 20px;
                 position: relative;
-
+                /*
+                &::placeholder {
+                    color: @middle2-grey;
+                    font-family: "Muller", sans-serif;
+                }
+                */
             }
+            /*
+            & label {
+                &:after {
+                    content: "\f002";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 16px;
+                    color: lighten(@middle-grey, 50%);
+                    position: absolute;
+                    z-index: 200;
+                    top: 12px;
+                    right: 30px;
+                    opacity: 1;
+                    transition: all 0.3s ease;
+                }
+            }
+            & label:focus {
+                &:after {
+                    opacity: 0;
+                }
+            }
+            */
         }
         &_length {
             margin-top: 30px;
