@@ -14,9 +14,12 @@
     }
     &__logo {
         flex: 0 0 163px;
-        position: relative;        
+        position: relative;
+        align-items: center;
+        display: flex;
         &-pic {
-            background-image: url("../img/usetech-portal.svg");
+            background-image: url("@{imageBase}usetech-portal.svg");
+            background-size: cover;
             width: 163px;
             height: 40px;
             display: block;
@@ -38,6 +41,8 @@
                     color: @middle-grey;
                     transition: color 0.15s ease;
                     text-decoration: none;
+                    display: flex;
+                    align-items: center;
                     &:hover {
                         color: @dark-green;
                         text-decoration: none;
@@ -90,15 +95,6 @@
         display: flex;
         margin-left: 25px;
         justify-content: flex-end;
-        &-pic {
-            background-image: url('https://mtdata.ru/u19/photoD45E/20815283123-0/original.jpeg');
-            height: 40px;
-            width: 40px;
-            border-radius: 50px;
-            flex: 0 0 40px;
-            background-size: cover;
-            margin-left: 25px;
-        }
         &-block {
             color: @middle-grey;
             font-family: Muller;
@@ -106,16 +102,6 @@
             flex-direction: column;
             align-items: flex-end;
             justify-content: center;
-            &-name {
-                font-size: 18px;
-                font-weight: 500;
-                line-height: 18px
-            }
-            &-post {
-                font-size: 14px;
-                font-weight: 300;
-                line-height: 14px
-            }
         }
     }
     &:before, &:after {

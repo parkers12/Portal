@@ -1,8 +1,3 @@
-@media (max-width: 767px) {
-    .block-news, .block-news_light {
-        margin-bottom: 50px;
-    }
-}
 @media (min-width: 768px) {
     .container {
         width: 750px;
@@ -30,33 +25,6 @@
         }
     }
 }
-@media (max-width: 992px) {
-    .navbar__menu {
-        margin-left: 40px;
-        &-list li {
-            margin-right: 20px;
-        }
-    }
-    .block-card-body-description {
-        /*height: 40px;*/
-    }
-    .block-card {
-        margin-bottom: 30px;
-    }
-    .block {
-        &_instagram,
-        &_doc,
-        &_brand {
-            margin-bottom: 30px;
-        }
-    }
-    .container__news .row .col-md-4:last-child .block-card {
-        margin-bottom: 0px;
-    }
-    .instagram {
-        height: auto;
-    }
-}
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
@@ -69,6 +37,7 @@
         }
     }
 }
+
 @media (max-width: 1350px) {
     .navbar__menu-list li a {
         & span {
@@ -83,4 +52,69 @@
             color: @dark-green;
         }
     }    
+}
+@media (max-width: 992px) {
+    .navbar {
+        &__menu {
+            margin-left: 40px;
+            &-list li {
+                margin-right: 20px;
+            }
+        }
+        &__user {
+            &-block {
+                display: none;
+            }
+            margin-left: 0px;
+        }
+        &__logo {
+            flex: 0 0 135px;
+            &-pic {
+                width: 135px;
+                height: 32px;
+            }
+        }
+        & .fas,
+        & .social a {
+            font-size: 18px;
+        }
+    }
+    .block-card-body-description {
+        /*height: 40px;*/
+    }
+    .block-card {
+        margin-bottom: 30px;
+    }
+    .block {
+        &_instagram,
+        &_doc,
+        &_brand,
+        &_profile {
+            margin-bottom: 30px;
+        }
+    }
+    .container__news .row .col-md-4:last-child .block-card {
+        margin-bottom: 0px;
+    }
+    .instagram {
+        height: auto;
+    }
+}
+@media (max-width: 767px) {
+    .block-news, .block-news_light {
+        margin-bottom: 50px;
+    }
+    .navbar {
+        &__logo {
+            flex: 0 0 100px;
+            &-pic {
+                width: 100px;
+                height: 24px;
+            }
+        }
+        & .fas,
+        & .social a {
+            font-size: 16px;
+        }
+    }
 }

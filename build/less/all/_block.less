@@ -75,7 +75,7 @@
                 width: 0;
                 height: 0;
                 border-top: 13px solid transparent;
-                border-left: 8px solid #333333;
+                border-left: 8px solid @middle-grey;
                 border-bottom: 14px solid transparent;
                 position: absolute;
                 right: -8px;
@@ -104,29 +104,6 @@
             margin: 0 0 10px 0;
             text-overflow: ellipsis;
             line-height: 20px;
-            /*
-            & a {
-                color: @middle-grey;
-                text-decoration: none;
-                display: inline-block;
-                line-height: 1;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100%;
-                &:after {
-                    content: "";
-                    display: block;
-                    height: 2px;
-                    width: 0%;
-                    background-color: @dark-green;
-                    transition: width 0.2s ease-in-out;
-                }
-                &:hover:after,
-                &:focus:after {
-                    width: 100%;
-                }
-            }
-            */
         }
     }
     &-list {
@@ -175,7 +152,7 @@
         &-header {
             width: 100%;
             height: 300px;
-            background: url(../img/news/000002.jpg) no-repeat;
+            background: url("@{imageBase}news/000002.jpg") no-repeat;
             background-size: 100% 100%;
             border-radius: 1px 1px 0 0;
             transition: all .3s ease-in-out;
@@ -257,7 +234,7 @@
                             align-items: center;
                             &:before {
                                 content: "";
-                                background-image: url(/img/eye.svg);
+                                background-image: url("@{imageBase}eye.svg");
                                 background-repeat: no-repeat;
                                 position: absolute;
                                 margin: 0 0 0 -20px;
@@ -283,7 +260,7 @@
                             margin-left: 30px;
                             &:before {
                                 content: "";
-                                background-image: url("/img/comment.svg");
+                                background-image: url("@{imageBase}comment.svg");
                                 background-repeat: no-repeat;
                                 position: absolute;
                                 margin: 0 0 0 -14px;

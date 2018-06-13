@@ -531,6 +531,24 @@ input:focus:placeholder,
 textarea:focus:placeholder {
   opacity: 0;
 }
+.form-control:-moz-placeholder {
+  color: #e8e8e8;
+}
+.form-control::-moz-placeholder {
+  color: #e8e8e8;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #e8e8e8;
+}
+.form-control::-webkit-input-placeholder {
+  color: #e8e8e8;
+}
+.form-control:focus {
+  border: 1px solid #92b700;
+  outline: 0px;
+  box-shadow: none;
+}
 .ml-mselect {
   position: relative;
 }
@@ -968,9 +986,16 @@ textarea:focus:placeholder {
       -ms-flex: 0 0 163px;
           flex: 0 0 163px;
   position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .navbar__logo-pic {
   background-image: url("../img/usetech-portal.svg");
+  background-size: cover;
   width: 163px;
   height: 40px;
   display: block;
@@ -1000,6 +1025,12 @@ textarea:focus:placeholder {
   color: #333333;
   transition: color 0.15s ease;
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .navbar__menu-list li a:hover {
   color: #92b700;
@@ -2096,6 +2127,7 @@ body {
 }
 body {
   background-color: #f7f7f7;
+  font-family: "Muller", sans-serif;
 }
 .wrapper {
   /*margin-top: 60px;*/
@@ -2836,6 +2868,14 @@ body {
 .profile__info-data {
   font-size: 16px;
   font-weight: 500;
+}
+.profile__info-data a {
+  color: #333333;
+  transition: color 0.2s ease;
+}
+.profile__info-data a:hover {
+  text-decoration: none;
+  color: #92b700;
 }
 .profile .fas-circle {
   border: 1px solid #a4c815;
@@ -3592,15 +3632,29 @@ body {
 }
 .contacts .dataTables_filter input {
   min-width: 350px;
-  height: 40px;
-  font-size: 14px;
-  color: #333333;
-  border: solid 1px #e8e8e8;
-  outline: none;
-  box-shadow: none;
-  padding: 12px 30px 12px 20px;
   margin-bottom: 20px;
   position: relative;
+  font-family: "Muller", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  height: 34px;
+  padding: 6px 12px;
+  line-height: 1.4;
+  color: #b3b3b3;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px !important;
+  border: 1px solid #e8e8e8;
+  min-width: 250px;
+  box-shadow: none;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+.contacts .dataTables_filter input:focus {
+  border: 1px solid #92b700;
+  outline: 0px;
+  box-shadow: none;
 }
 .contacts .dataTables_length {
   margin-top: 30px;
@@ -3686,12 +3740,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-@media (max-width: 767px) {
-  .block-news,
-  .block-news_light {
-    margin-bottom: 50px;
-  }
-}
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -3716,31 +3764,6 @@ body {
     display: inline-block;
   }
 }
-@media (max-width: 992px) {
-  .navbar__menu {
-    margin-left: 40px;
-  }
-  .navbar__menu-list li {
-    margin-right: 20px;
-  }
-  .block-card-body-description {
-    /*height: 40px;*/
-  }
-  .block-card {
-    margin-bottom: 30px;
-  }
-  .block_instagram,
-  .block_doc,
-  .block_brand {
-    margin-bottom: 30px;
-  }
-  .container__news .row .col-md-4:last-child .block-card {
-    margin-bottom: 0px;
-  }
-  .instagram {
-    height: auto;
-  }
-}
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
@@ -3762,5 +3785,69 @@ body {
   }
   .navbar__menu-list li a:hover i {
     color: #92b700;
+  }
+}
+@media (max-width: 992px) {
+  .navbar__menu {
+    margin-left: 40px;
+  }
+  .navbar__menu-list li {
+    margin-right: 20px;
+  }
+  .navbar__user {
+    margin-left: 0px;
+  }
+  .navbar__user-block {
+    display: none;
+  }
+  .navbar__logo {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 135px;
+            flex: 0 0 135px;
+  }
+  .navbar__logo-pic {
+    width: 135px;
+    height: 32px;
+  }
+  .navbar .fas,
+  .navbar .social a {
+    font-size: 18px;
+  }
+  .block-card-body-description {
+    /*height: 40px;*/
+  }
+  .block-card {
+    margin-bottom: 30px;
+  }
+  .block_instagram,
+  .block_doc,
+  .block_brand,
+  .block_profile {
+    margin-bottom: 30px;
+  }
+  .container__news .row .col-md-4:last-child .block-card {
+    margin-bottom: 0px;
+  }
+  .instagram {
+    height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .block-news,
+  .block-news_light {
+    margin-bottom: 50px;
+  }
+  .navbar__logo {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100px;
+            flex: 0 0 100px;
+  }
+  .navbar__logo-pic {
+    width: 100px;
+    height: 24px;
+  }
+  .navbar .fas,
+  .navbar .social a {
+    font-size: 16px;
   }
 }

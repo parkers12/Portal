@@ -14,9 +14,12 @@
     }
     &__logo {
         flex: 0 0 163px;
-        position: relative;        
+        position: relative;
+        align-items: center;
+        display: flex;
         &-pic {
             background-image: url("@{imageBase}usetech-portal.svg");
+            background-size: cover;
             width: 163px;
             height: 40px;
             display: block;
@@ -38,6 +41,8 @@
                     color: @middle-grey;
                     transition: color 0.15s ease;
                     text-decoration: none;
+                    display: flex;
+                    align-items: center;
                     &:hover {
                         color: @dark-green;
                         text-decoration: none;
