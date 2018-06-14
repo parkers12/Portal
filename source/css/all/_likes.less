@@ -27,6 +27,13 @@
         align-items: center;
         margin-left: 25px;
         color: lighten(@middle-grey, 50%);
+        & a {
+            color: lighten(@middle-grey, 50%);
+            &:hover {
+                color: @middle-grey;
+                text-decoration: none;
+            }
+        }
         &:before {
             content: " ";
             color: lighten(@middle-grey, 50%);
