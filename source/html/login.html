@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html lang="ru">
+@@include('./file-include/head.html')
+<body>
+    <div class="wrapper">
+        <div class="container login">
+            <div class="block block_pg-20 login__block">
+                <a href="/html/" class="logo logo_login"></a>
+                 <div class="input-group login__elem">
+                    <input type="text" class="input input__email" placeholder="Введите Ваш E-mail" />
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group login__elem">
+                    <input type="text" class="input input__pass" placeholder="Введите Ваш пароль" />
+                    <i class="fas fa-unlock-alt"></i>
+                </div>
+                <div class="input-group login__elem">
+                    <label class="label label__block">
+                        <input class="checkbox checkbox_login" type="checkbox" />
+                        <span class="checkbox__custom"></span>
+                        <span class="label label_login">Запомнить вас?</span>
+                    </label>
+                </div>
+                <button class="button button_login text-center" onclick="javascript: document.location.href ='/html/index.html'">
+                    <span>Войти</span>
+                </button>
+                <div class="input-group login__elem">
+                    <a href="#" class="login__pass-remind">
+                        Забыли пароль?
+                    </a>
+                </div>
+            </div>
+        </div>
+        @@include('./file-include/footer.html')
+    </div>
+</body>
+</html>

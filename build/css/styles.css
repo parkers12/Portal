@@ -355,6 +355,16 @@ template {
   font-weight: 900;
   font-style: normal;
 }
+.logo {
+  background-image: url("../img/usetech-portal.svg");
+  background-size: cover;
+  display: block;
+  width: 163px;
+  height: 40px;
+}
+.logo_login {
+  margin: 20px 0 50px 0;
+}
 .header {
   font-family: "Muller", sans-serif;
   text-transform: uppercase;
@@ -423,6 +433,11 @@ template {
   /*padding: 17px 35px 14px 35px;*/
   margin-top: 30px;
 }
+.button_login {
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 .input {
   font-family: "Muller", sans-serif;
   font-weight: normal;
@@ -447,6 +462,11 @@ template {
   outline-offset: 0;
   box-shadow: none;
 }
+.input__email,
+.input__pass {
+  width: 100%;
+  padding-right: 40px;
+}
 .textarea {
   font-family: "Muller", sans-serif;
   font-weight: normal;
@@ -462,6 +482,44 @@ template {
   margin-bottom: 15px;
   resize: none;
   outline: none;
+}
+.checkbox_login {
+  display: none;
+}
+.checkbox__custom {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.checkbox:checked + .checkbox__custom::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  background: #92b700;
+  border-radius: 2px;
+}
+.label {
+  font-family: "Muller", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  color: #b3b3b3;
+}
+.label_login {
+  margin: 0 0 0 8px;
+  padding: 0;
+}
+.label__block {
+  padding: 0;
+  margin: 0;
 }
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
@@ -978,13 +1036,6 @@ select.input-sm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-.navbar__logo-pic {
-  background-image: url("../img/usetech-portal.svg");
-  background-size: cover;
-  width: 163px;
-  height: 40px;
-  display: block;
 }
 .navbar__menu {
   display: -webkit-box;
@@ -1662,7 +1713,7 @@ Hero Slider - by CodyHouse.co
   width: 60px;
   height: 100%;
   color: #92b700;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   box-shadow: inset 0 2px 0 currentColor;
   transition: box-shadow 0.2s, -webkit-transform 0.2s;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -2175,7 +2226,7 @@ body {
   height: 100%;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
   font-family: "Muller", sans-serif;
 }
 .wrapper {
@@ -2227,6 +2278,11 @@ body {
 }
 .wrap {
   margin-top: 90px;
+}
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .calendar-block {
   display: -webkit-box;
@@ -2845,6 +2901,53 @@ body {
   top: 10px;
   right: 12px;
   color: #b3b3b3;
+}
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.login__block {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.login__elem {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login__elem:last-child {
+  margin-bottom: 10px;
+}
+.login__elem .fas {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #979797;
+}
+.login__pass-remind {
+  font-size: 14px;
+  font-weight: 300;
+  color: #92b700;
+  transition: color 0.2s ease;
+}
+.login__pass-remind:hover {
+  color: #a4c815;
+  text-decoration: none;
 }
 .documents-search__block {
   display: -webkit-box;

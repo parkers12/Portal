@@ -1,0 +1,25 @@
+.checkbox {
+    &_login {
+        display: none;
+    }
+    &__custom {
+         width: 16px;
+        height: 16px;
+        border: 1px solid @middle2-grey;
+        border-radius: 3px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &:checked + .checkbox__custom::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        bottom: 2px;
+        left: 2px;
+        background: @dark-green;
+        border-radius: 2px;
+    }
+}

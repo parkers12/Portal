@@ -5,13 +5,40 @@
     &-elem {
         border-bottom: 2px dotted @light4-grey;
         padding: 12px 0px 10px 0;
+        & .fas {
+            font-size: 20px;
+            margin-right: 15px;
+            transition: all 0.2s ease;
+            color: @middle-grey;
+            opacity: .4;
+        }
+        & .fa-file-pdf {
+            color: #f54336;
+        }
+        & .fa-file-word {
+            color: #1665c0;
+        }
+        & .fa-file-excel {
+            color: #2f7d32;
+        }
+        & .fa-file-video {
+            color: #42c0fb;
+        }
+        & .fa-file-powerpoint {
+            color: #ef6c02;
+        }
+        & .fa-file-image {
+            color: #4fbfe8;
+        }
+        & .fa-file-archive {
+            color: #b1df41;
+        }
+        & .fa-download {
+            cursor: pointer;
+        }
         &:hover {
             & .fa-download {
                 color: @dark-green;
-                cursor: pointer;
-            }
-            & .list-block__text-title {
-                //color: @dark-green;
             }
             & .fas {
                 opacity: 1;
@@ -26,12 +53,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        & .fas {
-            font-size: 20px;
-            margin-right: 15px;
-            color: @middle2-grey;
-            transition: color 0.2s ease;
-        }
+        
         & .fa-file {
             color: #fff;
             background-color: @dark-green;
@@ -56,38 +78,13 @@
             &:hover {
                 color: @dark-green;
             }
-        }
-        &__link {
-            &:hover {
+            & .fas {
+                opacity: .4;
             }
         }
         &__left {
             display: flex;
             align-items: center;
-            & .fa-file-pdf {
-                color: #f54336;
-            }
-            & .fa-file-word {
-                color: #1665c0;
-            }
-            & .fa-file-excel {
-                color: #2f7d32;
-            }
-            & .fa-file-video {
-                color: #42c0fb;
-            }
-            & .fa-file-powerpoint {
-                color: #ef6c02;
-            }
-            & .fa-file-image {
-                color: #4fbfe8;
-            }
-            & .fa-file-archive {
-                color: #b1df41;
-            }
-            & .fas {
-                opacity: .4;
-            }
         }
     }
     &_category {

@@ -22,42 +22,14 @@
             border-radius: 50%;
             margin: 12px 15px 12px 5px;
         }
-        &-text {
-            display: flex;
-            flex-direction: column;
-            padding: 12px 15px 12px 0;
-            justify-content: center;
-        }
-        &-post {
-            font-size: 12px;
-            font-weight: 300;
-            line-height: 16px;
-            color: @middle-grey;
-            text-decoration: none;
-            transition: color 0.15s ease;
-            &:hover {
-                color: @dark-green;
-                text-decoration: none;
-            }
-        }
+        &-text,
         &-manager {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             padding: 12px 15px 12px 0;
+            justify-content: center;
         }
-        &-department {
-            font-size: 14px;
-            font-weight: normal;
-            line-height: 18px;
-            color: @middle-grey;
-            text-decoration: none;
-            transition: color 0.15s ease;
-            &:hover {
-                color: @dark-green;
-                text-decoration: none;
-            }
-        }
+        &-post,
         &-chief {
             font-size: 12px;
             font-weight: 300;
@@ -70,9 +42,14 @@
                 text-decoration: none;
             }
         }
-        &-location {
+        &-department,
+        &-location,
+        &-phone,
+        &-email,
+        &-skype {
             font-size: 14px;
             font-weight: normal;
+            line-height: 18px;
             color: @middle-grey;
             text-decoration: none;
             transition: color 0.15s ease;
@@ -81,38 +58,9 @@
                 text-decoration: none;
             }
         }
-        &-phone {
-            font-size: 14px;
-            font-weight: normal;
-            color: @middle-grey;
-            text-decoration: none;
-            transition: color 0.15s ease;
-            &:hover {
-                color: @dark-green;
-                text-decoration: none;
-            }
-        }
-        &-email {
-            color: @blue2;
-            font-size: 14px;
-            font-weight: normal;
-            text-decoration: none;
-            transition: color 0.15s ease;
-            &:hover {
-                color: @dark-green;
-                text-decoration: none;
-            }
-        }
+        &-email,
         &-skype {
             color: @blue2;
-            font-size: 14px;
-            font-weight: normal;
-            text-decoration: none;
-            transition: color 0.15s ease;
-            &:hover {
-                color: @dark-green;
-                text-decoration: none;
-            }
         }
     }
     & .dataTables {
@@ -204,9 +152,7 @@
         & td {
             border-bottom: 2px solid @middle4-grey;
         }
-        & thead .sorting_asc::after {
-            content: none;
-        }
+        & thead .sorting_asc::after,
         & thead .sorting:after {
             content: none;
         }
