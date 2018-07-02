@@ -322,38 +322,71 @@ template {
 }
 @font-face {
   font-family: 'Muller';
-  src: url('@{@fontBase}Muller/MullerLight.eot');
-  src: url('@{@fontBase}Muller/MullerLight.eot?#iefix') format('embedded-opentype'), url('@{@fontBase}Muller/MullerLight.woff') format('woff'), url('@{@fontBase}Muller/MullerLight.ttf') format('truetype'), url('@{@fontBase}Muller/MullerLight.svg#pf_din_text_comp_promedium') format('svg');
+  src: url('../fonts/Muller/MullerLight.eot');
+  src: url('../fonts/Muller/MullerLight.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerLight.woff') format('woff'), url('../fonts/Muller/MullerLight.ttf') format('truetype'), url('../fonts/Muller/MullerLight.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Muller';
-  src: url('@{@fontBase}Muller/MullerRegular.eot');
-  src: url('@{@fontBase}Muller/MullerRegular.eot?#iefix') format('embedded-opentype'), url('@{@fontBase}Muller/MullerRegular.woff') format('woff'), url('@{@fontBase}Muller/MullerRegular.ttf') format('truetype'), url('@{@fontBase}Muller/MullerRegular.svg#pf_din_text_comp_promedium') format('svg');
+  src: url('../fonts/Muller/MullerRegular.eot');
+  src: url('../fonts/Muller/MullerRegular.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerRegular.woff') format('woff'), url('../fonts/Muller/MullerRegular.ttf') format('truetype'), url('../fonts/Muller/MullerRegular.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Muller';
-  src: url('@{@fontBase}Muller/MullerMedium.eot');
-  src: url('@{@fontBase}Muller/MullerMedium.eot?#iefix') format('embedded-opentype'), url('@{@fontBase}Muller/MullerMedium.woff') format('woff'), url('@{@fontBase}Muller/MullerMedium.ttf') format('truetype'), url('@{@fontBase}Muller/MullerMedium.svg#pf_din_text_comp_promedium') format('svg');
+  src: url('../fonts/Muller/MullerMedium.eot');
+  src: url('../fonts/Muller/MullerMedium.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerMedium.woff') format('woff'), url('../fonts/Muller/MullerMedium.ttf') format('truetype'), url('../fonts/Muller/MullerMedium.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'Muller';
-  src: url('@{@fontBase}Muller/MullerBold.eot');
-  src: url('@{@fontBase}Muller/MullerBold.eot?#iefix') format('embedded-opentype'), url('@{@fontBase}Muller/MullerBold.woff') format('woff'), url('@{@fontBase}Muller/MullerBold.ttf') format('truetype'), url('@{@fontBase}Muller/MullerBold.svg#pf_din_text_comp_promedium') format('svg');
+  src: url('../fonts/Muller/MullerBold.eot');
+  src: url('../fonts/Muller/MullerBold.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerBold.woff') format('woff'), url('../fonts/Muller/MullerBold.ttf') format('truetype'), url('../fonts/Muller/MullerBold.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'Muller';
-  src: url('@{@fontBase}Muller/MullerBlack.eot');
-  src: url('@{@fontBase}Muller/MullerBlack.eot?#iefix') format('embedded-opentype'), url('@{@fontBase}Muller/MullerBlack.woff') format('woff'), url('@{@fontBase}Muller/MullerBlack.ttf') format('truetype'), url('@{@fontBase}Muller/MullerBlack.svg#pf_din_text_comp_promedium') format('svg');
+  src: url('../fonts/Muller/MullerBlack.eot');
+  src: url('../fonts/Muller/MullerBlack.eot?#iefix') format('embedded-opentype'), url('../fonts/Muller/MullerBlack.woff') format('woff'), url('../fonts/Muller/MullerBlack.ttf') format('truetype'), url('../fonts/Muller/MullerBlack.svg#pf_din_text_comp_promedium') format('svg');
   font-weight: 900;
   font-style: normal;
+}
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/FontAwesome/fa-brands-400.eot");
+  src: url("../fonts/FontAwesome/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../fonts/FontAwesome/fa-brands-400.woff2") format("woff2"), url("../fonts/FontAwesome/fa-brands-400.woff") format("woff"), url("../fonts/FontAwesome/fa-brands-400.ttf") format("truetype"), url("../fonts/FontAwesome/fa-brands-400.svg#fontawesome") format("svg");
+}
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+}
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/FontAwesome/fa-regular-400.eot");
+  src: url("../fonts/FontAwesome/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/FontAwesome/fa-regular-400.woff2") format("woff2"), url("../fonts/FontAwesome/fa-regular-400.woff") format("woff"), url("../fonts/FontAwesome/fa-regular-400.ttf") format("truetype"), url("../fonts/FontAwesome/fa-regular-400.svg#fontawesome") format("svg");
+}
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/FontAwesome/fa-solid-900.eot");
+  src: url("../fonts/FontAwesome/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/FontAwesome/fa-solid-900.woff2") format("woff2"), url("../fonts/FontAwesome/fa-solid-900.woff") format("woff"), url("../fonts/FontAwesome/fa-solid-900.ttf") format("truetype"), url("../fonts/FontAwesome/fa-solid-900.svg#fontawesome") format("svg");
+}
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
 .logo {
   background-image: url("../img/usetech-portal.svg");
@@ -1127,7 +1160,7 @@ select.input-sm {
 }
 .navbar__search-input-submit {
   content: "\f3ee";
-  font-family: 'Font Awesome\ 5 Free';
+  font-family: 'Font Awesome 5 Free';
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -2284,6 +2317,9 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+.cd-hero__nav {
+  display: none;
+}
 .calendar-block {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2741,7 +2777,7 @@ body {
   color: #a4c815;
 }
 .news-info__text ul {
-  font-size: 18px;
+  font-size: 16px;
   list-style-type: none;
   padding-left: 20px;
   margin: 0 0 20px;
@@ -3628,7 +3664,7 @@ body {
 .instagram__likes:after {
   content: "\f004";
   font-size: 14px;
-  font-family: 'Font Awesome\ 5 Free';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   display: inline-block;
   font-style: normal;
@@ -3669,7 +3705,7 @@ body {
 .instagram__comments:after {
   content: "\f27a";
   font-size: 12px;
-  font-family: 'Font Awesome\ 5 Free';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   display: inline-block;
   font-style: normal;
@@ -3843,6 +3879,7 @@ body {
   font-weight: 500;
   padding-bottom: 16px;
   border-bottom: 2px solid #ebebeb;
+  padding: 10px 5px;
 }
 .contacts #contacts td {
   border-bottom: 2px solid #ebebeb;
@@ -3984,6 +4021,12 @@ body {
   .instagram {
     height: auto;
   }
+  #contacts tr th:nth-child(2),
+  #contacts tr td:nth-child(2),
+  #contacts tr th:nth-child(3),
+  #contacts tr td:nth-child(3) {
+    display: none;
+  }
 }
 @media (max-width: 767px) {
   .block-news,
@@ -4002,5 +4045,9 @@ body {
   .navbar .fas,
   .navbar .social a {
     font-size: 16px;
+  }
+  #contacts tr th:nth-child(6),
+  #contacts tr td:nth-child(6) {
+    display: none;
   }
 }

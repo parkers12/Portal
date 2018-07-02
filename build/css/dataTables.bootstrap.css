@@ -82,33 +82,40 @@ table.dataTable thead .sorting_desc_disabled {
   cursor: pointer;
   position: relative;
 }
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
+  font-size: 18px;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  display: block;
-  font-family: 'Glyphicons Halflings';
+  top: 10px;
+  right: 15px;
   opacity: 0.5;
+  background-color: transparent;
 }
-table.dataTable thead .sorting:after {
+table.dataTable thead .sorting:before {
   opacity: 0.2;
-  content: "\e150";
+  content: "\f0dc";
   /* sort */
 }
-table.dataTable thead .sorting_asc:after {
-  content: "\e155";
+table.dataTable thead .sorting_asc:before {
+  content: "\f0dd";
   /* sort-by-attributes */
 }
-table.dataTable thead .sorting_desc:after {
-  content: "\e156";
+table.dataTable thead .sorting_desc:before {
+  content: "\f0de";
   /* sort-by-attributes-alt */
 }
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
   color: #eee;
 }
 div.dataTables_scrollHead table.dataTable {
@@ -119,9 +126,9 @@ div.dataTables_scrollBody > table {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-div.dataTables_scrollBody > table > thead .sorting:after,
-div.dataTables_scrollBody > table > thead .sorting_asc:after,
-div.dataTables_scrollBody > table > thead .sorting_desc:after {
+div.dataTables_scrollBody > table > thead .sorting:before,
+div.dataTables_scrollBody > table > thead .sorting_asc:before,
+div.dataTables_scrollBody > table > thead .sorting_desc:before {
   display: none;
 }
 div.dataTables_scrollBody > table > tbody > tr:first-child > th,
@@ -146,9 +153,9 @@ div.dataTables_scrollFoot > .dataTables_scrollFootInner > table {
 table.dataTable.table-condensed > thead > tr > th {
   padding-right: 20px;
 }
-table.dataTable.table-condensed .sorting:after,
-table.dataTable.table-condensed .sorting_asc:after,
-table.dataTable.table-condensed .sorting_desc:after {
+table.dataTable.table-condensed .sorting:before,
+table.dataTable.table-condensed .sorting_asc:before,
+table.dataTable.table-condensed .sorting_desc:before {
   top: 6px;
   right: 6px;
 }
