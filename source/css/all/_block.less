@@ -104,6 +104,17 @@
             margin: 0 0 10px 0;
             text-overflow: ellipsis;
             line-height: 20px;
+            & a {
+              color:@middle-grey;
+              transition: color 0.2s ease;
+              &:hover {
+                color: @dark-green;
+                text-decoration: none;
+              }
+            }
+            & a:visited {
+              color: @middle-grey;
+            }
         }
     }
     &-list {
@@ -152,7 +163,8 @@
         &-header {
             width: 100%;
             height: 300px;
-            background: url("@{imageBase}news/000002.jpg") no-repeat;
+            //background: url("@{imageBase}news/000002.jpg") no-repeat;
+            background-repeat:no-repeat;
             background-size: 100% 100%;
             border-radius: 1px 1px 0 0;
             transition: all .3s ease-in-out;
@@ -290,6 +302,14 @@
                 transition: all .2s ease-in-out;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                & a {
+                  color: lighten(#000, 40%);
+                  transition: color .2s ease-in-out;
+                  &:hover {
+                    color: @dark-green;
+                    text-decoration: none;
+                  }
+                }
             }
             &-footer {
                 position: relative;

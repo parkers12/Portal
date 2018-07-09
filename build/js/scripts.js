@@ -24,12 +24,15 @@ $(document).ready(function() {
             }
 
             $('.smile').click(function(){
-                if($('.idea-popup').hasClass('active')) {
+                if($('.popup_idea').hasClass('active')) {
                     closePopupIdea();
                 } else {
                     $('.wrapper__overlay').fadeIn('fast', function() {
+                        if($('.popup_friend').hasClass('active')) {
+                            closePopupFriend();
+                        }
                         //$('.idea-popup').fadeIn('fast');
-                        $('.idea-popup').addClass("active").animate({
+                        $('.popup_idea').addClass("active").animate({
                             opacity: 1,
                             left: [ "toggle", "swing" ]
                         }, 350);
@@ -46,10 +49,10 @@ $(document).ready(function() {
                 }
             });
 
-            $('.idea-popup__close, .wrapper__overlay').click(closePopupIdea);
+            $('.popup__close, .wrapper__overlay').click(closePopupIdea);
 
             function closePopupIdea(){
-                $('.idea-popup').animate({
+                $('.popup_idea').animate({
                     left: [ "toggle", "swing" ],
                     opacity: 0
                 }, 350, function() {
@@ -62,8 +65,8 @@ $(document).ready(function() {
                 var timerIntIdIdea = setInterval(showSmile, 40000);
             }
 
-            $('.button__all-news').click(function(){
-                $('.idea-popup').animate({
+            $('.button_idea').click(function(){
+                $('.popup_idea').animate({
                     right: [ "toggle", "swing" ],
                     opacity: 0
                 }, 350, function() {
@@ -89,6 +92,39 @@ $(document).ready(function() {
 
 //-- smile animation ----------------------------------------
     
+//-- friend animation ----------------------------------------
+    
+    $('.popup-friend').click(function(){
+        $('.wrapper__overlay').fadeIn('fast', function() {
+            $('.popup_friend').addClass("active").animate({
+                opacity: 1,
+                left: [ "toggle", "swing" ]
+            }, 350);
+        });
+    });
+    
+    $('.popup__close, .button_friend.button_grey, .wrapper__overlay').click(closePopupFriend);
+    
+    function closePopupFriend(){
+        $('.popup_friend').animate({
+            left: [ "toggle", "swing" ],
+            opacity: 0
+        }, 350, function() {
+            $('.wrapper__overlay').fadeOut('slow');
+        }).removeClass('active').fadeOut('fast');
+    }
+    
+    $('.button_friend').click(function(){
+        $('.popup_friend').animate({
+            right: [ "toggle", "swing" ],
+            opacity: 0
+        }, 350, function() {
+            $('.wrapper__overlay').fadeOut("slow");
+        }).removeClass('active').fadeOut("fast");
+    });
+    
+//-- friend animation ----------------------------------------
+    
 //-- scroll -------------------------------------------------
     
     $(".mCustomScrollbar").niceScroll({
@@ -108,10 +144,10 @@ $(document).ready(function() {
 //-- counter character --------------------------------------
     
     var max_characters=700;
-    $('.idea-popup__body-textarea').focus();
-    $('.idea-popup__body-textarea').bind('input', function(){
+    $('.popup__body-textarea').focus();
+    $('.popup__body-textarea').bind('input', function(){
         characters = max_characters - $(this).val().length;
-        $('.idea-popup__counter').html("Осталось <strong>" + characters + "</strong> символов");
+        $('.popup__counter').html("Осталось <strong>" + characters + "</strong> символов");
     });
     
 //-- counter character --------------------------------------

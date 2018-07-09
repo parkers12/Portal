@@ -82,13 +82,13 @@
 </div>
 
     <div class="wrapper">
-        <div id="slider" class="cd-hero js-cd-hero js-cd-autoplay"><!-- js-cd-autoplay -->
+        <div id="slider" class="cd-hero js-cd-hero "><!-- js-cd-autoplay -->
     <ul class="cd-hero__slider">
         <li class="cd-hero__slide cd-hero__slide--selected js-cd-slide">
             <div class="cd-hero__content cd-hero__content--full-width">
                 <h2>Hero slider</h2>
                 <p>A simple, responsive slideshow in CSS &amp; JavaScript.</p>
-                <a href="http://codyhouse.co/gem/hero-slider/" class="cd-hero__btn">Article &amp; Download</a>
+                <a href="#" class="cd-hero__btn popup-friend">Article &amp; Download</a>
             </div> <!-- .cd-hero__content -->
         </li>
 
@@ -544,19 +544,63 @@
             </div>
         </div>
     </div>
-    <div class="idea-popup">
-    <div class="idea-popup__close">
+    <div class="popup popup_idea">
+    <div class="popup__close">
         <i class="fas fa-times"></i>
     </div>
-    <div class="idea-popup__title">
-        <h1 class="header_big text-center">Ваша идея</h1>
+    <div class="popup__title">
+        <h1 class="header header_big text-center">Ваша идея</h1>
     </div>
-    <div class="idea-popup__body">
-       <textarea class="idea-popup__body-textarea mCustomScrollbar" maxlength="700" placeholder="Опиши свою идею"></textarea>
+    <div class="popup__body">
+        <div class="popup__body-block">
+            <textarea class="popup__body-textarea popup__body-textarea-idea mCustomScrollbar" maxlength="700" placeholder="Опиши свою идею"></textarea>
+        </div>
     </div>
-    <div class="idea-popup__counter"></div>
-    <div class="idea-popup__footer text-center">
+    <div class="popup__counter popup__counter_idea"></div>
+    <div class="popup__footer text-center">
         <button class="button button_idea">Отправить идею</button>
+    </div>
+</div>
+    <div class="popup popup_friend">
+    <div class="popup__close">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="popup__title">
+        <h1 class="header header_big text-center">Приведи друга</h1>
+    </div>
+    <div class="popup__body clearfix">
+       <input type="text" class="col-md-12 input input_popup-friend-fio" placeholder="ФИО кандидата" />
+       <!--<input type="text" class="col-md-4 input input_popup-friend-fio" placeholder="Имя кандидата" />
+       <input type="text" class="col-md-4 input input_popup-friend-fio" placeholder="Отчество кандидата" />-->
+       <input type="text" class="col-md-12 input input_popup-friend-vacancy" placeholder="Вакансия" />
+       <div class="popup__body-block">
+           <textarea class="popup__body-textarea popup__body-textarea_friend mCustomScrollbar" maxlength="700" placeholder="Сопроводительная рекомендация"></textarea>
+        </div>
+       <div class="popup__counter popup__counter_friend"></div>
+       <div class="popup__link">
+           <div class="popup__link-text">Можно ссылаться на меня?</div>
+           <div class="popup__link-radio">
+               <label class="radio-inline">
+                  <input type="radio" name="optradio" />Да
+                </label>
+               <label class="radio-inline">
+                  <input type="radio" name="optradio" />Нет
+                </label>
+            </div>
+        </div>
+        <div class="popup__custom-file">
+            <input type="file" class="input input_popup-friend-file" placeholder="Резюме" id="inputFile01" />
+            <label class="label label_popup-friend-file" for="inputFile01">Выбрать файл</label>
+        </div>
+        <div class="popup__contacts">
+            <input type="text" class="input input_popup-friend-phone" placeholder="Телефон" />
+            <input type="text" class="input input_popup-friend-email" placeholder="E-mail" />
+            <input type="text" class="input input_popup-friend-skype" placeholder="Skype" />
+        </div>
+    </div>
+    <div class="popup__footer text-center">
+        <button class="button button_friend button_grey">Отмена</button>
+        <button class="button button_friend">Отправить</button>
     </div>
 </div>
             <div id="smile" class="smile">

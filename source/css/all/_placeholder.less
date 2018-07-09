@@ -1,67 +1,15 @@
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
+input::placeholder,
+textarea::placeholder {
     color: @middle2-grey;
-    font-family: "Muller", sans-serif;
-    opacity: 1;
+    opacity: .75;
     transition: opacity 0.15s ease;
-}
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-    /* Firefox 19+ */
-    color: @middle2-grey;
-    font-family: "Muller", sans-serif;
-    opacity: 1;
-    transition: opacity 0.15s ease;
-}
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-    /* IE 10+ */
-    color: @middle2-grey;
-    font-family: "Muller", sans-serif;
-    opacity: 1;
-    transition: opacity 0.15s ease;
-}
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-    /* Firefox 18- */
-    color: @middle2-grey;
-    font-family: "Muller", sans-serif;
-    opacity: 1;
-    transition: opacity 0.15s ease;
-}
-input:placeholder,
-textarea:placeholder {
-    color: @middle2-grey;
-    font-family: "Muller", sans-serif;
-    opacity: 1;
-    transition: opacity 0.15s ease;
+    font-weight: 100;
+    font-size: 14px;
+
 }
 input:focus,
 textarea:focus {
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-moz-placeholder,
-    &:-ms-input-placeholder,
-    &:placeholder {
+    &::placeholder {
         opacity: 0;
     }
-}
-.form-control:-moz-placeholder {
-  color: @middle2-grey;
-}
-.form-control::-moz-placeholder {
-  color: @middle2-grey;
-  opacity: 1;
-}
-.form-control:-ms-input-placeholder {
-  color: @middle2-grey;
-}
-.form-control::-webkit-input-placeholder {
-  color: @middle2-grey;
-}
-.form-control:focus {
-    border: 1px solid @dark-green;
-    outline: 0px;
-    box-shadow: none;
 }

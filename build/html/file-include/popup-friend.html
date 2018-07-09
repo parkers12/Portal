@@ -1,0 +1,42 @@
+<div class="popup popup_friend">
+    <div class="popup__close">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="popup__title">
+        <h1 class="header header_big text-center">Приведи друга</h1>
+    </div>
+    <div class="popup__body clearfix">
+       <input type="text" class="col-md-12 input input_popup-friend-fio" placeholder="ФИО кандидата" />
+       <!--<input type="text" class="col-md-4 input input_popup-friend-fio" placeholder="Имя кандидата" />
+       <input type="text" class="col-md-4 input input_popup-friend-fio" placeholder="Отчество кандидата" />-->
+       <input type="text" class="col-md-12 input input_popup-friend-vacancy" placeholder="Вакансия" />
+       <div class="popup__body-block">
+           <textarea class="popup__body-textarea popup__body-textarea_friend mCustomScrollbar" maxlength="700" placeholder="Сопроводительная рекомендация"></textarea>
+        </div>
+       <div class="popup__counter popup__counter_friend"></div>
+       <div class="popup__link">
+           <div class="popup__link-text">Можно ссылаться на меня?</div>
+           <div class="popup__link-radio">
+               <label class="radio-inline">
+                  <input type="radio" name="optradio" />Да
+                </label>
+               <label class="radio-inline">
+                  <input type="radio" name="optradio" />Нет
+                </label>
+            </div>
+        </div>
+        <div class="popup__custom-file">
+            <input type="file" class="input input_popup-friend-file" placeholder="Резюме" id="inputFile01" />
+            <label class="label label_popup-friend-file" for="inputFile01">Выбрать файл</label>
+        </div>
+        <div class="popup__contacts">
+            <input type="text" class="input input_popup-friend-phone" placeholder="Телефон" />
+            <input type="text" class="input input_popup-friend-email" placeholder="E-mail" />
+            <input type="text" class="input input_popup-friend-skype" placeholder="Skype" />
+        </div>
+    </div>
+    <div class="popup__footer text-center">
+        <button class="button button_friend button_grey">Отмена</button>
+        <button class="button button_friend">Отправить</button>
+    </div>
+</div>
