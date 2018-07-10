@@ -169,6 +169,7 @@ Hero Slider - by CodyHouse.co
 @media only screen and (min-width: 1170px) {
   .cd-hero__slider {
     height: 680px;
+    //height: 655px;
   }
 }
 
@@ -296,14 +297,20 @@ Hero Slider - by CodyHouse.co
 
 .cd-hero__btn {
   display: inline-block;
-  padding: 1.2em 1.4em;
+  //padding: 1.2em 1.4em;
+  padding: 9px 20px 7px;
+  border-radius: 4px;
   margin-top: .8em;
   background-color: @light-green;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  //font-size: 1.3rem;
+  //font-weight: 700;
+  //letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
   color: #ffffff;
-  text-transform: uppercase;
+  //text-transform: uppercase;
+  text-transform: none;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   -webkit-transition: background-color 0.2s;
@@ -515,7 +522,7 @@ Hero Slider - by CodyHouse.co
   transition: -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
-  //display: none;
+  display: none;
 }
 
 .cd-hero__marker.cd-hero__marker--item-2 {
@@ -553,15 +560,20 @@ Hero Slider - by CodyHouse.co
   //width: 60px;
   width: 20px;
   float: left;
+    margin: 0 6px;
 }
 
 .cd-hero__nav .cd-selected a {
-  color: #2c343b;
+  //color: #2c343b;
+  border: 3px solid @light-green;
+  transition: border .2s ease;
+  color: transparent;
 }
 
 .cd-hero__nav .cd-selected a:hover {
   background-color: transparent;
-    text-decoration: none;
+  text-decoration: none;
+  border: 3px solid @dark-green;
 }
 
 .cd-hero__nav a {

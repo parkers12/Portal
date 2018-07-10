@@ -320,6 +320,18 @@ template {
 .form-control:focus::-webkit-input-placeholder {
   color: #e8e8e8;
 }
+.flex-center,
+.cd-hero__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 @font-face {
   font-family: 'Muller';
   src: url('../fonts/Muller/MullerLight.eot');
@@ -1648,14 +1660,15 @@ Hero Slider - by CodyHouse.co
 }
 .cd-hero__btn {
   display: inline-block;
-  padding: 1.2em 1.4em;
+  padding: 9px 20px 7px;
+  border-radius: 4px;
   margin-top: .8em;
   background-color: #a4c815;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
   color: #ffffff;
-  text-transform: uppercase;
+  text-transform: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.2s;
 }
@@ -1839,6 +1852,7 @@ Hero Slider - by CodyHouse.co
   transition: box-shadow 0.2s, -webkit-transform 0.2s;
   transition: transform 0.2s, box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s;
+  display: none;
 }
 .cd-hero__marker.cd-hero__marker--item-2 {
   -webkit-transform: translateX(100%);
@@ -1869,13 +1883,17 @@ Hero Slider - by CodyHouse.co
   display: inline-block;
   width: 20px;
   float: left;
+  margin: 0 6px;
 }
 .cd-hero__nav .cd-selected a {
-  color: #2c343b;
+  border: 3px solid #a4c815;
+  transition: border .2s ease;
+  color: transparent;
 }
 .cd-hero__nav .cd-selected a:hover {
   background-color: transparent;
   text-decoration: none;
+  border: 3px solid #92b700;
 }
 .cd-hero__nav a {
   display: block;
@@ -3609,7 +3627,7 @@ body {
 }
 .list-block__text {
   margin-right: 10px;
-  width: calc(65%);
+  width: calc(100% - 35px);
 }
 .list-block__text-title {
   overflow: hidden;
@@ -3633,7 +3651,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: calc(62%);
+  width: calc(100% - 38px);
 }
 .list-block__left .fa-file-pdf {
   color: #f54336;
