@@ -29,7 +29,10 @@ $(document).ready(function() {
                 } else {
                     $('.wrapper__overlay').fadeIn('fast', function() {
                         if($('.popup_friend').hasClass('active')) {
-                            closePopupFriend();
+                            $('.popup_friend').animate({
+                                left: [ "toggle", "swing" ],
+                                opacity: 0
+                            });
                         }
                         //$('.idea-popup').fadeIn('fast');
                         $('.popup_idea').addClass("active").animate({
