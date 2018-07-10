@@ -1540,12 +1540,12 @@ Hero Slider - by CodyHouse.co
 }
 @media only screen and (min-width: 768px) {
   .cd-hero__slider {
-    height: 500px;
+    height: 400px;
   }
 }
 @media only screen and (min-width: 1170px) {
   .cd-hero__slider {
-    height: 680px;
+    height: 640px;
   }
 }
 /* Slide style */
