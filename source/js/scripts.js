@@ -274,11 +274,13 @@ $(document).ready(function() {
     });
 */
 
-    if($('#instagram')) {
+    if($('#instagram').lenght > 0) {
         var feed = new Instafeed({
             get: 'user',
-            userId: '6165538624',
-            accessToken: '6165538624.4072523.782e855c6bf24172af34d932ade08a9e',
+            //userId: '6165538624', //UseTech
+            //accessToken: '6165538624.4072523.782e855c6bf24172af34d932ade08a9e', //UseTech
+            userId: '7345493118', //test
+            accessToken: '7345493118.1677ed0.c99f45c2ea39489bb9ed80cd080412ad', //test
             limit: 1,
             resolution: 'standard_resolution',
             template: '<a href="{{link}}" class="instagram__link"><img src="{{image}}" class="instagram__pic" /><div class="instagram__likes">{{likes}}</div><div class="instagram__comments">{{comments}}</div><div class="instagram__caption">{{caption}}</div></a>'
