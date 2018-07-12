@@ -1663,7 +1663,7 @@ Hero Slider - by CodyHouse.co
   padding: 9px 20px 7px;
   border-radius: 4px;
   margin-top: .8em;
-  background-color: #a4c815;
+  background-color: #92b700;
   font-size: 14px;
   font-weight: normal;
   line-height: 18px;
@@ -1679,7 +1679,7 @@ Hero Slider - by CodyHouse.co
   margin-left: 1em;
 }
 .cd-hero__btn:hover {
-  background-color: #92b700;
+  background-color: #a4c815;
   text-decoration: none;
 }
 .cd-hero__btn.cd-hero__btn--secondary:hover {
@@ -1972,7 +1972,7 @@ Hero Slider - by CodyHouse.co
     margin: 0 6px;
   }
   .cd-hero__nav a {
-    font-size: 1.1rem;
+    font-size: 0;
     text-transform: uppercase;
     text-decoration: none;
     color: transparent;
@@ -3154,6 +3154,9 @@ body {
 .login__pass-remind:hover {
   color: #a4c815;
   text-decoration: none;
+}
+.documents {
+  margin-top: 30px;
 }
 .documents-search__block {
   display: -webkit-box;
