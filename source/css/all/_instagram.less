@@ -28,12 +28,25 @@
     }
     &__pic {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
+        /*
+        object-fit
+        IE: не поддерживает
+        Firefox: 36.0
+        Chrome: 31.0
+        Safari: 7.1 только object-fit, 10.0 полная поддержка
+        Opera: 19.0
+        iOS Safari: 8.0 только object-fit, 10.1 полная поддержка
+        Opera Mini: -o-
+        Android: 4.4.4
+        Chrome for Android: 54.0
+        */
     }
     &__link {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
         position: relative;
         z-index: 1;
         &:after {
