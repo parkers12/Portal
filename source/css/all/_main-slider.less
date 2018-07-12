@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Hero Slider - by CodyHouse.co
 
@@ -71,7 +71,7 @@ Hero Slider - by CodyHouse.co
   background: #21272c;
   border-top: 1px solid #333c44;
   color: #ffffff;
-    
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -308,7 +308,7 @@ Hero Slider - by CodyHouse.co
   font-size: 14px;
   font-weight: normal;
   line-height: 18px;
-  color: #ffffff;
+  color: #ffffff !important;
   //text-transform: uppercase;
   text-transform: none;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -327,6 +327,7 @@ Hero Slider - by CodyHouse.co
 
 .cd-hero__btn:hover {
   background-color: @dark-green;
+  text-decoration: none;
 }
 
 .cd-hero__btn.cd-hero__btn--secondary:hover {
@@ -410,7 +411,7 @@ Hero Slider - by CodyHouse.co
             transform: translateX(0);
   }
   .cd-hero__slide--is-moving .cd-hero__content.cd-hero__content--half-width {
-    /* this is the slide moving outside the viewport 
+    /* this is the slide moving outside the viewport
     wait for the end of the transition on the <li> parent before set opacity to 0 and translate to 40px/-40px */
     -webkit-transition: opacity 0s 0.5s, -webkit-transform 0s 0.5s;
     transition: opacity 0s 0.5s, -webkit-transform 0s 0.5s;
@@ -458,7 +459,7 @@ Hero Slider - by CodyHouse.co
   .cd-hero__slide--is-moving .cd-hero__content--full-width h2,
   .cd-hero__slide--is-moving .cd-hero__content--full-width p,
   .cd-hero__slide--is-moving .cd-hero__content--full-width .cd-hero__btn {
-    /* this is the slide moving outside the viewport 
+    /* this is the slide moving outside the viewport
     wait for the end of the transition on the li parent before set translate to 100px/-100px */
     -webkit-transition: -webkit-transform 0s 0.5s;
     transition: -webkit-transform 0s 0.5s;
