@@ -695,24 +695,24 @@ template {
 }
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #e8e8e8;
-  opacity: .75;
+  color: #b1b1b1;
+  opacity: 1;
   transition: opacity 0.15s ease;
   font-weight: 100;
   font-size: 14px;
 }
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: #e8e8e8;
-  opacity: .75;
+  color: #b1b1b1;
+  opacity: 1;
   transition: opacity 0.15s ease;
   font-weight: 100;
   font-size: 14px;
 }
 input::placeholder,
 textarea::placeholder {
-  color: #e8e8e8;
-  opacity: .75;
+  color: #b1b1b1;
+  opacity: 1;
   transition: opacity 0.15s ease;
   font-weight: 100;
   font-size: 14px;
