@@ -2121,6 +2121,7 @@ Hero Slider - by CodyHouse.co
   line-height: 20px;
 }
 .block-news__title a {
+  display: block;
   color: #333333;
   transition: color 0.2s ease;
 }
@@ -2202,10 +2203,6 @@ Hero Slider - by CodyHouse.co
 }
 .block-card:hover {
   box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-}
-.block-card:hover .block-card-header {
-  background-size: 105% 105%;
-  background-position: -8px -8px;
 }
 .block-card:hover .block-card-header-mask {
   background-color: rgba(255, 255, 255, 0.2);
@@ -4309,4 +4306,8 @@ div.ms-webpart-cell-vertical-inline-table,
 .ms-WPBody,
 .ms-webpart-chrome {
   width: auto !important;
+}
+.s4-bodyContainer {
+  height: 100%;
+  padding: 0;
 }
